@@ -11,7 +11,7 @@
     "Shop": {
       "commandName": "Project",
       "launchBrowser": true,
-      "applicationUrl": "http://localhost:5195",
+      "applicationUrl": "http://localhost:2222",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development",
         "ASPNETCORE_HOSTINGSTARTUPASSEMBLIES": "Microsoft.AspNetCore.SpaProxy"

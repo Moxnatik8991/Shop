@@ -2,6 +2,7 @@
 
 namespace Shop.Controllers
 {
+
     [ApiController]
     [Route("[controller]")]
     public class WeatherForecastController : ControllerBase
@@ -18,6 +19,9 @@ namespace Shop.Controllers
             _logger = logger;
         }
 
+        /// <summary>
+        /// Test summary
+        /// </summary>
         [HttpGet]
         public IEnumerable<WeatherForecast> Get()
         {
