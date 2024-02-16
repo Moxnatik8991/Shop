@@ -1,0 +1,40 @@
+.appContainer{
+    display: grid;
+    grid-template-rows: 70px minmax(40px, max-content) auto 150px;
+    
+}
+.heade{
+    background-color: #ffd529;
+    display: grid;
+    grid-auto-flow: column;
+    justify-content: space-around;
+    align-content: center;
+}
+
+.ShopName{
+    font-family: "Times New Roman", serif;
+    font-style: italic;
+    font-weight: bold;
+    font-size: 35px;
+}
+.search{
+    align-self: center;
+    display: grid;
+    grid-auto-flow: column;
+    grid-gap: 5px;
+}
+.bucketButton{
+    display: grid;
+    align-content: center;
+}
+.navMenu{
+    background-color: gray;
+    display: grid;
+    align-content: center;
+    justify-content: center;
+}
+.navMenuContent{
+    display: grid;
+    grid-auto-flow: column;
+    grid-gap: 20px;
+}
