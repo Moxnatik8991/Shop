@@ -16,7 +16,7 @@ const App = () => {
     }
   
     return (
-        <Home/>
+        <Home/> 
         /*<div className={st.appContainer}>
             <div className={st.heade}>
                 <div className={st.ShopName}>Yaroslav Gey Shop</div>
