@@ -1,5 +1,9 @@
 using System.Reflection;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
+using Shop.Abstractions;
+using Shop.Domain;
+using Shop.Repository;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -32,6 +36,14 @@ builder.Services.AddSwaggerGen(options =>
     var xmlFilename = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
     options.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, xmlFilename));
 });
+
+builder.Services.AddDbContext<DataContext>(_ => 
+{
+    _.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+});
+
+builder.Services.AddScoped(typeof(DbContext), typeof(DataContext));
+builder.Services.AddScoped(typeof(IRepository<>), typeof(EFRepository<>));
 
 var app = builder.Build();
 
