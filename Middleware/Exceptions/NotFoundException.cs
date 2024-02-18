@@ -1,10 +1,15 @@
 ﻿namespace Shop.Middleware.Exceptions
 {
-    public class NotFoundException : Exception
+    public class NotFoundException<T> : Exception
     {
-        public NotFoundException(string message) : base(message)
+        public NotFoundException() : base(GenerateMessage())
         {
-            message = "edfwef" + message;
         }
+
+        private static string GenerateMessage()
+        {
+            return $"{typeof(T).Name} not found!";
+        }
+
     }
 }

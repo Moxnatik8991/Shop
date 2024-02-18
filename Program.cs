@@ -59,8 +59,7 @@ if (!app.Environment.IsDevelopment())
 app.UseStaticFiles();
 app.UseRouting();
 
-//app.UseMiddleware<ExceptionHandlingMiddleware>();
-
+app.UseMiddleware<ExceptionHandlingMiddleware>();
 
 app.MapControllerRoute(
     name: "default",

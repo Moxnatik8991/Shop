@@ -26,9 +26,7 @@ namespace Shop.Controllers
         [HttpGet("{id}")]
         public async Task<User> Get(Guid id)
         {
-
-            throw new NotFoundException("NotFoundException");
-
+            throw new NotFoundException<User>();
             var user = await _userRepository.GetAsync(id);
 
             return user;
@@ -51,7 +49,7 @@ namespace Shop.Controllers
 
             if (user == null)
             {
-                return NotFound("Not Found");
+                throw new NotFoundException<User>();
             }
 
             await _userRepository.UpdateAsync(entity);

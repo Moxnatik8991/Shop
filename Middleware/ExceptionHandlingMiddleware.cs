@@ -1,5 +1,7 @@
-﻿using Newtonsoft.Json;
+﻿using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
 using Shop.Models;
+using System;
 using System.Net;
 
 namespace Shop.Middleware
@@ -7,32 +9,54 @@ namespace Shop.Middleware
     public class ExceptionHandlingMiddleware
     {
         private readonly RequestDelegate _next;
-        private readonly ILogger<ExceptionHandlingMiddleware> _logger;
-
-        public ExceptionHandlingMiddleware(
-            RequestDelegate next,
-            ILogger<ExceptionHandlingMiddleware> logger)
+        public ExceptionHandlingMiddleware(RequestDelegate next)
         {
             _next = next;
-            _logger = logger;
         }
 
-        public async Task InvokeAsync(HttpContext context, Func<Task> next)
+        public async Task Invoke(HttpContext context)
         {
             try
             {
-                await next();
+                await _next(context);
             }
-            catch (Exception ex)
+            catch (Exception exception)
             {
-                await HandleExceptionAsync(context, ex);
+                await HandleExceptionAsync(context, exception);
             }
         }
 
         private static Task HandleExceptionAsync(HttpContext context, Exception ex)
         {
+
+            //switch (exception)
+            //{
+            //    case KeyNotFoundException
+            //            or NoSuchUserException
+            //            or FileNotFoundException:
+            //        code = HttpStatusCode.NotFound;
+            //        break;
+            //    case EntityAlreadyExists:
+            //        code = HttpStatusCode.Conflict;
+            //        break;
+            //    case UnauthorizedAccessException
+            //            or ExpiredPasswordException
+            //            or UserBlockedException:
+            //        code = HttpStatusCode.Unauthorized;
+            //        break;
+            //    case CreateUserException
+            //            or ResetPasswordException
+            //            or ArgumentException
+            //            or InvalidOperationException:
+            //        code = HttpStatusCode.BadRequest;
+            //        break;
+            //    default:
+            //        code = HttpStatusCode.InternalServerError;
+            //        break;
+            //}
+
             context.Response.ContentType = "application/json";
-            context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
+            context.Response.StatusCode = (int)HttpStatusCode.OK;
 
             var response = new BaseResponseModel<string> ();
             response.SetFailResponse(ex.Message); 
