@@ -1,7 +1,5 @@
-﻿using Microsoft.Extensions.Logging;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using Shop.Models;
-using System;
 using System.Net;
 
 namespace Shop.Middleware

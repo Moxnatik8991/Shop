@@ -7,6 +7,11 @@
         public T? Result { get; set; }
 
 
+        public void SetSuccessResponse()
+        {
+            IsSuccess = true;
+        }
+
         public void SetSuccessResponse(T result)
         {
             IsSuccess = true;
