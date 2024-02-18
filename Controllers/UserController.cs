@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Shop.Abstractions;
 using Shop.Domain.Entity;
+using Shop.Middleware.Exceptions;
 
 namespace Shop.Controllers
 {
@@ -25,6 +26,9 @@ namespace Shop.Controllers
         [HttpGet("{id}")]
         public async Task<User> Get(Guid id)
         {
+
+            throw new NotFoundException("NotFoundException");
+
             var user = await _userRepository.GetAsync(id);
 
             return user;

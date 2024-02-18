@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using Shop.Abstractions;
 using Shop.Domain;
+using Shop.Middleware;
 using Shop.Repository;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -18,7 +19,7 @@ builder.Services.AddSwaggerGen(options =>
     {
         Version = "v1",
         Title = "Shop",
-        Description = "Sergey gey!",
+        Description = "Shop",
         // TermsOfService = new Uri("https://example.com/terms"),
         // Contact = new OpenApiContact
         // {
@@ -57,6 +58,8 @@ if (!app.Environment.IsDevelopment())
 
 app.UseStaticFiles();
 app.UseRouting();
+
+//app.UseMiddleware<ExceptionHandlingMiddleware>();
 
 
 app.MapControllerRoute(
