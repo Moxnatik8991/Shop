@@ -15,7 +15,7 @@ namespace Shop.Repository
 
         public async Task<IEnumerable<T>> GetAllAsync()
         {
-            return await _dataContext.Set<T>().ToListAsync();
+            return await _dataContext.Set<T>().OrderBy(_ => _.DataCreate).ToListAsync();
         }
 
         public async Task<T?> GetAsync(Guid id)

@@ -1,5 +1,4 @@
-﻿using Azure;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Shop.Abstractions;
 using Shop.Domain.Entity;
 using Shop.Middleware.Exceptions;

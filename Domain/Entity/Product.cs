@@ -7,7 +7,6 @@ namespace Shop.Domain.Entity
         public string Name { get; set; }
         public string Description { get; set; }
         public decimal Price { get; set; }
-        public DateTime DataCreate { get; set; }
-        public DateTime DataUpdate { get; set; }
+
     }
 }
