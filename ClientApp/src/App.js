@@ -20,7 +20,7 @@ const App = () => {
            
         <div className={st.appContainer}>
             <div className={st.heade}> 
-                <div className={st.ShopName}>Yaroslav Gey Shop</div>
+                <div className={st.ShopName}>Shop</div>
                 <div className={st.search}>
                     <input placeholder={"Enter the name..."} type="text"/>
                     <button>Search</button>
