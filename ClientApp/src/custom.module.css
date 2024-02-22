@@ -1,14 +1,17 @@
 .appContainer{
     display: grid;
-    grid-template-rows: 70px minmax(40px, max-content) auto 150px;
+    grid-template-rows: 70px 50px 1fr auto;
     
 }
 .heade{
     background-color: #ffd529;
     display: grid;
-    grid-auto-flow: column;
-    justify-content: space-around;
-    align-content: center;
+    grid-template-columns: minmax(275px,20%) 60% 20%;
+    align-items: center;
+    grid-gap: 10px;
+    padding: 10px;
+    
+    
 }
 
 .ShopName{
@@ -18,14 +21,21 @@
     font-size: 35px;
 }
 .search{
-    align-self: center;
     display: grid;
-    grid-auto-flow: column;
+    grid-template-columns: max-content 100px;
     grid-gap: 5px;
+    padding-left: 15px;
 }
-.bucketButton{
-    display: grid;
-    align-content: center;
+.search input{
+    width: 500px;
+    border-radius: 12px;
+    padding-left: 10px;
+}
+.bucketButton button{ 
+    border-radius: 8px;
+}
+.bucketButton button:hover{
+    box-shadow: 0 0 10px white;
 }
 .navMenu{
     background-color: gray;
@@ -37,4 +47,8 @@
     display: grid;
     grid-auto-flow: column;
     grid-gap: 20px;
+}
+.footer1{
+    background-color: brown;
+    min-height: 100px;
 }

@@ -1,0 +1,36 @@
+﻿.cover-back{
+    display: grid;
+    background-color: #a4a4a4;
+    
+}
+
+.catalog{
+    display: grid;
+    grid-auto-flow: column;
+    background-color: chocolate;
+    grid-template-columns: 200px 1fr;
+    max-width: 90%;
+    place-self:  stretch center;
+    
+    
+}
+.catalog-content{
+    display: grid;
+    grid-gap: 10px;
+    padding: 15px;
+    grid-template-columns: repeat(5, 1fr);
+    grid-auto-rows: 300px;
+    justify-items: stretch;
+    
+}
+.catalog-categories{
+    display: grid;
+    grid-gap: 10px;
+    padding: 10px;
+    font-size: 18px;
+    
+}
+.catalog-categories div{
+  border-bottom: 2px solid gray;
+    padding-left: 5px;
+}

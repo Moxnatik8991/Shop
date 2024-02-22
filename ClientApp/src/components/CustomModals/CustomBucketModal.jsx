@@ -1,4 +1,4 @@
-﻿import React from "react";
+import React from "react";
 import "./CustomBucketModal.css"
 import Modal from 'react-modal'
 import {ReactComponent as CloseIcon} from "../../icons/Close.svg";
