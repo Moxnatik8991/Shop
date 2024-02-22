@@ -1,6 +1,7 @@
-﻿using Shop.Abstractions;
+﻿using Shop.Helpers.FilteringAndPagination;
+using Microsoft.EntityFrameworkCore;
+using Shop.Abstractions;
 using Shop.Domain.Entity;
-using Shop.Helpers.FilteringAndPagination;
 using System.Linq.Expressions;
 using System.Text.Json;
 
@@ -67,6 +68,12 @@ namespace Shop.Services
             var query = _productRepository.CustomQuery(filters);
             var count = query.Count();
             var filteredData = query.CustomPagination(searchParam.PageNumber, searchParam.PageSize).ToList();
+
+            // Check Sql
+            var filteredData2 = query.CustomPagination(searchParam.PageNumber, searchParam.PageSize);
+            var sql = filteredData2.ToQueryString();
+            //
+
 
             var pagedList = new PagedList<Product>(filteredData, count, searchParam.PageNumber, searchParam.PageSize);
 

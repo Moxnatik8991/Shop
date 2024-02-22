@@ -40,6 +40,11 @@ namespace Shop.Helpers.FilteringAndPagination
                         var constant = Expression.Constant(Convert.ToDouble(filter.Value));
                         comparison = Expression.Equal(property, constant);
                     }
+                    else if (property.Type == typeof(decimal))
+                    {
+                        var constant = Expression.Constant(Convert.ToDecimal(filter.Value));
+                        comparison = Expression.Equal(property, constant);
+                    }
                     else if (property.Type == typeof(Guid))
                     {
                         var constant = Expression.Constant(Guid.Parse(filter.Value));
