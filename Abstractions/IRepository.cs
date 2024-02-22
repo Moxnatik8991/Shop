@@ -1,4 +1,7 @@
-﻿namespace Shop.Abstractions
+﻿using Shop.Domain.Entity;
+using System.Linq.Expressions;
+
+namespace Shop.Abstractions
 {
     public interface IRepository<T> where T : BaseEntity
     {
@@ -7,5 +10,8 @@
         Task AddAsync(T entity);
         Task UpdateAsync(T entity);
         Task DeleteAsync(Guid id);
+
+
+        IQueryable<T> CustomQuery(Expression<Func<T, bool>> filters);
     }
 }

@@ -7,7 +7,7 @@ using Shop.Models;
 namespace Shop.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("api/[controller]/[action]")]
     public class UserController : Controller
     {
         private readonly IRepository<User> _userRepository;

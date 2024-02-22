@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Shop.Middleware.Exceptions;
 using Shop.Models;
 using System.Net;
 
@@ -26,38 +27,24 @@ namespace Shop.Middleware
 
         private static Task HandleExceptionAsync(HttpContext context, Exception ex)
         {
+            var message = ex.Message;
 
-            //switch (exception)
-            //{
-            //    case KeyNotFoundException
-            //            or NoSuchUserException
-            //            or FileNotFoundException:
-            //        code = HttpStatusCode.NotFound;
-            //        break;
-            //    case EntityAlreadyExists:
-            //        code = HttpStatusCode.Conflict;
-            //        break;
-            //    case UnauthorizedAccessException
-            //            or ExpiredPasswordException
-            //            or UserBlockedException:
-            //        code = HttpStatusCode.Unauthorized;
-            //        break;
-            //    case CreateUserException
-            //            or ResetPasswordException
-            //            or ArgumentException
-            //            or InvalidOperationException:
-            //        code = HttpStatusCode.BadRequest;
-            //        break;
-            //    default:
-            //        code = HttpStatusCode.InternalServerError;
-            //        break;
-            //}
+            switch (ex)
+            {
+                case KeyNotFoundException
+                        or NotFoundException<string>
+                        or FileNotFoundException:
+                    break;
+                default:
+                    message = "Something went wrong";
+                    break;
+            }
 
             context.Response.ContentType = "application/json";
             context.Response.StatusCode = (int)HttpStatusCode.OK;
 
             var response = new BaseResponseModel<string> ();
-            response.SetFailResponse(ex.Message); 
+            response.SetFailResponse(message); 
 
             return context.Response.WriteAsync(JsonConvert.SerializeObject(response));
         }
