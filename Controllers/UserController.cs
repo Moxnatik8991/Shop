@@ -1,11 +1,13 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Shop.Abstractions;
 using Shop.Domain.Entity;
+using Shop.Middleware.Exceptions;
+using Shop.Models;
 
 namespace Shop.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("api/[controller]/[action]")]
     public class UserController : Controller
     {
         private readonly IRepository<User> _userRepository;
@@ -15,60 +17,75 @@ namespace Shop.Controllers
         }
 
         [HttpGet]
-        public async Task<IEnumerable<User>> Get()
+        public async Task<BaseResponseModel<IEnumerable<User>>> Get()
         {
             var users = await _userRepository.GetAllAsync();
 
-            return users;
+            var response = new BaseResponseModel<IEnumerable<User>>();
+            response.SetSuccessResponse(users);
+
+            return response;
         }
 
         [HttpGet("{id}")]
-        public async Task<User> Get(Guid id)
+        public async Task<BaseResponseModel<User>> Get(Guid id)
         {
             var user = await _userRepository.GetAsync(id);
 
-            return user;
+            var response = new BaseResponseModel<User>();
+            response.SetSuccessResponse(user);
+
+            return response;
         }
 
 
         [HttpPost]
-        public async Task<User> Post([FromBody] User user)
+        public async Task<BaseResponseModel<User>> Post([FromBody] User user)
         {
             user.Id = new Guid();
             await _userRepository.AddAsync(user);
 
-            return user;
+            var response = new BaseResponseModel<User>();
+            response.SetSuccessResponse(user);
+
+            return response;
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> Put(Guid id, [FromBody] User entity)
+        public async Task<BaseResponseModel<string>> Put(Guid id, [FromBody] User entity)
         {
             var user = await _userRepository.GetAsync(id);
 
             if (user == null)
             {
-                return NotFound("Not Found");
+                throw new NotFoundException<User>();
             }
 
             await _userRepository.UpdateAsync(entity);
 
-            return Ok();
+            var response = new BaseResponseModel<string>();
+            response.SetSuccessResponse();
+
+            return response;
 
         }
 
         [HttpDelete("{id}")]
-        public async Task<IActionResult> Delete(Guid id)
+        public async Task<BaseResponseModel<string>> Delete(Guid id)
         {
             var user = await _userRepository.GetAsync(id);
 
             if (user == null)
             {
-                return NotFound("Not Found");
+                throw new NotFoundException<User>();
             }
 
             await _userRepository.DeleteAsync(id);
 
-            return Ok();
+            var response = new BaseResponseModel<string>();
+            response.SetSuccessResponse();
+
+            return response;
 
         }
     }

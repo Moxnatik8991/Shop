@@ -1,6 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Shop.Abstractions;
 using Shop.Domain;
+using Shop.Helpers.FilteringAndPagination;
+using System.Linq.Expressions;
 
 namespace Shop.Repository
 {
@@ -15,7 +17,7 @@ namespace Shop.Repository
 
         public async Task<IEnumerable<T>> GetAllAsync()
         {
-            return await _dataContext.Set<T>().ToListAsync();
+            return await _dataContext.Set<T>().OrderBy(_ => _.DataCreate).ToListAsync();
         }
 
         public async Task<T?> GetAsync(Guid id)
@@ -48,6 +50,11 @@ namespace Shop.Repository
                 _dataContext.Set<T>().Remove(entity);
                 await _dataContext.SaveChangesAsync();
             }
+        }
+
+        public IQueryable<T> CustomQuery(Expression<Func<T, bool>> filters)
+        {
+            return _dataContext.Set<T>().AsQueryable().CustomQuery(filters);
         }
     }
 }

@@ -3,7 +3,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using Shop.Abstractions;
 using Shop.Domain;
+using Shop.Middleware;
 using Shop.Repository;
+using Shop.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,7 +20,7 @@ builder.Services.AddSwaggerGen(options =>
     {
         Version = "v1",
         Title = "Shop",
-        Description = "Sergey gey!",
+        Description = "Shop",
         // TermsOfService = new Uri("https://example.com/terms"),
         // Contact = new OpenApiContact
         // {
@@ -45,6 +47,8 @@ builder.Services.AddDbContext<DataContext>(_ =>
 builder.Services.AddScoped(typeof(DbContext), typeof(DataContext));
 builder.Services.AddScoped(typeof(IRepository<>), typeof(EFRepository<>));
 
+builder.Services.AddScoped(typeof(IProductServices), typeof(ProductService));
+
 var app = builder.Build();
 
 app.UseSwagger();
@@ -58,6 +62,7 @@ if (!app.Environment.IsDevelopment())
 app.UseStaticFiles();
 app.UseRouting();
 
+app.UseMiddleware<ExceptionHandlingMiddleware>();
 
 app.MapControllerRoute(
     name: "default",
