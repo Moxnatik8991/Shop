@@ -1,15 +1,8 @@
-﻿using Azure;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.IdentityModel.Tokens;
-using Shop.Abstractions;
-using Shop.Domain;
+﻿using Microsoft.AspNetCore.Mvc;
 using Shop.Domain.Entity;
 using Shop.Helpers.FilteringAndPagination;
 using Shop.Models;
 using Shop.Services;
-using System.Linq.Expressions;
-using System.Text.Json;
-using static Shop.Controllers.ProductController;
 
 namespace Shop.Controllers
 {
@@ -18,11 +11,9 @@ namespace Shop.Controllers
     public class ProductController
     {
         private readonly IProductServices _productServices;
-        private readonly DataContext _dataContext;
-        public ProductController(IProductServices productServices, DataContext dataContext)
+        public ProductController(IProductServices productServices)
         {
             _productServices = productServices;
-            _dataContext = dataContext;
         }
 
         [HttpGet]
@@ -42,8 +33,16 @@ namespace Shop.Controllers
             var products = await _productServices.GetWithFilteringAndPagination(searchParam);
 
             var response = new BaseResponseModel<IEnumerable<Product>>();
-            response.SetSuccessResponse(products);
 
+            if (products.Count() > 0)
+            {
+                response.SetSuccessResponse(products);
+            }
+            else
+            {
+                response.SetSuccessResponse();
+            }
+            
             return response;
         }
 

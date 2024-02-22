@@ -1,7 +1,6 @@
-﻿using Shop.Helpers.FilteringAndPagination;
-using Microsoft.EntityFrameworkCore;
-using Shop.Abstractions;
+﻿using Shop.Abstractions;
 using Shop.Domain.Entity;
+using Shop.Helpers.FilteringAndPagination;
 using System.Linq.Expressions;
 using System.Text.Json;
 
@@ -51,6 +50,7 @@ namespace Shop.Services
             }
 
             Expression<Func<Product, bool>> filters = null;
+
             //First, we are checking our SearchTerm. If it contains information we are creating a filter.
             var searchTerm = "";
             if (!string.IsNullOrEmpty(searchParam.SearchTerm))
@@ -58,20 +58,30 @@ namespace Shop.Services
                 searchTerm = searchParam.SearchTerm.Trim().ToLower();
                 filters = x => x.Name.ToLower().Contains(searchTerm);
             }
+
             // Then we are overwriting a filter if columnFilters has data.
             if (columnFilters.Count > 0)
             {
-                var customFilter = CustomExpressionFilter<Product>.CustomFilter(columnFilters, "products");
+                var customFilter = CustomExpressionFilter<Product>.CustomFilter(columnFilters, nameof(Product));
                 filters = customFilter;
             }
 
             var query = _productRepository.CustomQuery(filters);
             var count = query.Count();
+
+            //if (columnSorting.Count > 0)
+            //{
+
+            //}
+
+            query = query.OrderByDescending(_ => _.DataCreate);
+
             var filteredData = query.CustomPagination(searchParam.PageNumber, searchParam.PageSize).ToList();
 
+
             // Check Sql
-            var filteredData2 = query.CustomPagination(searchParam.PageNumber, searchParam.PageSize);
-            var sql = filteredData2.ToQueryString();
+            //var filteredData2 = query.CustomPagination(searchParam.PageNumber, searchParam.PageSize);
+            //var sql = filteredData2.ToQueryString();
             //
 
 
