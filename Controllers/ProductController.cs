@@ -27,6 +27,19 @@ namespace Shop.Controllers
             return response;
         }
 
+
+        /// <remarks>
+        /// Sample parameters:
+        /// 
+        ///     OrderBy: [{"id": "name", "desc": true}, {"id": "price", "desc": false}]
+        ///     
+        ///     SearchTerm: Dildo   //any text, (будет кастомный поиск, можете использовать для поиска товара по сайту, могу навесить любую логику)
+        ///     
+        ///     ColumnFilters: [{"id": "price", "value": "6"}] or [{"id": "price", "lowerValue": "1", "upperValue": "9"}]   //lowerValue and upperValue only for numerical values 
+        ///     
+        ///     ColumnFilters: [{"id": "name", "value": "Lamp"}, {"id": "price", "lowerValue": "1", "upperValue": "9"}]     //can accept several filtering rules
+        /// 
+        /// </remarks>
         [HttpGet]
         public async Task<BaseResponseModel<IEnumerable<Product>>> GetWithFilteringAndPagination([FromQuery] SearchParams searchParam)
         {
