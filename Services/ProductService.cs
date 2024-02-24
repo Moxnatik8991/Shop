@@ -1,6 +1,9 @@
-﻿using Shop.Abstractions;
+﻿using Microsoft.EntityFrameworkCore;
+using Shop.Abstractions;
 using Shop.Domain.Entity;
 using Shop.Helpers.FilteringAndPagination;
+using System.Globalization;
+using System;
 using System.Linq.Expressions;
 using System.Text.Json;
 
@@ -69,19 +72,22 @@ namespace Shop.Services
             var query = _productRepository.CustomQuery(filters);
             var count = query.Count();
 
-            //if (columnSorting.Count > 0)
-            //{
+            if (columnSorting.Count() > 0)
+            {
+                query = CustomExpressionSorting<Product>.AddSorting(query, columnSorting, nameof(Product));
+            }
 
-            //}
-
-            query = query.OrderByDescending(_ => _.DataCreate);
+            // Check Sql
+            var filteredData23 = query.CustomPagination(searchParam.PageNumber, searchParam.PageSize);
+            var sql2 = filteredData23.ToQueryString();
+            //
 
             var filteredData = query.CustomPagination(searchParam.PageNumber, searchParam.PageSize).ToList();
 
 
             // Check Sql
-            //var filteredData2 = query.CustomPagination(searchParam.PageNumber, searchParam.PageSize);
-            //var sql = filteredData2.ToQueryString();
+            var filteredData2 = query.CustomPagination(searchParam.PageNumber, searchParam.PageSize);
+            var sql = filteredData2.ToQueryString();
             //
 
 
