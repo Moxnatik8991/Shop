@@ -6,6 +6,7 @@ using Shop.Domain;
 using Shop.Middleware;
 using Shop.Repository;
 using Shop.Services;
+using Shop.Services.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -48,6 +49,7 @@ builder.Services.AddScoped(typeof(DbContext), typeof(DataContext));
 builder.Services.AddScoped(typeof(IRepository<>), typeof(EFRepository<>));
 
 builder.Services.AddScoped(typeof(IProductServices), typeof(ProductService));
+builder.Services.AddScoped(typeof(ICategoryServices), typeof(CategoryServices));
 
 var app = builder.Build();
 

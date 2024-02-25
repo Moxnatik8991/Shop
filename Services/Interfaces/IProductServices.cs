@@ -1,7 +1,7 @@
 ﻿using Shop.Domain.Entity;
 using Shop.Helpers.FilteringAndPagination;
 
-namespace Shop.Services
+namespace Shop.Services.Interfaces
 {
     public interface IProductServices
     {

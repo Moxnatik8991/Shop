@@ -2,7 +2,7 @@
 using Shop.Domain.Entity;
 using Shop.Helpers.FilteringAndPagination;
 using Shop.Models;
-using Shop.Services;
+using Shop.Services.Interfaces;
 
 namespace Shop.Controllers
 {
