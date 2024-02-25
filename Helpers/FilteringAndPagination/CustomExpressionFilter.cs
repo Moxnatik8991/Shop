@@ -32,11 +32,8 @@ namespace Shop.Helpers.FilteringAndPagination
                             var lowerBound = Expression.Constant(Convert.ToDouble(filter.lowerValue));
                             var upperBound = Expression.Constant(Convert.ToDouble(filter.upperValue));
 
-                            var lowerConstant = Expression.Constant(lowerBound);
-                            var upperConstant = Expression.Constant(upperBound);
-
-                            var greaterThanOrEqual = Expression.GreaterThanOrEqual(property, lowerConstant);
-                            var lessThanOrEqual = Expression.LessThanOrEqual(property, upperConstant);
+                            var greaterThanOrEqual = Expression.GreaterThanOrEqual(property, lowerBound);
+                            var lessThanOrEqual = Expression.LessThanOrEqual(property, upperBound);
 
                             //// Combine two conditions using AndAlso
                             comparison = Expression.AndAlso(greaterThanOrEqual, lessThanOrEqual);
@@ -54,11 +51,8 @@ namespace Shop.Helpers.FilteringAndPagination
                             var lowerBound = Expression.Constant(Convert.ToDecimal(filter.lowerValue));
                             var upperBound = Expression.Constant(Convert.ToDecimal(filter.upperValue));
 
-                            var lowerConstant = Expression.Constant(lowerBound);
-                            var upperConstant = Expression.Constant(upperBound);
-
-                            var greaterThanOrEqual = Expression.GreaterThanOrEqual(property, lowerConstant);
-                            var lessThanOrEqual = Expression.LessThanOrEqual(property, upperConstant);
+                            var greaterThanOrEqual = Expression.GreaterThanOrEqual(property, lowerBound);
+                            var lessThanOrEqual = Expression.LessThanOrEqual(property, upperBound);
 
                             //// Combine two conditions using AndAlso
                             comparison = Expression.AndAlso(greaterThanOrEqual, lessThanOrEqual);
