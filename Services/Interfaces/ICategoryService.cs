@@ -2,7 +2,7 @@
 
 namespace Shop.Services.Interfaces
 {
-    public interface ICategoryServices
+    public interface ICategoryService
     {
         Task<IEnumerable<Category>> GetAllAsync();
     }

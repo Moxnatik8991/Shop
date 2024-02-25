@@ -1,15 +1,15 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Shop.Abstractions;
 using Shop.Domain;
+using Shop.Domain.Entity;
 using Shop.Helpers.FilteringAndPagination;
 using System.Linq.Expressions;
 
 namespace Shop.Repository
 {
-    public class EFRepository<T> : IRepository<T> where T : BaseEntity
+    public class BaseRepository<T> : IBaseRepository<T> where T : BaseEntity
     {
-        private readonly DataContext _dataContext;
-        public EFRepository(DataContext dataContext)
+        protected readonly DataContext _dataContext;
+        public BaseRepository(DataContext dataContext)
         {
             _dataContext = dataContext;
         }

@@ -1,8 +1,8 @@
 using System.Reflection;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
-using Shop.Abstractions;
 using Shop.Domain;
+using Shop.Domain.Entity;
 using Shop.Middleware;
 using Shop.Repository;
 using Shop.Services;
@@ -46,10 +46,14 @@ builder.Services.AddDbContext<DataContext>(_ =>
 });
 
 builder.Services.AddScoped(typeof(DbContext), typeof(DataContext));
-builder.Services.AddScoped(typeof(IRepository<>), typeof(EFRepository<>));
+builder.Services.AddScoped(typeof(IBaseRepository<>), typeof(BaseRepository<>));
+builder.Services.AddScoped(typeof(IUserRepository), typeof(UserRepository));
 
-builder.Services.AddScoped(typeof(IProductServices), typeof(ProductService));
-builder.Services.AddScoped(typeof(ICategoryServices), typeof(CategoryServices));
+builder.Services.AddScoped(typeof(IAuthService), typeof(AuthService));
+builder.Services.AddScoped(typeof(ITokenService), typeof(TokenService));
+
+builder.Services.AddScoped(typeof(IProductService), typeof(ProductService));
+builder.Services.AddScoped(typeof(ICategoryService), typeof(CategoryService));
 
 var app = builder.Build();
 

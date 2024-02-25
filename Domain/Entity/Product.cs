@@ -1,6 +1,4 @@
-﻿using Shop.Abstractions;
-
-namespace Shop.Domain.Entity
+﻿namespace Shop.Domain.Entity
 {
     public class Product : BaseEntity
     {

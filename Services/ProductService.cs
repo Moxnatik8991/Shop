@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Shop.Abstractions;
 using Shop.Domain.Entity;
 using Shop.Helpers.FilteringAndPagination;
 using System.Globalization;
@@ -7,13 +6,14 @@ using System;
 using System.Linq.Expressions;
 using System.Text.Json;
 using Shop.Services.Interfaces;
+using Shop.Repository;
 
 namespace Shop.Services
 {
-    public class ProductService : IProductServices
+    public class ProductService : IProductService
     {
-        private readonly IRepository<Product> _productRepository;
-        public ProductService(IRepository<Product> productRepository)
+        private readonly IBaseRepository<Product> _productRepository;
+        public ProductService(IBaseRepository<Product> productRepository)
         {
             _productRepository = productRepository;
         }
@@ -87,8 +87,8 @@ namespace Shop.Services
 
 
             // Check Sql
-            var filteredData2 = query.CustomPagination(searchParam.PageNumber, searchParam.PageSize);
-            var sql = filteredData2.ToQueryString();
+            //var filteredData2 = query.CustomPagination(searchParam.PageNumber, searchParam.PageSize);
+            //var sql = filteredData2.ToQueryString();
             //
 
 

@@ -1,4 +1,4 @@
-﻿namespace Shop.Abstractions
+﻿namespace Shop.Domain.Entity
 {
     public abstract class BaseEntity
     {

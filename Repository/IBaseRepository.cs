@@ -1,9 +1,9 @@
 ﻿using Shop.Domain.Entity;
 using System.Linq.Expressions;
 
-namespace Shop.Abstractions
+namespace Shop.Repository
 {
-    public interface IRepository<T> where T : BaseEntity
+    public interface IBaseRepository<T> where T : BaseEntity
     {
         Task<IEnumerable<T>> GetAllAsync();
         Task<T?> GetAsync(Guid id);
