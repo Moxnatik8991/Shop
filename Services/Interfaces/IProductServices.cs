@@ -7,5 +7,6 @@ namespace Shop.Services.Interfaces
     {
         Task<IEnumerable<Product>> GetAllAsync();
         Task<IEnumerable<Product>> GetWithFilteringAndPagination(SearchParams searchParam);
+        Task<Product> GetAsync(Guid id);
     }
 }

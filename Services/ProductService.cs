@@ -101,5 +101,11 @@ namespace Shop.Services
 
             return pagedList;
         }
+
+
+        public async Task<Product> GetAsync(Guid id)
+        {
+            return await _productRepository.GetAsync(id);
+        }
     }
 }

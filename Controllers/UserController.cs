@@ -39,54 +39,54 @@ namespace Shop.Controllers
         }
 
 
-        [HttpPost]
-        public async Task<BaseResponseModel<User>> Post([FromBody] User user)
-        {
-            user.Id = new Guid();
-            await _userRepository.AddAsync(user);
+        //[HttpPost]
+        //public async Task<BaseResponseModel<User>> Post([FromBody] User user)
+        //{
+        //    user.Id = new Guid();
+        //    await _userRepository.AddAsync(user);
 
-            var response = new BaseResponseModel<User>();
-            response.SetSuccessResponse(user);
+        //    var response = new BaseResponseModel<User>();
+        //    response.SetSuccessResponse(user);
 
-            return response;
-        }
+        //    return response;
+        //}
 
-        [HttpPut("{id}")]
-        public async Task<BaseResponseModel<string>> Put(Guid id, [FromBody] User entity)
-        {
-            var user = await _userRepository.GetAsync(id);
+        //[HttpPut("{id}")]
+        //public async Task<BaseResponseModel<string>> Put(Guid id, [FromBody] User entity)
+        //{
+        //    var user = await _userRepository.GetAsync(id);
 
-            if (user == null)
-            {
-                throw new NotFoundException<User>();
-            }
+        //    if (user == null)
+        //    {
+        //        throw new NotFoundException<User>();
+        //    }
 
-            await _userRepository.UpdateAsync(entity);
+        //    await _userRepository.UpdateAsync(entity);
 
-            var response = new BaseResponseModel<string>();
-            response.SetSuccessResponse();
+        //    var response = new BaseResponseModel<string>();
+        //    response.SetSuccessResponse();
 
-            return response;
+        //    return response;
 
-        }
+        //}
 
-        [HttpDelete("{id}")]
-        public async Task<BaseResponseModel<string>> Delete(Guid id)
-        {
-            var user = await _userRepository.GetAsync(id);
+        //[HttpDelete("{id}")]
+        //public async Task<BaseResponseModel<string>> Delete(Guid id)
+        //{
+        //    var user = await _userRepository.GetAsync(id);
 
-            if (user == null)
-            {
-                throw new NotFoundException<User>();
-            }
+        //    if (user == null)
+        //    {
+        //        throw new NotFoundException<User>();
+        //    }
 
-            await _userRepository.DeleteAsync(id);
+        //    await _userRepository.DeleteAsync(id);
 
-            var response = new BaseResponseModel<string>();
-            response.SetSuccessResponse();
+        //    var response = new BaseResponseModel<string>();
+        //    response.SetSuccessResponse();
 
-            return response;
+        //    return response;
 
-        }
+        //}
     }
 }

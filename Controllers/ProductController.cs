@@ -59,5 +59,16 @@ namespace Shop.Controllers
             return response;
         }
 
+        [HttpGet("{id}")]
+        public async Task<BaseResponseModel<Product>> Get(Guid id)
+        {
+            var product = await _productServices.GetAsync(id);
+
+            var response = new BaseResponseModel<Product>();
+            response.SetSuccessResponse(product);
+
+            return response;
+        }
+
     }
 }
