@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Shop.Models;
 using Shop.Models.RequestModels;
-using Shop.Models.ResponseModels;
 using Shop.Services.Interfaces;
 
 namespace Shop.Controllers;
@@ -17,15 +16,14 @@ public class AuthController
     }
 
     /// <remarks>
-    /// Sample parameters:
     ///     In developing !!!
     /// </remarks>
     [HttpPost]
-    public async Task<BaseResponseModel<AuthResponseModel>> Login (LoginRequestModel loginModel)
+    public async Task<BaseResponseModel<TokenModel>> Login (LoginRequestModel loginModel)
     {
         var token = await _authService.Login(loginModel);
 
-        var response = new BaseResponseModel<AuthResponseModel>();
+        var response = new BaseResponseModel<TokenModel>();
         response.SetSuccessResponse(token);
 
         return response;

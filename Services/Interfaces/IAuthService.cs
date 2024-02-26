@@ -1,10 +1,10 @@
-﻿using Shop.Models.RequestModels;
-using Shop.Models.ResponseModels;
+﻿using Shop.Models;
+using Shop.Models.RequestModels;
 
 namespace Shop.Services.Interfaces
 {
     public interface IAuthService
     {
-        Task<AuthResponseModel> Login(LoginRequestModel model);
+        Task<TokenModel> Login(LoginRequestModel model);
     }
 }

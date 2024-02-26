@@ -1,10 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Shop.Domain.Entity;
 using Shop.Models;
 using Shop.Repository;
 
 namespace Shop.Controllers;
 
+[Authorize]
 [ApiController]
 [Route("api/[controller]/[action]")]
 public class UserController : Controller

@@ -1,5 +1,7 @@
 using System.Reflection;
+using System.Text;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Shop.Domain;
 using Shop.Domain.Entity;
@@ -34,10 +36,46 @@ builder.Services.AddSwaggerGen(options =>
         //     Url = new Uri("https://example.com/license")
         // }
     });
-    
-    // using System.Reflection;
+
+    options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+    {
+        In = ParameterLocation.Header,
+        Description = "Please enter token",
+        Name = "Authorization",
+        Type = SecuritySchemeType.Http,
+        BearerFormat = "JWT",
+        Scheme = "bearer"
+    });
+
+    options.AddSecurityRequirement(new OpenApiSecurityRequirement
+    {
+        {
+            new OpenApiSecurityScheme
+            {
+                Reference = new OpenApiReference
+                {
+                    Type=ReferenceType.SecurityScheme,
+                    Id="Bearer"
+                }
+            },
+            new string[]{}
+        }
+    });
+
     var xmlFilename = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
     options.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, xmlFilename));
+});
+
+builder.Services.AddAuthentication().AddJwtBearer(options =>
+{
+    options.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidateIssuerSigningKey = true,
+        ValidateAudience = false,
+        ValidateIssuer = false,
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(
+                builder.Configuration.GetSection("JWT:Secret").Value!))
+    };
 });
 
 builder.Services.AddDbContext<DataContext>(_ => 
@@ -69,6 +107,8 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.UseMiddleware<ExceptionHandlingMiddleware>();
+
+app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",

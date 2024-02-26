@@ -18,6 +18,11 @@ namespace Shop.Middleware
             try
             {
                 await _next(context);
+
+                if (context.Response.StatusCode == (int)HttpStatusCode.Unauthorized)
+                {
+                    throw new UnauthorizedException();
+                }
             }
             catch (Exception exception)
             {
@@ -28,20 +33,33 @@ namespace Shop.Middleware
         private static Task HandleExceptionAsync(HttpContext context, Exception ex)
         {
             var message = ex.Message;
+            var statusCode = (int)HttpStatusCode.OK;
 
             switch (ex)
             {
+                case UnauthorizedException:
+                    statusCode = (int)HttpStatusCode.Unauthorized;
+                    message = "Unauthorized";
+                    break;
+
                 case KeyNotFoundException
                         or NotFoundException<string>
                         or FileNotFoundException:
+                    statusCode = (int)HttpStatusCode.NotFound;
                     break;
+
+                case CustomException:
+                    statusCode = 555;
+                    break;
+
                 default:
                     message = "Something went wrong";
+                    statusCode = (int)HttpStatusCode.InternalServerError;
                     break;
             }
 
             context.Response.ContentType = "application/json";
-            context.Response.StatusCode = (int)HttpStatusCode.OK;
+            context.Response.StatusCode = statusCode;
 
             var response = new BaseResponseModel<string> ();
             response.SetFailResponse(message); 
