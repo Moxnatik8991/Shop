@@ -3,6 +3,7 @@ import st from './custom.module.css';
 import { CustomBucketModal } from "./components/CustomModals/CustomBucketModal";
 import Catalog, { CategoryFilter } from "./components/Catalog/Catalog";
 import { NavLink, Route, Routes } from "react-router-dom";
+import Contacts from "./components/Contacts/Contacts";
 
 
 
@@ -45,6 +46,7 @@ const App = () => {
                 <Route path={'/catalog'} element={<Catalog />}>
                     <Route path=":category" element={<CategoryFilter />}/>
                 </Route>
+                <Route path={'/contacts'} element={<Contacts />}/>
             </Routes>
             <div className={st.footer1}>
                 footer

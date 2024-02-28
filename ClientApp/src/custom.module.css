@@ -48,6 +48,10 @@
     grid-auto-flow: column;
     grid-gap: 20px;
 }
+.navMenuContent a {
+    text-decoration: none;
+    color: black;
+}
 .footer1{
     background-color: brown;
     min-height: 100px;
