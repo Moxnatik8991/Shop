@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./Catalog.css"
 import Item from "./Item/Item";
 import { NavLink, Outlet, Route, Routes, useOutlet, useOutletContext, useParams } from "react-router-dom";
+import axios from "axios";
 
 let kategories = [
     {path:"golden", name:"Golden Eggs"},
@@ -45,8 +46,17 @@ export let CategoryFilter = () => {
 }
 
 const Catalog = () => {
-    
+    const [itemss, setItems] = useState (null)
     let a = useParams();
+    useEffect ( ()=>{
+        axios.get("https://5iaf6t.realhost-free.net/api/Product/GetAll")
+            .then(responce=>setItems(responce.data.result))
+    }, [] );
+    
+    if(!itemss)
+        return (
+            <div> none </div>
+        )
 
     return (
         <>

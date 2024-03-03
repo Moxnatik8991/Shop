@@ -1,3 +1,11 @@
 ﻿.content-wrapper{
     background-color: cornflowerblue;
 }
+.contacts{
+    width: 30%;
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+.contacts p {
+    padding-left: 10px;
+}

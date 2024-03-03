@@ -2,12 +2,14 @@ import React,{useState} from 'react';
 import st from './custom.module.css';
 import { CustomBucketModal } from "./components/CustomModals/CustomBucketModal";
 import Catalog, { CategoryFilter } from "./components/Catalog/Catalog";
-import { NavLink, Route, Routes } from "react-router-dom";
+import { NavLink, Route, Routes, useRoutes } from "react-router-dom";
 import Contacts from "./components/Contacts/Contacts";
+import { routing } from "./utils/Routing";
 
 
 
 const App = () => {
+    let routs = useRoutes(routing);
     const [isBucketModal,setBucketModal]=useState(false)
     let openBucketModal=()=>{
         setBucketModal(true)
@@ -42,12 +44,7 @@ const App = () => {
                 </div>
 
             </div>
-            <Routes>
-                <Route path={'/catalog'} element={<Catalog />}>
-                    <Route path=":category" element={<CategoryFilter />}/>
-                </Route>
-                <Route path={'/contacts'} element={<Contacts />}/>
-            </Routes>
+            {routs}
             <div className={st.footer1}>
                 footer
             </div>
