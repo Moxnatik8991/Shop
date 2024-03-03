@@ -4,16 +4,24 @@ export const catalogSlice = createSlice({
     name: 'catalog',
     initialState: {
         items: [
-            {test: 0},
-            {test: 0}
+            {
+                name: 'Name',
+                description: 'Description',
+                price: 0.00,
+                categoryId: 'ctegoryIdHash',
+                userId: 'userIdHash',
+                id: 'idHash',
+                dataCreate: 'date',
+                dataUpdate: 'date'
+            },
         ]
     },
     reducers: {
-        getCatalog: (state, data) => {
-            state.items = data
+        setCatalogData: (state, action) => {
+            state.items = action.payload
         }
     }
 });
 
-export const {getCatalog} = catalogSlice.actions;
+export const {setCatalogData} = catalogSlice.actions;
 export default catalogSlice.reducer;

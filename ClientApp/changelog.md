@@ -3,7 +3,7 @@
 ## New installations:
 
 - _**SASS**_; now we can use .scss in project (it is much more convenient than plain css)
-- _**Redux**_; still playing with it, it's connected, but now doesn't affect any pages
+- _**Redux**_; still playing with it, it's connected, but now it affects only pages/_tmpPages/CatalogRedux
 
 
 ## Changes:

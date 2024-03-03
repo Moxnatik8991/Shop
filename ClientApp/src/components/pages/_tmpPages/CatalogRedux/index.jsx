@@ -5,31 +5,41 @@ import {
     useDispatch,
     useSelector
 } from "react-redux";
-import { getCatalog } from "../../../../redux/reducerCatalog";
+import { setCatalogData } from "../../../../redux/reducerCatalog";
+import axios from "axios";
+
+import {Card} from "./Card/Card";
+import styles from './styles.module.scss';
+import {
+    Container
+} from "../../../ui/Container/Container";
+
 
 export const CatalogRedux = () => {
     const catalogData = useSelector((state) => state.catalog.items);
     const dispatch = useDispatch();
-    let items;
-
-    const data = [
-        {test: 1},
-        {test: 2}
-    ]
+    const items = catalogData.map((el, i) => <Card key={i+"_card"} data={el}/>);
 
     useEffect(() => {
-        dispatch(getCatalog(data));
-        // items = catalogData.payload.map(el => <div>{el.test}</div>)
+        helper()
         }, []
     )
 
 
+
+    function helper(){
+        axios.get("https://5iaf6t.realhost-free.net/api/Product/GetAll")
+            .then(response => dispatch(setCatalogData(response.data.result)))
+            .catch(error => console.log(error));
+    }
+
+
     return(
-        <div>
-            Catalog with Redux
-            <div>
+        <Container>
+            <div className={styles.grid}>
                 {items}
             </div>
-        </div>
+        </Container>
     )
 }
+
