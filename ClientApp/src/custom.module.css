@@ -1,42 +1,13 @@
 .appContainer{
-    display: grid;
-    grid-template-rows: 70px 50px 1fr auto;
-    
-}
-.heade{
-    background-color: #ffd529;
-    display: grid;
-    grid-template-columns: minmax(275px,20%) 60% 20%;
-    align-items: center;
-    grid-gap: 10px;
-    padding: 10px;
-    
-    
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
-.ShopName{
-    font-family: "Times New Roman", serif;
-    font-style: italic;
-    font-weight: bold;
-    font-size: 35px;
+.content{
+    flex: 1;
 }
-.search{
-    display: grid;
-    grid-template-columns: max-content 100px;
-    grid-gap: 5px;
-    padding-left: 15px;
-}
-.search input{
-    width: 500px;
-    border-radius: 12px;
-    padding-left: 10px;
-}
-.bucketButton button{ 
-    border-radius: 8px;
-}
-.bucketButton button:hover{
-    box-shadow: 0 0 10px white;
-}
+
 .navMenu{
     background-color: gray;
     display: grid;
@@ -51,8 +22,4 @@
 .navMenuContent a {
     text-decoration: none;
     color: black;
-}
-.footer1{
-    background-color: brown;
-    min-height: 100px;
 }

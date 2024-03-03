@@ -1,7 +1,7 @@
 import React from "react";
 import "./CustomBucketModal.css"
 import Modal from 'react-modal'
-import {ReactComponent as CloseIcon} from "../../icons/Close.svg";
+import {ReactComponent as CloseIcon} from "../../../icons/Close.svg";
 
 export const CustomBucketModal=({ isOpen,onClose,children})=>{
     
