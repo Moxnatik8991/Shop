@@ -1,14 +1,13 @@
-using System.Reflection;
-using System.Text;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
-using Shop.Domain;
-using Shop.Domain.Entity;
-using Shop.Middleware;
-using Shop.Repository;
-using Shop.Services;
-using Shop.Services.Interfaces;
+using Shop.BackApp.Domain;
+using Shop.BackApp.Middleware;
+using Shop.BackApp.Repository;
+using Shop.BackApp.Services;
+using Shop.BackApp.Services.Interfaces;
+using System.Reflection;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 

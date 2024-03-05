@@ -38,7 +38,7 @@
 
   <ItemGroup>
     <Folder Include="ClientApp\src\components\Catalog\Category\" />
-    <Folder Include="Models\ResponseModels\" />
+    <Folder Include="BackApp\Models\ResponseModels\" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">
