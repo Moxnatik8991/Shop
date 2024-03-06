@@ -1,14 +1,15 @@
 ﻿namespace Shop.BackApp.Middleware.Exceptions
 {
-    public class NotFoundException<T> : Exception
+    public class NotFoundException : Exception
     {
-        public NotFoundException() : base(GenerateMessage())
+        public NotFoundException(string model) : base(GenerateMessage(model))
         {
         }
 
-        private static string GenerateMessage()
+        private static string GenerateMessage(string model)
         {
-            return $"{typeof(T).Name} not found!";
+            var error = $"{model} not found!";
+            return char.ToUpper(error[0]) + error.Substring(1);
         }
 
     }

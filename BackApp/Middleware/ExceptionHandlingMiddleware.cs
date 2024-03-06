@@ -43,7 +43,7 @@ namespace Shop.BackApp.Middleware
                     break;
 
                 case KeyNotFoundException
-                        or NotFoundException<string>
+                        or NotFoundException
                         or FileNotFoundException:
                     statusCode = (int)HttpStatusCode.NotFound;
                     break;

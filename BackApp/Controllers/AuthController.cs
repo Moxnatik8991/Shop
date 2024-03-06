@@ -21,6 +21,7 @@ public class AuthController
     [HttpPost]
     public async Task<BaseResponseModel<TokenModel>> Login(LoginRequestModel loginModel)
     {
+
         var token = await _authService.Login(loginModel);
 
         var response = new BaseResponseModel<TokenModel>();

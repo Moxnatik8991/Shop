@@ -1,4 +1,5 @@
 ﻿using Shop.BackApp.Domain.Entity;
+using Shop.BackApp.Helpers;
 using Shop.BackApp.Middleware.Exceptions;
 using Shop.BackApp.Models;
 using Shop.BackApp.Models.RequestModels;
@@ -22,9 +23,12 @@ namespace Shop.BackApp.Services
             var user = await _userRepository.GetUserByEmail(model.Email);
 
             if (user == null)
-                throw new NotFoundException<User>();
+                throw new NotFoundException(nameof(user));
 
-            //TODO: Check password User!!!
+            var passwordHash = PasswordHasherHelper.ComputeHash(model.Password, user.PasswordSalt);
+
+            if (!string.Equals(passwordHash, user.PasswordHash))
+                throw new CustomException("Incorrect password");
 
             var token = await _tokenService.CreateToken(user);
 

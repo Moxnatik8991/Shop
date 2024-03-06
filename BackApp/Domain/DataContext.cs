@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Shop.BackApp.Domain.Entity;
+using Shop.BackApp.Helpers;
 using System;
 
 namespace Shop.BackApp.Domain
@@ -41,9 +42,12 @@ namespace Shop.BackApp.Domain
             #region Generate Users
 
             Guid userId = Guid.NewGuid();
+            string passwordSolt = PasswordHasherHelper.GenerateSalt();
+            string passwordHash = PasswordHasherHelper.ComputeHash("qwe123", passwordSolt);
+
             List<User> users = new List<User>()
             {
-                new User { Id = userId, FirstName = "Admin", LastName = "Admin", Email = "admin@admin.com", DataCreate = dateTime.AddDays(-15), DataUpdate = dateTime.AddDays(-10) }
+                new User { Id = userId, FirstName = "Admin", LastName = "Admin", Email = "admin@admin.com", PasswordSalt = passwordSolt, PasswordHash = passwordHash, DataCreate = dateTime.AddDays(-15), DataUpdate = dateTime.AddDays(-10) }
             };
 
             #endregion
