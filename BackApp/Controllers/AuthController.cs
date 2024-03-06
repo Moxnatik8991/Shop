@@ -16,7 +16,6 @@ public class AuthController
     }
 
     /// <remarks>
-    ///     In developing !!!
     /// </remarks>
     [HttpPost]
     public async Task<BaseResponseModel<TokenModel>> Login(LoginRequestModel loginModel)

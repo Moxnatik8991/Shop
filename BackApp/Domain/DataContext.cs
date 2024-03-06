@@ -42,6 +42,7 @@ namespace Shop.BackApp.Domain
             #region Generate Users
 
             Guid userId = Guid.NewGuid();
+
             string passwordSolt = PasswordHasherHelper.GenerateSalt();
             string passwordHash = PasswordHasherHelper.ComputeHash("qwe123", passwordSolt);
 
