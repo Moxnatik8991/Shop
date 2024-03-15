@@ -37,7 +37,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="ClientApp\src\components\Catalog\Category\" />
     <Folder Include="BackApp\Models\ResponseModels\" />
   </ItemGroup>
 

@@ -1,0 +1,21 @@
+.category-container{
+    max-width: 1200px;
+    background-color: darkmagenta;
+}
+.category-name{
+    padding: 5px;
+    font-size: 30px;
+    font-family: "Courier New" , serif;
+    font-weight: bold;
+    
+}
+.advertisment{
+    display: flex;
+    margin: 10px 0;
+}
+.advertisment img{
+    width: 60%;
+    margin: 0 auto;
+    padding: 10px;
+    
+}
