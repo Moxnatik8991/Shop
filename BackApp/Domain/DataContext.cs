@@ -55,15 +55,38 @@ namespace Shop.BackApp.Domain
 
             #region Generate Catigories
 
-            Guid categoryId = Guid.NewGuid();
+            Guid categoryId1 = Guid.NewGuid();
             Guid categoryId2 = Guid.NewGuid();
+
+            Guid categoryId01 = Guid.NewGuid();
+            Guid categoryId02 = Guid.NewGuid();
+
             List<Category> categories = new List<Category>()
             {
-                new Category { Id = categoryId, Name = "Category1", CategoryId = null,  DataCreate = dateTime.AddDays(-14), DataUpdate = dateTime.AddDays(-10) },
-                new Category { Id = Guid.NewGuid(), Name = "Category2", CategoryId = null,  DataCreate = dateTime.AddDays(-14), DataUpdate = dateTime.AddDays(-10) },
-                new Category { Id = Guid.NewGuid(), Name = "Category3", CategoryId = null,  DataCreate = dateTime.AddDays(-14), DataUpdate = dateTime.AddDays(-10) },
-                new Category { Id = categoryId2, Name = "Category4", CategoryId = categoryId,  DataCreate = dateTime.AddDays(-14), DataUpdate = dateTime.AddDays(-10) },
-                new Category { Id = Guid.NewGuid(), Name = "Category5", CategoryId = categoryId2,  DataCreate = dateTime.AddDays(-14), DataUpdate = dateTime.AddDays(-10) },
+                new Category { Id = categoryId1, Name = "Ноутбуки и компьютеры", CategoryId = null,  DataCreate = dateTime.AddDays(-14), DataUpdate = dateTime.AddDays(-10) },
+                    new Category { Id = Guid.NewGuid(), Name = "Ноутбуки", CategoryId = categoryId1,  DataCreate = dateTime.AddDays(-14), DataUpdate = dateTime.AddDays(-10) },
+                    new Category { Id = Guid.NewGuid(), Name = "Компьютеры", CategoryId = categoryId1,  DataCreate = dateTime.AddDays(-14), DataUpdate = dateTime.AddDays(-10) },
+                    new Category { Id = Guid.NewGuid(), Name = "Мониторы", CategoryId = categoryId1,  DataCreate = dateTime.AddDays(-14), DataUpdate = dateTime.AddDays(-10) },
+                    new Category { Id = Guid.NewGuid(), Name = "Планшеты", CategoryId = categoryId1,  DataCreate = dateTime.AddDays(-14), DataUpdate = dateTime.AddDays(-10) },
+                    new Category { Id = categoryId2, Name = "Компьютерные комплектующие", CategoryId = categoryId1,  DataCreate = dateTime.AddDays(-14), DataUpdate = dateTime.AddDays(-10) },
+                        new Category { Id = Guid.NewGuid(), Name = "Материнские платы", CategoryId = categoryId2,  DataCreate = dateTime.AddDays(-14), DataUpdate = dateTime.AddDays(-10) },
+                        new Category { Id = Guid.NewGuid(), Name = "Процессоры", CategoryId = categoryId2,  DataCreate = dateTime.AddDays(-14), DataUpdate = dateTime.AddDays(-10) },
+                        new Category { Id = Guid.NewGuid(), Name = "Оперативная память", CategoryId = categoryId2,  DataCreate = dateTime.AddDays(-14), DataUpdate = dateTime.AddDays(-10) },
+                        new Category { Id = Guid.NewGuid(), Name = "Видеокарты", CategoryId = categoryId2,  DataCreate = dateTime.AddDays(-14), DataUpdate = dateTime.AddDays(-10) },
+                        new Category { Id = Guid.NewGuid(), Name = "Звуковые карты", CategoryId = categoryId2,  DataCreate = dateTime.AddDays(-14), DataUpdate = dateTime.AddDays(-10) },
+                        new Category { Id = Guid.NewGuid(), Name = "Жесткие диски", CategoryId = categoryId2,  DataCreate = dateTime.AddDays(-14), DataUpdate = dateTime.AddDays(-10) },
+
+                new Category { Id = categoryId01, Name = "Смартфоны, ТВ и Электроника", CategoryId = null,  DataCreate = dateTime.AddDays(-14), DataUpdate = dateTime.AddDays(-10) },
+                    new Category { Id = Guid.NewGuid(), Name = "Мобильные телефоны", CategoryId = categoryId01,  DataCreate = dateTime.AddDays(-14), DataUpdate = dateTime.AddDays(-10) },
+                    new Category { Id = Guid.NewGuid(), Name = "Телевизоры", CategoryId = categoryId01,  DataCreate = dateTime.AddDays(-14), DataUpdate = dateTime.AddDays(-10) },
+                    new Category { Id = Guid.NewGuid(), Name = "Наушники и аксессуары", CategoryId = categoryId01,  DataCreate = dateTime.AddDays(-14), DataUpdate = dateTime.AddDays(-10) },
+                    new Category { Id = categoryId02, Name = "Носимые гаджеты", CategoryId = categoryId01,  DataCreate = dateTime.AddDays(-14), DataUpdate = dateTime.AddDays(-10) },
+                        new Category { Id = Guid.NewGuid(), Name = "Смарт-часы", CategoryId = categoryId02,  DataCreate = dateTime.AddDays(-14), DataUpdate = dateTime.AddDays(-10) },
+                        new Category { Id = Guid.NewGuid(), Name = "3D и VR очки", CategoryId = categoryId02,  DataCreate = dateTime.AddDays(-14), DataUpdate = dateTime.AddDays(-10) },
+                        new Category { Id = Guid.NewGuid(), Name = "Фитнес-браслеты", CategoryId = categoryId02,  DataCreate = dateTime.AddDays(-14), DataUpdate = dateTime.AddDays(-10) },
+                        new Category { Id = Guid.NewGuid(), Name = "Смарт-кольца", CategoryId = categoryId02,  DataCreate = dateTime.AddDays(-14), DataUpdate = dateTime.AddDays(-10) },
+                  
+
             };
 
             #endregion
