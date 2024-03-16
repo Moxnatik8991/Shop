@@ -21,11 +21,13 @@ public class CategoryController
     {
         var categories = await _categoryServices.GetAllAsync();
 
+        var categoryFiltering = categories.Where(_ => _.CategoryId == null);
+
         var response = new BaseResponseModel<IEnumerable<Category>>();
 
-        if (categories.Count() > 0)
+        if (categoryFiltering.Count() > 0)
         {
-            response.SetSuccessResponse(categories);
+            response.SetSuccessResponse(categoryFiltering);
         }
         else
         {
