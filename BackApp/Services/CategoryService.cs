@@ -8,8 +8,8 @@ namespace Shop.BackApp.Services
 {
     public class CategoryService : ICategoryService
     {
-        private readonly IBaseRepository<Category> _categoryRepository;
-        public CategoryService(IBaseRepository<Category> categoryRepository)
+        private readonly ICategoryRepository _categoryRepository;
+        public CategoryService(ICategoryRepository categoryRepository)
         {
             _categoryRepository = categoryRepository;
         }

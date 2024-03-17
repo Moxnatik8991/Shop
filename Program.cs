@@ -85,6 +85,7 @@ builder.Services.AddDbContext<DataContext>(_ =>
 builder.Services.AddScoped(typeof(DbContext), typeof(DataContext));
 builder.Services.AddScoped(typeof(IBaseRepository<>), typeof(BaseRepository<>));
 builder.Services.AddScoped(typeof(IUserRepository), typeof(UserRepository));
+builder.Services.AddScoped(typeof(ICategoryRepository), typeof(CategoryRepository));
 
 builder.Services.AddScoped(typeof(IAuthService), typeof(AuthService));
 builder.Services.AddScoped(typeof(ITokenService), typeof(TokenService));
