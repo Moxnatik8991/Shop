@@ -26,7 +26,9 @@ namespace Shop.BackApp.Domain
             modelBuilder.Entity<Category>()
                 .HasMany(e => e.Categories)
                 .WithOne()
-                .HasForeignKey(e => e.CategoryId);
+                .HasPrincipalKey(e => e.Id)
+                .HasForeignKey(e => e.CategoryId)
+                .OnDelete(DeleteBehavior.ClientCascade);
 
             //modelBuilder.Entity<Product>()
             //    .HasKey(_ => new { _.UserId});
