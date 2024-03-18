@@ -14,23 +14,22 @@ namespace Shop.BackApp.Repository
             _dataContext = dataContext;
         }
 
-
-        public async Task<IEnumerable<T>> GetAllAsync()
+        public virtual async Task<IEnumerable<T>> GetAllAsync()
         {
             return await _dataContext.Set<T>().ToListAsync();
         }
 
-        public async Task<T?> GetAsync(Guid id)
+        public virtual async Task<T?> GetAsync(Guid id)
         {
             return await _dataContext.Set<T>().FirstOrDefaultAsync(_ => _.Id == id);
         }
-        public async Task AddAsync(T entity)
+        public virtual async Task AddAsync(T entity)
         {
             await _dataContext.AddAsync(entity);
 
             await _dataContext.SaveChangesAsync();
         }
-        public async Task UpdateAsync(T entity)
+        public virtual async Task UpdateAsync(T entity)
         {
             var entity2 = await _dataContext.Set<T>().FirstOrDefaultAsync(_ => _.Id == entity.Id);
 
@@ -41,7 +40,7 @@ namespace Shop.BackApp.Repository
             }
         }
 
-        public async Task DeleteAsync(Guid id)
+        public virtual async Task DeleteAsync(Guid id)
         {
             var entity = await _dataContext.Set<T>().FirstOrDefaultAsync(_ => _.Id == id);
 
@@ -52,7 +51,7 @@ namespace Shop.BackApp.Repository
             }
         }
 
-        public IQueryable<T> CustomQuery(Expression<Func<T, bool>> filters)
+        public virtual IQueryable<T> CustomQuery(Expression<Func<T, bool>> filters)
         {
             return _dataContext.Set<T>().AsQueryable().CustomQuery(filters);
         }

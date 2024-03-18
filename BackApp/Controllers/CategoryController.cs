@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Shop.BackApp.Domain.Entity;
 using Shop.BackApp.Models;
+using Shop.BackApp.Models.RequestModels;
 using Shop.BackApp.Services.Interfaces;
 
 namespace Shop.BackApp.Controllers;
@@ -31,6 +32,53 @@ public class CategoryController
         {
             response.SetSuccessResponse();
         }
+
+        return response;
+    }
+
+    [HttpGet("{id}")]
+    public async Task<BaseResponseModel<Category>> Get(Guid id)
+    {
+        var category = await _categoryServices.GetAsync(id);
+
+        var response = new BaseResponseModel<Category>();
+
+        response.SetSuccessResponse(category);
+
+        return response;
+    }
+
+    [HttpPost]
+    public async Task<BaseResponseModel<string>> Add([FromBody] CategoryRequestModel model)
+    {
+        await _categoryServices.AddAsync(model);
+
+        var response = new BaseResponseModel<string>();
+
+        response.SetSuccessResponse();
+
+        return response;
+    }
+
+    [HttpPut("{id}")]
+    public async Task<BaseResponseModel<string>> Put(Guid id, [FromBody] CategoryRequestModel model)
+    {
+        await _categoryServices.UpdateAsync(id, model);
+
+        var response = new BaseResponseModel<string>();
+        response.SetSuccessResponse();
+
+        return response;
+
+    }
+
+    [HttpDelete("{id}")]
+    public async Task<BaseResponseModel<string>> Delete(Guid id)
+    {
+        await _categoryServices.DeleteAsync(id);
+
+        var response = new BaseResponseModel<string>();
+        response.SetSuccessResponse();
 
         return response;
     }
