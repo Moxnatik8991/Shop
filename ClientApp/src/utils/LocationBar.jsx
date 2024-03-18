@@ -1,12 +1,15 @@
 import React from 'react';
-import { NavLink, useLocation } from "react-router-dom";
+import { NavLink, useLocation, useMatch, useParams } from "react-router-dom";
 
 
-const LocationBar = ()=>{
+const LocationBar = (s)=>{
+    
+    
     let location =useLocation() // Получаем текущий путь
     let splitChar = "/"
     let locationSplitArray = location.pathname.split(splitChar)  // Сплит в массив по символу
     let path = ""
+    
     return (
         <div>
             { locationSplitArray.map (

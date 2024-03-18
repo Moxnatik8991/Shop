@@ -8,6 +8,7 @@ import LocationBar from "../../../utils/LocationBar";
 
 const Catalog = () => {
     let [items, setItems] = useState([])
+    let [subCategory, setSubCategory] = useState([])
     let [categories, setCategories] = useState([])
     let params = useParams()
    
@@ -21,6 +22,10 @@ const Catalog = () => {
         test();
         
     }, [] );
+    let doSomething=(el)=>{
+        let s = categories.filter(i=> i.name===el.text.trimRight())
+        setSubCategory(s[0])
+    }
 
     
 
@@ -54,15 +59,15 @@ const Catalog = () => {
                 
                 {  /*<div> { categories && cheker(categories) } </div>*/}
                 
-                {categories && categories.map(c=><NavLink style={{textDecoration:"none",color:"black"}} to={c.name}>{c.name} </NavLink>)}
+                {categories && categories.map(c=><NavLink onClick={(e)=>doSomething(e.currentTarget)} style={{textDecoration:"none",color:"black"}} to={c.id}>{c.name} </NavLink>)}
                 
             </div>
                  
-                              {Object.keys(params).length>0 && <Outlet context={categories} />}
+                              {Object.keys(params).length>0 && <Outlet />}
                  
                               {!params.category && 
                                   <div className="page-container">
-                                      <LocationBar />
+                                      <LocationBar  />
                                       <div className="items-container">
                               {items && items.map(item =><Item name={item.name} description={item.description} price={item.price} />)}
                                       </div>
