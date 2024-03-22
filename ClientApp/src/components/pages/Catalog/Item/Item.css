@@ -1,19 +1,19 @@
 ﻿.item-wrapper{
-    background-color: #ffd529;
-    width: 200px;
+    min-width: 200px;
     height: max-content;
-    max-height: 300px;
+    min-height: 300px;
     margin: 5px;
     padding: 10px;
-    display: grid;
-    grid-gap: 5px;
-    justify-items: center;
+    display: flex;
+    flex-direction: column;
+    place-items: center;
+    gap: 0.5rem;
+    border-radius: 5%;
+    border: 2px solid black;
+    color: white;
+    
 }
 .item-wrapper img{
-    height: 50px;
-    width: 50px;
-}
-.rating img{
-    width: 20px;
-    height: 20px;
+    height: 100px;
+    width: 100px;
 }

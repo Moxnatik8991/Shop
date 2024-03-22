@@ -5,6 +5,7 @@ import Contacts from "../components/pages/Contacts/Contacts";
 import Home from "../components/Home";
 import { CatalogRedux } from "../components/pages/_tmpPages/CatalogRedux";
 import Category from "../components/pages/Catalog/CategoryPage/Category";
+import ItemPage from "../components/pages/Catalog/ItemPage/ItemPage";
 
 export const routing = [
     {
@@ -16,17 +17,21 @@ export const routing = [
         element : <Catalog/>,
         children : [
             {
-                path : ":category/:id?",
+                path : ":category/:id?/:secondId?",
                 element : <Category />
             }
         ]
+    },
+    {
+        path : ":item",
+        element : <ItemPage />
     },
     {
         path : "contacts",
         element : <Contacts/>
     },
     {
-        path : "test", 
+        path : "test/:itemId?", 
         element : <Home/>
     },
     {
