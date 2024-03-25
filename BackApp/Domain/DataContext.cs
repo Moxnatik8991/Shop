@@ -28,7 +28,7 @@ namespace Shop.BackApp.Domain
                 .WithOne()
                 .HasPrincipalKey(e => e.Id)
                 .HasForeignKey(e => e.CategoryId)
-                .OnDelete(DeleteBehavior.ClientCascade);
+                .OnDelete(DeleteBehavior.ClientSetNull);
 
             //modelBuilder.Entity<Product>()
             //    .HasKey(_ => new { _.UserId});
@@ -130,10 +130,6 @@ namespace Shop.BackApp.Domain
             modelBuilder.Entity<Product>().HasData(
                 products
             );
-
-
         }
-
-
     }
 }
