@@ -1,5 +1,4 @@
 import React from 'react';
-import ratingImg from "../../../../../icons/rating.png";
 import { Rating } from "@mui/material";
 
 const Review = ({name,data,rating,reviewText})=>{

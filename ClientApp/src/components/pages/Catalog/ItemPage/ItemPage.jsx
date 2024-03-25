@@ -5,6 +5,8 @@ import { useLocation } from "react-router-dom";
 import Review from "./Review/Review";
 import { useForm } from "react-hook-form";
 import { Rating } from "@mui/material";
+import AddReview from "./AddReview/AddReview";
+import ImagesBlock from "./ImagesBlock/ImagesBlock";
 
 let reviewData = [
     {
@@ -27,18 +29,11 @@ let reviewData = [
     },
     
 ]
-let getCurrentData =()=>{
-    let today = new Date();
-    let dd = String(today.getDate()).padStart(2, '0');
-    let mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-    let yyyy = today.getFullYear();
-    today = dd + '.' + mm + '.' + yyyy;
-    return today
-}
+
 const ItemPage = ()=>{
-    const [value, setValue] = React.useState(2);
+ 
     const[reviews,setReviews]=useState(reviewData)
-    let today = getCurrentData();
+   
     let a = useLocation();
     let payment = useRef()
     let testFunk=(el,e)=>{
@@ -59,28 +54,12 @@ const ItemPage = ()=>{
         
     }
     
-    const{register,
-        handleSubmit,
-        formState:{errors},
-        reset} = useForm({mode:"onChange"})
-     const onSubmit=data=>{
-        let raw = [...reviews,{
-            name: data.name,
-            data: today,
-            rating: value,
-            reviewText: data.reviewText
-        }]
-         setReviews(raw)
-         reset()
-     }
     return (
         <>
             <div className="category-containerr">
                 <LocationBar arr={a.state.lockBar} />
                 <div className="content-container">
-                    <div style={{display:"grid"}}>
-                        <img style={{justifySelf:"center"}} src="https://content.rozetka.com.ua/goods/images/big/322649371.jpg" alt=""/>
-                    </div>
+                    <ImagesBlock />
                     <div>
                         <div>
                             <h3>{ a.state.element.name }</h3>
@@ -137,7 +116,9 @@ const ItemPage = ()=>{
                         </div>
                     </div>
                     <div style={{gridColumn:"1/3",minHeight:"100%",paddingTop:"20px"}}>
+                        
                         <div style={{borderTop:"2px solid grey",margin:"0 2%"}}></div>
+                        
                         <div style={ {
                             minHeight : "100%" ,
                             padding : "20px" ,
@@ -152,99 +133,8 @@ const ItemPage = ()=>{
                             }
 
                             <h3 style={ { paddingTop : "20px" } }>Send your review below ↓</h3>
-
                             
-                            <div className="add-review">
-                                <form onSubmit={handleSubmit(onSubmit)} style={{display:"grid",gridGap:"10px"}}>
-                                    
-                                    <div style={ { display : "grid" , gridTemplateColumns : "100px 1fr" } }>
-                                        <span>Your Name : </span>
-                                        <div>
-                                            <input { ...register ( 'name' , { required : 'Enter your name!', maxLength: {value:10, message:"Max length 10 symbols!"} }, ) }
-                                                   type="text"
-                                                   placeholder="Enter your name..."
-                                                   style={ errors?.name?{
-                                                       border : "none" ,
-                                                       outline : "none" ,
-                                                       borderBottom :"1px solid red" ,
-                                                       width : "15ch" ,
-                                                       maxWidth : "30%",
-
-                                                   }: {
-                                                       border : "none" ,
-                                                       outline : "none" ,
-                                                       borderBottom :"1px solid black" ,
-                                                       width : "15ch" ,
-                                                       maxWidth : "30%",
-
-                                                   } }/>
-                                            {errors?.name && <span style={{color:"red",paddingLeft:"10px"}}>{errors.name.message}</span>}
-                                            
-                                        </div>
-
-
-                                    </div>
-
-                                    <div style={ { display : "grid" , gridTemplateColumns : "100px 1fr" } }>
-                                        <span>Rating : </span>
-                                        <Rating
-                                            name="simple-controlled"
-                                            value={value}
-                                            onChange={(event, newValue) => {
-                                                setValue(newValue);
-                                            }}
-                                        />
-                                        {/*<div>
-                                            <input { ...register ( 'reviewRating') }
-                                                   placeholder="Enter rating..."
-                                                   type="number"
-                                                   max={ 5 }
-                                                   onChange={ (e)=>{
-                                                       debugger
-                                                       if (Number ( e.currentTarget.value ) > 5)
-                                                           e.currentTarget.value = 5;
-                                                   } }
-                                                   style={ {
-                                                       border : "none" ,
-                                                       outline : "none" ,
-                                                       borderBottom : "1px solid black" ,
-                                                       maxWidth : "30%" ,
-                                                       width : "15ch"
-                                                   } }/>
-                                        </div>*/}
-
-
-                                    </div>
-
-                                    <div style={ { display : "grid" , gridTemplateColumns : "100px 1fr" } }>
-                                        <span>Review : </span>
-                                        <textarea { ...register ( 'reviewText' , { required : 'Enter your review message!' } ) }
-                                                  placeholder="Enter your review..."
-                                                  style={errors?.reviewText?{
-                                                      resize : "none" ,
-                                                      minHeight : "200px" ,
-                                                      outline : "none" ,
-                                                      padding : "10px" ,
-                                                      borderRadius : "10px" ,
-                                                      marginRight : "20px",
-                                                      border:"2px solid red"
-                                                  }: {
-                                                      resize : "none" ,
-                                                      minHeight : "200px" ,
-                                                      outline : "none" ,
-                                                      padding : "10px" ,
-                                                      borderRadius : "10px" ,
-                                                      marginRight : "20px"
-                                                  } }>
-                                            
-                                        </textarea>
-                                    </div>
-                                    
-                                    <div style={ { display : "flex" , placeContent : "center" } }>
-                                        <button  style={ { width : "15%" } }>Send</button>
-                                    </div>
-                                </form>
-                            </div>
+                            <AddReview setReviews={setReviews} reviews={reviews}  />
                         </div>
                     </div>
                 </div>

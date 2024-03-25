@@ -1,0 +1,42 @@
+.container{
+    width: 100%;
+    min-width: 400px;
+   
+}
+.mainImage{
+    margin: 0 auto;
+    max-width: 700px;
+    height: 500px;
+    padding: 10px;
+    background-color: blueviolet;
+}
+.mainImage img{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+    
+}
+.imageList{
+    display: flex;
+    gap: 10px;
+    margin: 0 auto;
+    width: max-content;
+    max-width: 100%;
+    padding: 0 10px;
+    div{
+        height: 100px;
+        width: 130px;
+        
+        img{
+            width: 100%;
+            height: 80%;
+            margin: 10% auto;
+            border-radius: 10px;
+        }
+    }
+}
+
+.clicked{
+    box-shadow: 0 0 10px red;
+}
