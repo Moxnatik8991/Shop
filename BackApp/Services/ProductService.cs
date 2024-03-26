@@ -3,17 +3,17 @@ using System.Globalization;
 using System;
 using System.Linq.Expressions;
 using System.Text.Json;
-using Shop.BackApp.Repository;
 using Shop.BackApp.Helpers.FilteringAndPagination;
 using Shop.BackApp.Services.Interfaces;
 using Shop.BackApp.Domain.Entity;
+using Shop.BackApp.Repository.Interfaces;
 
 namespace Shop.BackApp.Services
 {
     public class ProductService : IProductService
     {
-        private readonly IBaseRepository<Product> _productRepository;
-        public ProductService(IBaseRepository<Product> productRepository)
+        private readonly IProductRepository _productRepository;
+        public ProductService(IProductRepository productRepository)
         {
             _productRepository = productRepository;
         }

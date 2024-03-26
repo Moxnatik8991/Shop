@@ -3,7 +3,7 @@ using Shop.BackApp.Helpers;
 using Shop.BackApp.Middleware.Exceptions;
 using Shop.BackApp.Models;
 using Shop.BackApp.Models.RequestModels;
-using Shop.BackApp.Repository;
+using Shop.BackApp.Repository.Interfaces;
 using Shop.BackApp.Services.Interfaces;
 
 namespace Shop.BackApp.Services

@@ -4,6 +4,7 @@ using Microsoft.OpenApi.Models;
 using Shop.BackApp.Domain;
 using Shop.BackApp.Middleware;
 using Shop.BackApp.Repository;
+using Shop.BackApp.Repository.Interfaces;
 using Shop.BackApp.Services;
 using Shop.BackApp.Services.Interfaces;
 using System.Reflection;
@@ -85,13 +86,16 @@ builder.Services.AddDbContext<DataContext>(_ =>
 builder.Services.AddScoped(typeof(DbContext), typeof(DataContext));
 builder.Services.AddScoped(typeof(IBaseRepository<>), typeof(BaseRepository<>));
 builder.Services.AddScoped(typeof(IUserRepository), typeof(UserRepository));
+builder.Services.AddScoped(typeof(IProductRepository), typeof(ProductRepository));
 builder.Services.AddScoped(typeof(ICategoryRepository), typeof(CategoryRepository));
+builder.Services.AddScoped(typeof(ICommentRepository), typeof(CommentRepository));
 
 builder.Services.AddScoped(typeof(IAuthService), typeof(AuthService));
 builder.Services.AddScoped(typeof(ITokenService), typeof(TokenService));
 
 builder.Services.AddScoped(typeof(IProductService), typeof(ProductService));
 builder.Services.AddScoped(typeof(ICategoryService), typeof(CategoryService));
+builder.Services.AddScoped(typeof(ICommentService), typeof(CommentService));
 
 var app = builder.Build();
 
