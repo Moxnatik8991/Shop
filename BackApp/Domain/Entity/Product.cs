@@ -7,5 +7,7 @@
         public decimal Price { get; set; }
         public Guid CategoryId { get; set; }
         public Guid UserId { get; set; }
+
+        public List<Comment> Comments { get; set; }
     }
 }

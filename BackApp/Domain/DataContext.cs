@@ -20,6 +20,7 @@ namespace Shop.BackApp.Domain
         public DbSet<User> Users { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<Category> Categories { get; set; }
+        public DbSet<Comment> Comment { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -28,10 +29,12 @@ namespace Shop.BackApp.Domain
                 .WithOne()
                 .HasPrincipalKey(e => e.Id)
                 .HasForeignKey(e => e.CategoryId)
-                .OnDelete(DeleteBehavior.ClientCascade);
+                .OnDelete(DeleteBehavior.ClientSetNull);
 
             //modelBuilder.Entity<Product>()
-            //    .HasKey(_ => new { _.UserId});
+            //    .HasMany(_ => _.Comments)
+            //    .WithOne();
+
 
             base.OnModelCreating(modelBuilder);
             Seed(modelBuilder);
@@ -130,10 +133,6 @@ namespace Shop.BackApp.Domain
             modelBuilder.Entity<Product>().HasData(
                 products
             );
-
-
         }
-
-
     }
 }

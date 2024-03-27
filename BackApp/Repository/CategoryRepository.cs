@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Shop.BackApp.Domain;
 using Shop.BackApp.Domain.Entity;
+using Shop.BackApp.Repository.Interfaces;
 
 namespace Shop.BackApp.Repository
 {

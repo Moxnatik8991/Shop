@@ -2,6 +2,7 @@
 using Shop.BackApp.Domain;
 using Shop.BackApp.Domain.Entity;
 using Shop.BackApp.Helpers.FilteringAndPagination;
+using Shop.BackApp.Repository.Interfaces;
 using System.Linq.Expressions;
 
 namespace Shop.BackApp.Repository

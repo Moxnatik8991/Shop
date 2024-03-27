@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Shop.BackApp.Domain.Entity;
 using Shop.BackApp.Models;
-using Shop.BackApp.Repository;
+using Shop.BackApp.Repository.Interfaces;
 
 namespace Shop.BackApp.Controllers;
 

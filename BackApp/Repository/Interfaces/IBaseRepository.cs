@@ -1,7 +1,7 @@
 ﻿using Shop.BackApp.Domain.Entity;
 using System.Linq.Expressions;
 
-namespace Shop.BackApp.Repository
+namespace Shop.BackApp.Repository.Interfaces
 {
     public interface IBaseRepository<T> where T : BaseEntity
     {
