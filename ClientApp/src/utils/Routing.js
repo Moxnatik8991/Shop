@@ -23,7 +23,7 @@ export const routing = [
         ]
     },
     {
-        path : ":item",
+        path : ":itemId",
         element : <ItemPage />
     },
     {
@@ -31,7 +31,7 @@ export const routing = [
         element : <Contacts/>
     },
     {
-        path : "test/:itemId?", 
+        path : "test/:itemIdId?", 
         element : <Home/>
     },
     {

@@ -1,12 +1,13 @@
 import React , { useRef , useState } from 'react';
 import './ItemPage.css'
 import LocationBar from "../../../../utils/LocationBar";
-import { useLocation } from "react-router-dom";
+import { useLocation , useParams } from "react-router-dom";
 import Review from "./Review/Review";
 import { useForm } from "react-hook-form";
 import { Rating } from "@mui/material";
 import AddReview from "./AddReview/AddReview";
 import ImagesBlock from "./ImagesBlock/ImagesBlock";
+import axios from "axios";
 
 let reviewData = [
     {
@@ -29,12 +30,23 @@ let reviewData = [
     },
     
 ]
-
+let currentItem;
 const ItemPage = ()=>{
  
     const[reviews,setReviews]=useState(reviewData)
    
     let a = useLocation();
+    let ItemId = useParams().itemId;
+    if(!a.state) {
+        const getItem = async ()=>{
+            return await axios.get ( `https://5iaf6t.realhost-free.net/api/Product/Get/${ ItemId }` )
+        }
+        currentItem = getItem ();
+    }
+        debugger
+    
+    
+    
     let payment = useRef()
     let testFunk=(el,e)=>{
         e.textContent === "Show"?e.textContent = "Hide": e.textContent = "Show"    
@@ -53,6 +65,7 @@ const ItemPage = ()=>{
         debugger
         
     }
+    debugger
     
     return (
         <>
@@ -141,7 +154,7 @@ const ItemPage = ()=>{
 
             </div>
         </>
-    );
+    )
 };
 
 export default ItemPage;

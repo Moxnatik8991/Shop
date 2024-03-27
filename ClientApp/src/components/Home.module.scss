@@ -1,0 +1,28 @@
+.testModal{
+    background-color: #a4a4a4;
+    width: max-content;
+    min-width: 600px;
+    height: 100px;
+    border-radius: 10px;
+    padding: 10px;
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    grid-gap: 5px;
+    
+}
+.secondPlace{
+   display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+    height: 100%;
+    
+    overflow: hidden;
+    
+    div{
+        border: none;
+        height: max-content;
+      max-width: 50%;
+      overflow: hidden;
+      
+    }
+}
