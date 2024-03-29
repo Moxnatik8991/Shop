@@ -48,6 +48,10 @@ namespace Shop.BackApp.Middleware
                     statusCode = (int)HttpStatusCode.NotFound;
                     break;
 
+                case UnsupportedFileException:
+                    statusCode = (int)HttpStatusCode.UnsupportedMediaType;
+                    break;
+
                 case CustomException:
                     statusCode = 555;
                     break;
