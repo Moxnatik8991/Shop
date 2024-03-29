@@ -2,21 +2,21 @@ import React from 'react';
 import { NavLink } from "react-router-dom";
 
 
-const LocationBar = ({arr,item})=>{
-    let path = "/catalog"
+const LocationBar = ({path})=>{
+    
+    let path1 = [...path]
+    
    
     return (
         <div>
             <NavLink to={"/"}>Home</NavLink>
-            {" > "}
-            <NavLink to={"/catalog"} >Catalog</NavLink>
            {
                
-               arr && arr.map((el,index)=>{
-                   path = path.concat("/",el.id)
-                   return(<span>
+               path1 && path1.reverse().map((el,index)=>{
+                   
+                   return(<span key={el.id}>
                        {" > "}
-                       <NavLink onClick={e=>{if(index===arr.length-1) return (e.preventDefault())}} to={path}>{el.name}</NavLink>
+                       <NavLink onClick={e=>{if(index===path1.length-1) return (e.preventDefault())}} to={`/catalog/${el.id}`}>{el.name}</NavLink>
                    </span>)  })
            }
            

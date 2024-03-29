@@ -1,18 +1,18 @@
 import React , { useState } from 'react';
 import { Navigate , NavLink } from "react-router-dom";
-import { UseGetInfo } from "../../../../hooks/useGetInfo";
-import LocationBar from "../../../../utils/LocationBar";
-import Item from "../Item/Item";
-import "./Category.css"
-const Category = ()=>{
+import Item from "./pages/Catalog/Item/Item";
+import LocationBar from "../utils/LocationBar";
+import { UseGetInfo } from "../hooks/useGetInfo";
+
+const TestCategory = ()=>{
     const {currentCategory,currentPath,category,items}=UseGetInfo()
     const [load,setLoad]=useState(false)
-
-    console.log("render category")
-
-    if(!category) return <Navigate to={"/"}/>
     
+    console.log("render category")
+    
+    if(!category) return <Navigate to={"/"}/>
     return (
+       
         <>
             <div className="category-container">
                 { currentPath &&  <LocationBar path={currentPath}/> }
@@ -51,14 +51,15 @@ const Category = ()=>{
 
                             </div>
                             <div className="category-items-list">
-                                { items.map( el=><Item current={currentPath} {...el} /> ) }
+                                { items.map( el=><Item current={currentPath} id={el.id} price={el.price} name={el.name} description={el.description} /> ) }
                             </div>
                         </div>
-                    </>
+                    </> 
                 }
 
             </div>
-        </>);
+        </>
+    );
 };
 
-export default Category;
+export default TestCategory;

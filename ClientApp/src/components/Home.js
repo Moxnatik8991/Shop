@@ -4,63 +4,55 @@ import st from './Home.module.scss'
 import { useDispatch , useSelector } from "react-redux";
 import { useActions } from "../hooks/useActions";
 import { getAllCategories , getAllItems } from "../redux/items.action";
+import { NavLink } from "react-router-dom";
 
-
+const testArray=[
+    {id:1,sub:[
+            {id:11,sub:null},
+            {id:12,sub:null},
+            {id:13,sub:null},
+        ]},
+    {id:2,sub:null},
+    {id:3,sub:[
+            {id:31,sub:null},
+            {id:32,sub:null},
+            {id:33,sub:null},
+        ]},
+    {id:4,sub:[
+            {id:41,sub:null},
+            {id:42,sub:[
+                    {id:421,sub:null},
+                    {id:422,sub:null},
+                ]}
+        ]},
+    {id:5,sub:null},
+]
 const Home = ()=>{
-    const dispatch = useDispatch();
+    let result;
     
-    let {items, isLoading,categories} = useSelector(state=>state.item)
-    let {doSomething} = useActions();
-    let a = [{name:"first"}]
-    useEffect ( ()=>{
-        dispatch(getAllItems())
-        dispatch(getAllCategories())
-    } , [] );
-    let test = ()=>{
-        
-        dispatch(getAllItems())
+   const finder=(array,element)=>{
+       debugger
        
-    }
-    console.log("render")
-    console.log(categories)
+           result = array.find(el=>el.id===element)
+           if(!result) {
+               array.map(el=>{
+                   if(el.sub && !result){
+                       finder(el.sub,element)
+                   }
+                   return result
+               })
+               
+           }
+          
+   }
     
+     finder(testArray,422);
+   debugger 
     return (
         <div>
-            
-            <button onClick={test}>get</button>
-            {isLoading
-                ?<div>Loading...</div>
-                :items.map(el=><div key={el.id}>{el.name}</div>)}
-            
+            {result?.id}
         </div>
     );
 };
-
-
-export const Modal = ({id,open,anchorEl})=>{
-    let {items, isLoading,categories} = useSelector(state=>state.item)
-    const[hovering,setHovering]=useState()
-    let sub = null;
-    let mouseEnter=(el)=>{
-        if(el.categories?.length>0){
-            setHovering(el.categories.map(elem=><div>{elem.name}</div>))
-        }
-    }
-    
-    return (
-        <>
-            <Popper id={id} open={open} anchorEl={anchorEl}>
-                <div className={st.testModal}>
-                    <div>{categories && categories.map ( el=>{ return <div style={ { border : "none",width:"max-content"} }
-                                                                  onMouseEnter={()=> {mouseEnter(el)} }>{ el.name }</div> }) }
-                        
-                    </div>
-                    
-                    <div className={st.secondPlace}>{ hovering && hovering }</div>
-                </div>
-            </Popper>  
-        </>
-    )
-}
 
 export default Home;

@@ -1,6 +1,7 @@
 import React , { useState } from 'react';
 import { Rating } from "@mui/material";
 import { useForm } from "react-hook-form";
+import axios from "axios";
 
 let getCurrentData =()=>{
     let today = new Date();
@@ -10,7 +11,7 @@ let getCurrentData =()=>{
     today = dd + '.' + mm + '.' + yyyy;
     return today
 }
-const AddReview = ({reviews,setReviews})=>{
+const AddReview = ({itemId})=>{
     const [value, setValue] = React.useState(2);
     
     let today = getCurrentData();
@@ -19,13 +20,25 @@ const AddReview = ({reviews,setReviews})=>{
         formState:{errors},
         reset} = useForm({mode:"onChange"})
     const onSubmit=data=>{
-        let raw = [...reviews,{
-            name: data.name,
-            data: today,
-            rating: value,
-            reviewText: data.reviewText
-        }]
-        setReviews(raw)
+        let comment = {
+            "firstName": data.name,
+            "rating": value,
+            "text": data.reviewText,
+            "productId": itemId
+        }
+        debugger
+        axios({
+            method: 'post',
+            url: 'https://5iaf6t.realhost-free.net/api/Comment/Add',
+            data: comment,
+            withCredentials:true
+        });
+        /*axios.post(`https://5iaf6t.realhost-free.net/api/Comment/Add`,{comment},{ headers:{
+                "Content-Type": "application/json"
+            }})
+            .then(response=>{
+                alert(response.data.isSuccess?"Done":response.data.errorMessage)
+            })*/
         reset()
     }
     

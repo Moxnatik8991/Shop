@@ -41,7 +41,7 @@ const ImagesBlock = ()=>{
                     <img src={ mainImage } alt=""/>
                 </div>
                 <div className={ st.imageList }>
-                    { images.map ( (el , i)=><div>
+                    { images.map ( (el , i)=><div key={el}>
 
                         <img className={ mainImage===el? st.clicked:""}  onClick={ ()=>{
                             setMainImage ( el );

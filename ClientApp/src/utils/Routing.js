@@ -6,6 +6,7 @@ import Home from "../components/Home";
 import { CatalogRedux } from "../components/pages/_tmpPages/CatalogRedux";
 import Category from "../components/pages/Catalog/CategoryPage/Category";
 import ItemPage from "../components/pages/Catalog/ItemPage/ItemPage";
+import TestCategory from "../components/TestCategory";
 
 export const routing = [
     {
@@ -13,14 +14,9 @@ export const routing = [
         element : <MainPage/>
     },
     {
-        path : "catalog",
-        element : <Catalog/>,
-        children : [
-            {
-                path : ":category/:id?/:secondId?",
-                element : <Category />
-            }
-        ]
+        path : "catalog/:category?",
+        element : <Category/>,
+        
     },
     {
         path : ":itemId",

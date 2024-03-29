@@ -3,25 +3,23 @@ import "./Item.css"
 import QuantityInput from "./QuantityInput";
 import { useNavigate } from "react-router-dom";
 
-const Item = ({name, price, description,test=[],id="",...props}) => {
-    let navFunck = useNavigate();
-    let arR = [...test];
-    debugger
-    if(test){
-        arR.push(
-           {name: name,
-               id:id}
-       )
-        debugger
+const Item = ({name, price, description,id,comments,current}) => {
+    
+    let navFunk = useNavigate();
+    let currentPath1=[...current];
+    let state1={
+        currentPath: currentPath1,
+        name:name,
+        price:price,
+        description:description,
+        id:id,
+        comments:comments
     }
-    else {
-     
-    }
-   
+    
     
     return (
         <div className={"item-wrapper"}>
-            <img onClick={()=>{navFunck(`/${id}`,{state:{lockBar:arR,itemId: id,element:props.element}})}}
+            <img onClick={()=>{navFunk(`/${id}`,{state:state1})}}
                 src="https://c0.klipartz.com/pngpicture/612/960/gratis-png-iconos-de-computadora-orden-de-compra-todos.png"
                 alt=""/>
             <div>{name}</div>
