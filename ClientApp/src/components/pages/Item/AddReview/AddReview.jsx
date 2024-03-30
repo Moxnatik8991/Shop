@@ -20,11 +20,11 @@ const AddReview = ({itemId})=>{
         }
         /*axios({
             method: 'post',
-            url: 'https://5iaf6t.realhost-free.net/api/Comment/Add',
+            url: 'http://localhost:2222/api/Comment/Add',
             data: comment,
-            withCredentials:true
+            withCredentials:false
         });*/
-        /*axios.post(`https://5iaf6t.realhost-free.net/api/Comment/Add`,{comment},{ headers:{
+        /*axios.post(`http://localhost:2222/api/Comment/Add`,{comment},{ headers:{
                 "Content-Type": "application/json"
             }})
             .then(response=>{

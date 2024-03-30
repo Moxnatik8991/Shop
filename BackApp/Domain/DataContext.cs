@@ -20,7 +20,8 @@ namespace Shop.BackApp.Domain
         public DbSet<User> Users { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<Category> Categories { get; set; }
-        public DbSet<Comment> Comment { get; set; }
+        public DbSet<Comment> Comments { get; set; }
+        public DbSet<FileDetails> FileDetails { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

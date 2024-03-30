@@ -2,6 +2,7 @@
 using Shop.BackApp.Domain.Entity;
 using Shop.BackApp.Middleware.Exceptions;
 using Shop.BackApp.Models;
+using Shop.BackApp.Services.Interfaces;
 
 namespace Shop.BackApp.Controllers;
 
@@ -21,10 +22,12 @@ public class FileController
     private readonly string[] _videoExtensions = new[] { ".mp4", ".avi", ".mov", ".wmv", ".flv" };
 
     IWebHostEnvironment _appEnvironment;
+    IFileDetailsService _fileDetailseService;
 
-    public FileController(IWebHostEnvironment appEnvironment)
+    public FileController(IWebHostEnvironment appEnvironment, IFileDetailsService fileDetailseService)
     {
         _appEnvironment = appEnvironment;
+        _fileDetailseService = fileDetailseService;
         CheckAndCreateFolders();
     }
 
@@ -143,6 +146,8 @@ public class FileController
             fileDetails.Path = path;
             fileDetails.Name = uploadedFile.FileName;
             fileDetails.Extension = Path.GetExtension(uploadedFile.FileName);
+
+            ///await _fileDetailseService.AddAsync(fileDetails);
 
             return fileDetails;
         }

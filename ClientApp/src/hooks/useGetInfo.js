@@ -47,7 +47,7 @@ const doBoth=(allCategories,catId,itemId,setItems,setLoad,setItem)=>{
 
     }
     if(itemId){
-        axios.get( `https://5iaf6t.realhost-free.net/api/Product/Get/${itemId}`)
+        axios.get( `http://localhost:2222/api/Product/Get/${itemId}`)
             .then(response=>{
                 setItem(response.data.result)
                 getPath(response.data.result.categoryId,allCategories)
@@ -58,7 +58,7 @@ const doBoth=(allCategories,catId,itemId,setItems,setLoad,setItem)=>{
         getPath(curCat.categoryId,allCategories);
         let testUrl= encodeURIComponent(`[{"id": "categoryId", "value": "${curCat.id}"}]`);
         setLoad(true)
-        axios.get(`https://5iaf6t.realhost-free.net/api/Product/GetWithFilteringAndPagination?ColumnFilters=${ testUrl }`)
+        axios.get(`http://localhost:2222/api/Product/GetWithFilteringAndPagination?ColumnFilters=${ testUrl }`)
             .then(response=>{setItems(response.data.result);setLoad(false)})
     }
 

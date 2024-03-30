@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Shop.BackApp.Domain;
@@ -78,6 +79,17 @@ builder.Services.AddAuthentication().AddJwtBearer(options =>
     };
 });
 
+//builder.Services.AddCors(options =>
+//{
+//    options.AddPolicy("AllowAll",
+//        builder =>
+//        {
+//            builder.AllowAnyOrigin()
+//                   .AllowAnyMethod()
+//                   .AllowAnyHeader();
+//        });
+//});
+
 builder.Services.AddDbContext<DataContext>(_ => 
 {
     _.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
@@ -96,6 +108,7 @@ builder.Services.AddScoped(typeof(ITokenService), typeof(TokenService));
 builder.Services.AddScoped(typeof(IProductService), typeof(ProductService));
 builder.Services.AddScoped(typeof(ICategoryService), typeof(CategoryService));
 builder.Services.AddScoped(typeof(ICommentService), typeof(CommentService));
+builder.Services.AddScoped(typeof(IFileDetailsService), typeof(FileDetailsService));
 
 var app = builder.Build();
 
@@ -107,8 +120,17 @@ if (!app.Environment.IsDevelopment())
 {
 }
 
+
+
 app.UseStaticFiles();
 app.UseRouting();
+
+app.UseCors(builder =>
+        builder
+        .WithOrigins("http://localhost:4444", "http://localhost:2222")
+        //.AllowAnyOrigin()
+        .AllowAnyMethod()
+        .AllowAnyHeader());
 
 app.UseMiddleware<ExceptionHandlingMiddleware>();
 
