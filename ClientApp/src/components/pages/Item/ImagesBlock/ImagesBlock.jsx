@@ -1,6 +1,6 @@
 import React , { useState } from 'react';
 import st from './ImagesBlock.module.scss'
-import left from './../../../../../icons/left.png'
+import left from '../../../../icons/left.png'
 const images = [
     "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736881_640.jpg",
     "https://img.freepik.com/free-photo/space-background-realistic-starry-night-cosmos-shining-stars-milky-way-stardust-color-galaxy_1258-154643.jpg",

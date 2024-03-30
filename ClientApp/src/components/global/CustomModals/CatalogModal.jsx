@@ -2,7 +2,7 @@ import React , { useState } from 'react';
 import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { Popper } from "@mui/base/Popper";
-import st from "../../Home.module.scss";
+import st from "./CatalogModal.module.scss";
 
 const CatalogModal = ({id,open,anchorEl,handleClick})=>{
     let {items, isLoading,categories} = useSelector(state=>state.item)

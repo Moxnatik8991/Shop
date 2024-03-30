@@ -1,5 +1,5 @@
 import {  createSlice } from "@reduxjs/toolkit";
-import { getAllCategories , getAllItems } from "./items.action";
+import { getAllItemsAndCategories } from "./items.action";
 
 let initialState = {
     items:null,
@@ -15,10 +15,14 @@ export const itemsSlice = createSlice({
     reducers:{
     },
     extraReducers: builder=>{
-        builder.addCase(getAllItems.pending,(state,action)=>{state.isLoading=true})
-        builder.addCase(getAllItems.fulfilled,(state,action)=>{console.log("success i");state.items=action.payload;state.isLoading=false})
-        builder.addCase(getAllCategories.pending,(state,action)=>{state.isLoading=true})
-        builder.addCase(getAllCategories.fulfilled,(state,action)=>{console.log("success c");state.categories=action.payload;state.isLoading=false})
+        builder.addCase(getAllItemsAndCategories.pending,
+                state=>{state.isLoading=true})
+        builder.addCase(getAllItemsAndCategories.fulfilled,
+            (state,action)=>{
+            console.log("success get all items and categories");
+            state.items=action.payload[0];
+            state.categories=action.payload[1];
+            state.isLoading = false })
         builder.addDefaultCase(state=>{})
     }
 })

@@ -8,19 +8,19 @@ import {
 import {
     Header
 } from "./components/global/Header";
-import { getAllCategories , getAllItems } from "./redux/items.action";
+import {getAllItemsAndCategories } from "./redux/items.action";
 import { useDispatch , useSelector } from "react-redux";
 import CatalogModal from "./components/global/CustomModals/CatalogModal";
 
 
 
 const App = () => {
-   
     const dispatch = useDispatch();
     useEffect ( ()=>{
-        dispatch(getAllItems())
-        dispatch(getAllCategories())
+        
+        dispatch(getAllItemsAndCategories())
     } , [] );
+    
     let routs = useRoutes(routing);
 
     const [anchorEl, setAnchor] = React.useState(null);
@@ -30,15 +30,17 @@ const App = () => {
     const open = Boolean(anchorEl);
     const id = open ? 'simple-popper' : undefined;
     
-    const{items,categories}=useSelector(state=>state.item)
+    const{isLoading}=useSelector(state=>state.item)
+    
     return (
+        
              <div className={ st.appContainer }>
                 <Header/>
                 <div className={ st.navMenu }>
                     <div className={ st.navMenuContent }>
                         <NavLink to={ "/" }>Main</NavLink>
                         <div onClick={ handleClick }>Catalog</div>
-                        <NavLink to={ "/sale" }>Sale</NavLink>
+                        <NavLink to={ "/sales" }>Sale</NavLink>
                         <NavLink to={ "/paymentInfo" }>Payment and delivery</NavLink>
                         <NavLink to={ "/contacts" }>Contact us</NavLink>
                         <NavLink to={ "/test" }>Test Page</NavLink>
@@ -46,7 +48,7 @@ const App = () => {
                     </div>
 
                 </div>
-                 {items && categories
+                 {!isLoading
                      ? <div className={ st.content }>
                        { routs }
                        <CatalogModal handleClick={ handleClick } open={ open } anchorEl={ anchorEl } id={ id }/>

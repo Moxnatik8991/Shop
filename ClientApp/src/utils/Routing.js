@@ -1,12 +1,14 @@
-﻿import MainPage from "../components/MainPage";
-import Catalog  from "../components/pages/Catalog/Catalog";
+﻿
 import React from "react";
-import Contacts from "../components/pages/Contacts/Contacts";
-import Home from "../components/Home";
+import ContactsPage from "../components/pages/Contacts/ContactsPage";
 import { CatalogRedux } from "../components/pages/_tmpPages/CatalogRedux";
-import Category from "../components/pages/Catalog/CategoryPage/Category";
-import ItemPage from "../components/pages/Catalog/ItemPage/ItemPage";
-import TestCategory from "../components/TestCategory";
+import Categories from "../components/pages/Categories/Categories";
+import ItemPage from "../components/pages/Item/ItemPage";
+import MainPage from "../components/pages/Main/MainPage";
+import SalePage from "../components/pages/Sales/SalePage";
+import PaymentInfoPage from "../components/pages/PaymentInfo/PaymentInfoPage";
+import TestPage from "../components/pages/Test/TestPage";
+
 
 export const routing = [
     {
@@ -14,21 +16,31 @@ export const routing = [
         element : <MainPage/>
     },
     {
-        path : "catalog/:category?",
-        element : <Category/>,
-        
-    },
-    {
         path : ":itemId",
         element : <ItemPage />
     },
     {
-        path : "contacts",
-        element : <Contacts/>
+        path : "catalog/:IdCategory?",
+        element : <Categories/>,
+        
     },
     {
-        path : "test/:itemIdId?", 
-        element : <Home/>
+        path : "paymentInfo",
+        element : <PaymentInfoPage/>,
+
+    },
+    {
+        path : "sales",
+        element : <SalePage/>,
+
+    },
+    {
+        path : "contacts",
+        element : <ContactsPage/>
+    },
+    {
+        path : "test", 
+        element : <TestPage/>
     },
     {
         path: 'catalog-redux',

@@ -3,18 +3,10 @@ import { Rating } from "@mui/material";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 
-let getCurrentData =()=>{
-    let today = new Date();
-    let dd = String(today.getDate()).padStart(2, '0');
-    let mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-    let yyyy = today.getFullYear();
-    today = dd + '.' + mm + '.' + yyyy;
-    return today
-}
+
 const AddReview = ({itemId})=>{
     const [value, setValue] = React.useState(2);
     
-    let today = getCurrentData();
     const{register,
         handleSubmit,
         formState:{errors},
@@ -26,13 +18,12 @@ const AddReview = ({itemId})=>{
             "text": data.reviewText,
             "productId": itemId
         }
-        debugger
-        axios({
+        /*axios({
             method: 'post',
             url: 'https://5iaf6t.realhost-free.net/api/Comment/Add',
             data: comment,
             withCredentials:true
-        });
+        });*/
         /*axios.post(`https://5iaf6t.realhost-free.net/api/Comment/Add`,{comment},{ headers:{
                 "Content-Type": "application/json"
             }})

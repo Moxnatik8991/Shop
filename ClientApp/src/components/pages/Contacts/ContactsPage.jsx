@@ -3,7 +3,7 @@ import React from "react";
 
 
 
-const Contacts= ()=>{
+const ContactsPage= ()=>{
     return(
         <div className={ 'content-wrapper' }>
             <div>
@@ -48,4 +48,4 @@ const Contacts= ()=>{
         </div>
     )
 }
-export default Contacts;
+export default ContactsPage;
