@@ -1,8 +1,10 @@
 .category-container{
     max-width: 1500px;
-    background-color: darkmagenta;
+   
     margin: 0 auto;
     flex: 1;
+    display: flex; 
+    flex-direction: column;
 }
 .category-name{
     padding: 5px;
@@ -23,11 +25,11 @@
 }
 .subCatBlock {
     display: grid;
-    grid-template-columns: repeat(4, 3fr);
+    grid-template-columns: repeat(8, 1fr);
     grid-gap: 5px;
     padding: 0 10px;
     justify-items: center;
-    max-width: 90%;
+    
     margin: 0 auto;
     
 }
@@ -42,9 +44,10 @@
     display: grid;
     grid-template-columns: 2fr 4px 10fr;
     grid-gap: 5px;
+    flex: 1;
 }
 .just-line{
-    border-top: 3px solid gray;
+    border-top: 1px solid gray;
     margin: 10px 1%;
 }
 .category-items-filtres{
@@ -59,9 +62,16 @@
     padding-left: 10px;
 }
 .category-items-list{
+    padding: 10px;
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     grid-gap: 5px;
     
+    
+}
+.testGif{
+    width: 500px;
+    height: 500px;
+    background-image: url("https://tenor.com/ru/view/anime-gif-21658468");
     
 }

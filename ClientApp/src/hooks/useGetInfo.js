@@ -67,7 +67,7 @@ const doBoth=(allCategories,catId,itemId,setItems,setLoad,setItem)=>{
 }
 export const UseGetInfo=()=>{
     
-    const {category,itemId} = useParams()
+    const {IdCategory,itemId} = useParams()
 
     const allCategories = useSelector(state=>state.item.categories)
     const[currentCategory,setCurrentCategory]=useState()
@@ -78,14 +78,14 @@ export const UseGetInfo=()=>{
     const [item,setItem]=useState()
 
     useEffect ( ()=>{
-        let arr = doBoth(allCategories,category,itemId,setItems,setLoad,setItem);
+        let arr = doBoth(allCategories,IdCategory,itemId,setItems,setLoad,setItem);
         setCurrentPath(arr[0]);
         setCurrentCategory(arr[1])
-    } , [category] );
+    } , [IdCategory] );
     useEffect ( ()=>{
-        let arr = doBoth(allCategories,category,itemId,setItems,setLoad,setItem);
+        let arr = doBoth(allCategories,IdCategory,itemId,setItems,setLoad,setItem);
         setCurrentPath(arr[0]);
         setCurrentCategory(arr[1])
     } , [itemId] );
-    return {category:category, currentCategory:currentCategory,currentPath:currentPath,items:items,load:load,item:item }
+    return {category:IdCategory, currentCategory:currentCategory,currentPath:currentPath,items:items,load:load,item:item }
 }

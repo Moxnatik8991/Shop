@@ -1,5 +1,6 @@
 ﻿.item-wrapper{
     min-width: 200px;
+    width: max-content;
     height: max-content;
     min-height: 300px;
     margin: 5px;
@@ -11,6 +12,7 @@
     border-radius: 5%;
     border: 2px solid black;
     color: white;
+    background-color: darkblue;
     
 }
 .item-wrapper img{

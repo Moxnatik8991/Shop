@@ -1,4 +1,4 @@
-import React , { useRef , useState } from 'react';
+import React , { useEffect , useRef , useState } from 'react';
 import './ItemPage.css'
 import LocationBar from "../../../utils/LocationBar";
 import { useLocation , useParams } from "react-router-dom";
@@ -7,19 +7,24 @@ import AddReview from "./AddReview/AddReview";
 import ImagesBlock from "./ImagesBlock/ImagesBlock";
 import { UseGetInfo } from "../../../hooks/useGetInfo";
 import Description from "./DescriptionBlock/Description";
+import axios from "axios";
+import useGetData from "../../../hooks/useGetCategory";
+
 
 const ItemPage = ()=>{
+   
+   const {currentItem,currentPath,getNewComments}=useGetData()
     
-   const {item,currentPath}=UseGetInfo()
-    
+    debugger
+    console.log("render itemPage")
     return (
         <>
-            { item && currentPath
+            { currentItem && currentPath
                 ? <div className="category-containerr">
                      <LocationBar path={ currentPath }/>
                     <div className="content-container">
                         <ImagesBlock/>
-                        <Description item={ item }/>
+                        <Description item={ currentItem }/>
                         <div style={ { gridColumn : "1/3" , minHeight : "100%" , paddingTop : "20px" } }>
                             <div style={ { borderTop : "2px solid grey" , margin : "0 2%" } }></div>
                             <div style={ {
@@ -31,8 +36,7 @@ const ItemPage = ()=>{
                             } }>
                                 <h1>Reviews:</h1>
                                 {
-
-                                    item?.comments.map ( el=>
+                                    currentItem?.comments.map ( el=>
                                         <Review key={ el.id }
                                                 rating={ el.rating }
                                                 firstName={ el.firstName }
@@ -40,7 +44,7 @@ const ItemPage = ()=>{
                                                 text={ el.text }/> )
                                 }
                                 <h3 style={ { paddingTop : "20px" } }>Send your review below ↓</h3>
-                                <AddReview itemId={ item?.id }/>
+                                <AddReview getNewComments={getNewComments} itemId={ currentItem?.id }/>
                             </div>
                         </div>
                     </div>

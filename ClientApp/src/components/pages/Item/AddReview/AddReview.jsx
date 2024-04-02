@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import axios from "axios";
 
 
-const AddReview = ({itemId})=>{
+const AddReview = ({itemId,getNewComments})=>{
     const [value, setValue] = React.useState(2);
     
     const{register,
@@ -18,18 +18,18 @@ const AddReview = ({itemId})=>{
             "text": data.reviewText,
             "productId": itemId
         }
-        /*axios({
+        
+        axios({
             method: 'post',
             url: 'http://localhost:2222/api/Comment/Add',
-            data: comment,
-            withCredentials:false
-        });*/
-        /*axios.post(`http://localhost:2222/api/Comment/Add`,{comment},{ headers:{
-                "Content-Type": "application/json"
-            }})
+            data: comment
+            
+        })
             .then(response=>{
-                alert(response.data.isSuccess?"Done":response.data.errorMessage)
-            })*/
+                if(response.data.isSuccess){
+                    getNewComments();
+                }
+            });
         reset()
     }
     

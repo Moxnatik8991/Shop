@@ -15,6 +15,7 @@ import CatalogModal from "./components/global/CustomModals/CatalogModal";
 
 
 const App = () => {
+    
     const dispatch = useDispatch();
     useEffect ( ()=>{
         
@@ -31,7 +32,7 @@ const App = () => {
     const id = open ? 'simple-popper' : undefined;
     
     const{isLoading}=useSelector(state=>state.item)
-    
+    console.log("render app")
     return (
         
              <div className={ st.appContainer }>

@@ -4,7 +4,7 @@ import { getAllItemsAndCategories } from "./items.action";
 let initialState = {
     items:null,
     categories:null,
-    isLoading: false,
+    isLoading: true,
     error: null,
     result:1
 }
