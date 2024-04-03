@@ -4,19 +4,21 @@ import LocationBar from "../../../utils/LocationBar";
 import { useLocation , useParams } from "react-router-dom";
 import Review from "./Review/Review";
 import AddReview from "./AddReview/AddReview";
-import ImagesBlock from "./ImagesBlock/ImagesBlock";
-import { UseGetInfo } from "../../../hooks/useGetInfo";
+import ImagesBlock from "./ImagesBlock/ImagesBlock"
 import Description from "./DescriptionBlock/Description";
 import axios from "axios";
 import useGetData from "../../../hooks/useGetCategory";
 
 
 const ItemPage = ()=>{
-   
-   const {currentItem,currentPath,getNewComments}=useGetData()
     
-    debugger
-    console.log("render itemPage")
+   const {currentItem,currentPath,getNewComments}=useGetData()
+    const [comments,setComments]=useState(currentItem)
+    useEffect ( ()=>{
+        debugger
+        setComments(currentItem?.comments)
+    } , [currentItem] );
+    
     return (
         <>
             { currentItem && currentPath
@@ -36,7 +38,7 @@ const ItemPage = ()=>{
                             } }>
                                 <h1>Reviews:</h1>
                                 {
-                                    currentItem?.comments.map ( el=>
+                                    comments?.map ( el=>
                                         <Review key={ el.id }
                                                 rating={ el.rating }
                                                 firstName={ el.firstName }
@@ -44,7 +46,7 @@ const ItemPage = ()=>{
                                                 text={ el.text }/> )
                                 }
                                 <h3 style={ { paddingTop : "20px" } }>Send your review below ↓</h3>
-                                <AddReview getNewComments={getNewComments} itemId={ currentItem?.id }/>
+                                <AddReview updComments={setComments} getNewComments={getNewComments} itemId={ currentItem?.id }/>
                             </div>
                         </div>
                     </div>

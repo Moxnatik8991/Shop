@@ -80,9 +80,6 @@ const useGetData = ()=>{
     const [currentPath,setCurrentPath]=useState()
     const [items,setItems]=useState()
     
-    const getNewComments=()=>{
-        getItemById(itemId).then(response=>setCurrentItem(response))
-    }
     
     
     useEffect ( ()=>{
@@ -96,7 +93,7 @@ const useGetData = ()=>{
         
     } , [itemId,IdCategory] );
     
-return {currentCategory,currentItem,currentPath,items,getNewComments}
+return {currentCategory,currentItem,currentPath,items}
 };
 
 export default useGetData;

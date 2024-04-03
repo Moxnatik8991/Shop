@@ -1,0 +1,151 @@
+.container{
+  max-width: 1600px;
+ 
+  flex: 1;
+  margin: 0 auto;
+  padding: 10px;
+  display: grid;
+  grid-template-columns: 3fr 9fr;
+}
+.metodsContainer{
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  div{
+    
+    border-radius: 5px;
+    padding: 5px;
+    font-size: 24px;
+    font-family: "Oswald", sans-serif;
+    font-weight: 400;
+    background-color: white;
+  }
+  div:hover{
+    box-shadow: 0 0 5px gray;
+    cursor: pointer;
+  }
+}
+.contentContainer{
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  div{
+    padding: 10px;
+    
+    border-radius: 10px;
+    background-color: white;
+  ;
+  }
+  .description{
+    .text{
+      border: none;
+      text-align: center;
+      font-weight: bold;
+      
+    }
+    .blocks{
+      display: grid;
+      grid-template-columns: repeat(4,1fr);
+      grid-gap: 5px;
+      border: none;
+      div{
+        border: none;
+        display: flex;
+        flex-direction: column;
+        place-items: center;
+        img{
+          max-width: 50px;
+        }
+        span{
+          padding-top: 10px;
+          text-align: center;
+          a{
+            color: #43B02A;
+            text-decoration: none;
+          }
+          a:hover{
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+  }
+  .positive{
+    .text{
+      padding: 0;
+      border: none;
+      font-family: "Oswald", sans-serif;
+      font-weight: 400;
+      font-size: 25px;
+    }
+    .blocks{
+      display: grid;
+      grid-template-columns: repeat(4,1fr);
+      grid-gap: 5px;
+      border: none;
+      justify-items: center;
+      div{
+        max-width: 220px;
+        border: none;
+        p{
+          padding-bottom: 15px;
+          border-bottom: 1px solid black;
+        }
+        span{
+          padding-top: 50px;
+        }
+      }
+    }
+    .star{
+      border: none;
+    }
+  }
+  .instruction{
+    .text{
+      padding: 0 0 20px  0;
+      border: none;
+      font-family: "Oswald", sans-serif;
+      font-weight: 400;
+      font-size: 25px;
+    }
+    .blocks{
+      display: grid;
+      grid-template-columns: repeat(4,1fr);
+      grid-gap: 5px;
+      border: none;
+      justify-items: center;
+      div{
+        border: none;
+        display: flex;
+        flex-direction: column;
+        place-items: center;
+        background-color: #EDF8EA;
+        max-width: 220px;
+        width: 100%;
+        justify-content: space-between;
+        div{
+          padding: 0;
+          p{
+            place-self: start;
+            font-size: 25px;
+          }
+          span{
+            font-size: 14px;
+            width: 100%;
+            a{
+              color: #43B02A;
+              text-decoration: none;
+            }
+          }
+        }
+        img{
+          max-width: 100%;
+          padding-top: 10px;
+        }
+        
+      }
+    }
+  }
+}
