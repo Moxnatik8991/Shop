@@ -101,6 +101,7 @@ builder.Services.AddScoped(typeof(IUserRepository), typeof(UserRepository));
 builder.Services.AddScoped(typeof(IProductRepository), typeof(ProductRepository));
 builder.Services.AddScoped(typeof(ICategoryRepository), typeof(CategoryRepository));
 builder.Services.AddScoped(typeof(ICommentRepository), typeof(CommentRepository));
+builder.Services.AddScoped(typeof(IFileRelationRepository), typeof(FileRelationRepository));
 
 builder.Services.AddScoped(typeof(IAuthService), typeof(AuthService));
 builder.Services.AddScoped(typeof(ITokenService), typeof(TokenService));
@@ -109,6 +110,7 @@ builder.Services.AddScoped(typeof(IProductService), typeof(ProductService));
 builder.Services.AddScoped(typeof(ICategoryService), typeof(CategoryService));
 builder.Services.AddScoped(typeof(ICommentService), typeof(CommentService));
 builder.Services.AddScoped(typeof(IFileDetailsService), typeof(FileDetailsService));
+builder.Services.AddScoped(typeof(IFileRelationService), typeof(FileRelationService));
 
 var app = builder.Build();
 

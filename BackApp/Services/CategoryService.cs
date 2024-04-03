@@ -9,9 +9,11 @@ namespace Shop.BackApp.Services
     public class CategoryService : ICategoryService
     {
         private readonly ICategoryRepository _categoryRepository;
-        public CategoryService(ICategoryRepository categoryRepository)
+        private readonly IFileRelationService _fileRelationService;
+        public CategoryService(ICategoryRepository categoryRepository, IFileRelationService fileRelationService)
         {
             _categoryRepository = categoryRepository;
+            _fileRelationService = fileRelationService;
         }
 
         public async Task<IEnumerable<Category>> GetAllAsync()
@@ -37,16 +39,22 @@ namespace Shop.BackApp.Services
 
         public async Task AddAsync(CategoryRequestModel model)
         {
+            var categoryId = Guid.NewGuid();
+
+            var fileRelations = model.Files.Select(_ => _.MapToDomain(nameof(Category), categoryId)).ToList();
+
             var newCategory = new Category
             {   
-                Id = Guid.NewGuid(),
+                Id = categoryId,
                 Name = model.Name,
                 CategoryId = model.CategoryId,
                 DataCreate = DateTime.UtcNow,
                 DataUpdate = DateTime.UtcNow,
+                FileRelations = fileRelations
             };
 
             await _categoryRepository.AddAsync(newCategory);
+
         }
 
         public async Task UpdateAsync(Guid id, CategoryRequestModel model)

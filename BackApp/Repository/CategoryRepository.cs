@@ -11,7 +11,14 @@ namespace Shop.BackApp.Repository
 
         public override async Task<Category?> GetAsync(Guid id)
         {
-            return await _dataContext.Categories.Include(_ => _.Categories).FirstOrDefaultAsync(_ => _.Id == id);
+            return await _dataContext.Categories
+                .Include(_ => _.Categories).Include(_ => _.FileRelations).ThenInclude(_ => _.File).FirstOrDefaultAsync(_ => _.Id == id);
+        }
+
+        public override async Task<IEnumerable<Category>?> GetAllAsync()
+        {
+            return await _dataContext.Categories
+                .Include(_ => _.Categories).Include(_ => _.FileRelations).ThenInclude(_ => _.File).ToListAsync();
         }
     }
 }

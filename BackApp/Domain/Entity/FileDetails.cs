@@ -8,7 +8,6 @@
             DataCreate = DateTime.UtcNow;
             DataUpdate = DateTime.UtcNow;
         }
-
         public string Name { get; set; }
         public string Extension { get; set; }
         public string Path { get; set; }

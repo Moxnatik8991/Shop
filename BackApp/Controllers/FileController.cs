@@ -147,7 +147,7 @@ public class FileController
             fileDetails.Name = uploadedFile.FileName;
             fileDetails.Extension = Path.GetExtension(uploadedFile.FileName);
 
-            ///await _fileDetailseService.AddAsync(fileDetails);
+            await _fileDetailseService.AddAsync(fileDetails);
 
             return fileDetails;
         }

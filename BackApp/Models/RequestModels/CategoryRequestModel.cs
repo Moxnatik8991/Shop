@@ -6,7 +6,8 @@ namespace Shop.BackApp.Models.RequestModels
     {
         [Required]
         public string Name { get; set; }
-
         public Guid? CategoryId { get; set; } = null;
+
+        public List<FileRelationRequestModel>? Files { get; set; }
     }
 }

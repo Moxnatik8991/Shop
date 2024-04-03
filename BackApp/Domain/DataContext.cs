@@ -19,9 +19,10 @@ namespace Shop.BackApp.Domain
 
         public DbSet<User> Users { get; set; }
         public DbSet<Product> Products { get; set; }
+        public DbSet<FileDetails> FileDetails { get; set; }
+        public DbSet<FileRelation> FileRelations { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Comment> Comments { get; set; }
-        public DbSet<FileDetails> FileDetails { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -30,12 +31,34 @@ namespace Shop.BackApp.Domain
                 .WithOne()
                 .HasPrincipalKey(e => e.Id)
                 .HasForeignKey(e => e.CategoryId)
-                .OnDelete(DeleteBehavior.ClientSetNull);
+                .OnDelete(DeleteBehavior.ClientCascade);
 
-            //modelBuilder.Entity<Product>()
-            //    .HasMany(_ => _.Comments)
-            //    .WithOne();
 
+            modelBuilder.Entity<FileRelation>()
+                .HasKey(_ => new { _.FileId, _.EntityId });
+
+            modelBuilder.Entity<Category>()
+                .HasMany(_ => _.FileRelations)
+                .WithOne()
+                .HasPrincipalKey(e => e.Id)
+                .HasForeignKey(e => e.EntityId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            //modelBuilder.Entity<FileRelation>()
+            //    .HasOne(_ => _.File)
+            //    .WithOne()
+            //    .HasPrincipalKey<FileRelation>(_ => _.FileId)
+            //    .HasForeignKey<FileDetails>(_ => _.Id)
+            //    .IsRequired(false)
+            //    .OnDelete(DeleteBehavior.ClientCascade);
+
+            //modelBuilder.Entity<FileDetails>()
+            //    .HasOne<FileRelation>()
+            //    .WithOne()
+            //    .HasPrincipalKey<FileDetails>(_ => _.Id)
+            //    .HasForeignKey<FileRelation>(_ => _.FileId)
+            //    .IsRequired(false)
+            //    .OnDelete(DeleteBehavior.ClientCascade);
 
             base.OnModelCreating(modelBuilder);
             Seed(modelBuilder);

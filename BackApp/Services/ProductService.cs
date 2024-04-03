@@ -79,8 +79,8 @@ namespace Shop.BackApp.Services
             }
 
             // Check Sql
-            var filteredData23 = query.CustomPagination(searchParam.PageNumber, searchParam.PageSize);
-            var sql2 = filteredData23.ToQueryString();
+            //var filteredData23 = query.CustomPagination(searchParam.PageNumber, searchParam.PageSize);
+            //var sql2 = filteredData23.ToQueryString();
             //
 
             var filteredData = query.CustomPagination(searchParam.PageNumber, searchParam.PageSize).ToList();
