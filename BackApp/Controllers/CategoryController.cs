@@ -49,7 +49,7 @@ public class CategoryController
     }
 
     [HttpPost]
-    public async Task<BaseResponseModel<string>> Add([FromBody] CategoryRequestModel model)
+    public async Task<BaseResponseModel<string>> Add([FromForm] CategoryRequestModel model)
     {
         await _categoryServices.AddAsync(model);
 
@@ -61,7 +61,7 @@ public class CategoryController
     }
 
     [HttpPut("{id}")]
-    public async Task<BaseResponseModel<string>> Put(Guid id, [FromBody] CategoryRequestModel model)
+    public async Task<BaseResponseModel<string>> Put(Guid id, [FromForm] CategoryRequestModel model)
     {
         await _categoryServices.UpdateAsync(id, model);
 
