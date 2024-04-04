@@ -34,11 +34,12 @@ const CatalogModal = ({id,open,anchorEl,handleClick})=>{
         <>
             <Popper id={id} open={open} anchorEl={anchorEl}>
                 <div className={st.testModal}>
-                    <div className={st.firstPlace}>{categories && categories.map ( el=>{ 
+                    <div className={st.firstPlace}>
+                        {categories && categories.map ( el=>{ 
                         return <div key={el.id} style={ { border : "none",width:"max-content"} }
                                     onMouseEnter={()=> {mouseEnter(el)} }>
-                        <NavLink onClick={handleClick}   to={`/catalog/${el.id}`}>{ el.name }</NavLink>
-                    </div> }) }
+                        <NavLink key={el.id} onClick={handleClick}   to={`/catalog/${el.id}`}>{ el.name }</NavLink> 
+                        </div> }) }
 
                     </div>
 

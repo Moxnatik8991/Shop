@@ -3,8 +3,8 @@ import { Rating } from "@mui/material";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 
-
-const AddReview = ({itemId,getNewComments})=>{
+const date = new Date().toJSON();
+const AddReview = ({itemId,updComments})=>{
     const [value, setValue] = React.useState(2);
     
     const{register,
@@ -18,7 +18,13 @@ const AddReview = ({itemId,getNewComments})=>{
             "text": data.reviewText,
             "productId": itemId
         }
-        
+        let testComment = {
+            id : "8b115ec9-6643-4d37-99ae-1a29d015e044",
+            dataCreate : date,
+            dataUpdate : date,
+            ...comment
+        }
+        debugger
         axios({
             method: 'post',
             url: 'http://localhost:2222/api/Comment/Add',
@@ -27,7 +33,7 @@ const AddReview = ({itemId,getNewComments})=>{
         })
             .then(response=>{
                 if(response.data.isSuccess){
-                    getNewComments();
+                    updComments(prev=>[...prev,testComment])
                 }
             });
         reset()

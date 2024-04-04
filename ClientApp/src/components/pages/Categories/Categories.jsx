@@ -1,8 +1,7 @@
 import React , { useState } from 'react';
-import { UseGetInfo } from "../../../hooks/useGetInfo";
-import { Navigate , NavLink , useParams } from "react-router-dom";
+import { Navigate , useParams } from "react-router-dom";
 import LocationBar from "../../../utils/LocationBar";
-import {Item} from "./../Sales/SalePage";
+import Item from "./Item/Item";
 import './Categories.css'
 import useGetData from "../../../hooks/useGetCategory";
 import Category from "./Category/Category";
@@ -13,6 +12,7 @@ const Categories = ()=>{
     let {IdCategory}=useParams();
     const {currentCategory,currentPath,items}=useGetData()
     const [load,setLoad]=useState(false)
+    
 
     console.log("render category")
 
