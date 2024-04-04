@@ -1,6 +1,8 @@
-﻿using Newtonsoft.Json;
+﻿using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
 using Shop.BackApp.Middleware.Exceptions;
 using Shop.BackApp.Models;
+using System;
 using System.Net;
 
 namespace Shop.BackApp.Middleware
@@ -8,9 +10,11 @@ namespace Shop.BackApp.Middleware
     public class ExceptionHandlingMiddleware
     {
         private readonly RequestDelegate _next;
-        public ExceptionHandlingMiddleware(RequestDelegate next)
+        private ILogger<ExceptionHandlingMiddleware> _logger;
+        public ExceptionHandlingMiddleware(RequestDelegate next, ILogger<ExceptionHandlingMiddleware> logger)
         {
             _next = next;
+            _logger = logger;
         }
 
         public async Task Invoke(HttpContext context)
@@ -26,6 +30,7 @@ namespace Shop.BackApp.Middleware
             }
             catch (Exception exception)
             {
+                _logger.LogError(exception, null);
                 await HandleExceptionAsync(context, exception);
             }
         }
@@ -55,9 +60,10 @@ namespace Shop.BackApp.Middleware
                 case CustomException:
                     statusCode = 555;
                     break;
-
                 default:
-                    message = "Something went wrong";
+
+                    
+
                     statusCode = (int)HttpStatusCode.InternalServerError;
                     break;
             }

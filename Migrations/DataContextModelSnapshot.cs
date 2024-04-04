@@ -49,168 +49,168 @@ namespace Shop.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("6afd4706-6cd6-419b-8a56-7e8986339a5b"),
-                            DataCreate = new DateTime(2024, 3, 21, 15, 5, 56, 468, DateTimeKind.Utc).AddTicks(5462),
-                            DataUpdate = new DateTime(2024, 3, 25, 15, 5, 56, 468, DateTimeKind.Utc).AddTicks(5462),
+                            Id = new Guid("34b94ae4-9801-445a-aed6-b22986566e77"),
+                            DataCreate = new DateTime(2024, 3, 21, 18, 5, 30, 862, DateTimeKind.Utc).AddTicks(8105),
+                            DataUpdate = new DateTime(2024, 3, 25, 18, 5, 30, 862, DateTimeKind.Utc).AddTicks(8105),
                             Name = "Ноутбуки и компьютеры"
                         },
                         new
                         {
-                            Id = new Guid("d33937dd-5aaa-4c42-b82f-bf41d6c49f55"),
-                            CategoryId = new Guid("6afd4706-6cd6-419b-8a56-7e8986339a5b"),
-                            DataCreate = new DateTime(2024, 3, 21, 15, 5, 56, 468, DateTimeKind.Utc).AddTicks(5462),
-                            DataUpdate = new DateTime(2024, 3, 25, 15, 5, 56, 468, DateTimeKind.Utc).AddTicks(5462),
+                            Id = new Guid("f490b0ac-a979-43da-a528-0f21b63eef92"),
+                            CategoryId = new Guid("34b94ae4-9801-445a-aed6-b22986566e77"),
+                            DataCreate = new DateTime(2024, 3, 21, 18, 5, 30, 862, DateTimeKind.Utc).AddTicks(8105),
+                            DataUpdate = new DateTime(2024, 3, 25, 18, 5, 30, 862, DateTimeKind.Utc).AddTicks(8105),
                             Name = "Ноутбуки"
                         },
                         new
                         {
-                            Id = new Guid("b4718b50-4cdb-4ffe-864d-bd877c973b50"),
-                            CategoryId = new Guid("6afd4706-6cd6-419b-8a56-7e8986339a5b"),
-                            DataCreate = new DateTime(2024, 3, 21, 15, 5, 56, 468, DateTimeKind.Utc).AddTicks(5462),
-                            DataUpdate = new DateTime(2024, 3, 25, 15, 5, 56, 468, DateTimeKind.Utc).AddTicks(5462),
+                            Id = new Guid("2d70da78-8914-429c-846d-f862449e707f"),
+                            CategoryId = new Guid("34b94ae4-9801-445a-aed6-b22986566e77"),
+                            DataCreate = new DateTime(2024, 3, 21, 18, 5, 30, 862, DateTimeKind.Utc).AddTicks(8105),
+                            DataUpdate = new DateTime(2024, 3, 25, 18, 5, 30, 862, DateTimeKind.Utc).AddTicks(8105),
                             Name = "Компьютеры"
                         },
                         new
                         {
-                            Id = new Guid("bb7fe3ea-3ec4-4a8e-9663-6a7a6badef9e"),
-                            CategoryId = new Guid("6afd4706-6cd6-419b-8a56-7e8986339a5b"),
-                            DataCreate = new DateTime(2024, 3, 21, 15, 5, 56, 468, DateTimeKind.Utc).AddTicks(5462),
-                            DataUpdate = new DateTime(2024, 3, 25, 15, 5, 56, 468, DateTimeKind.Utc).AddTicks(5462),
+                            Id = new Guid("dc8130cd-b257-4738-92a3-0219728489b4"),
+                            CategoryId = new Guid("34b94ae4-9801-445a-aed6-b22986566e77"),
+                            DataCreate = new DateTime(2024, 3, 21, 18, 5, 30, 862, DateTimeKind.Utc).AddTicks(8105),
+                            DataUpdate = new DateTime(2024, 3, 25, 18, 5, 30, 862, DateTimeKind.Utc).AddTicks(8105),
                             Name = "Мониторы"
                         },
                         new
                         {
-                            Id = new Guid("b2a308e0-1254-4d09-9da6-faedf917b966"),
-                            CategoryId = new Guid("6afd4706-6cd6-419b-8a56-7e8986339a5b"),
-                            DataCreate = new DateTime(2024, 3, 21, 15, 5, 56, 468, DateTimeKind.Utc).AddTicks(5462),
-                            DataUpdate = new DateTime(2024, 3, 25, 15, 5, 56, 468, DateTimeKind.Utc).AddTicks(5462),
+                            Id = new Guid("5ac0739d-d6b6-46f0-b229-6860190917ce"),
+                            CategoryId = new Guid("34b94ae4-9801-445a-aed6-b22986566e77"),
+                            DataCreate = new DateTime(2024, 3, 21, 18, 5, 30, 862, DateTimeKind.Utc).AddTicks(8105),
+                            DataUpdate = new DateTime(2024, 3, 25, 18, 5, 30, 862, DateTimeKind.Utc).AddTicks(8105),
                             Name = "Планшеты"
                         },
                         new
                         {
-                            Id = new Guid("122c1210-02bd-4a26-a847-7d6a13f2789f"),
-                            CategoryId = new Guid("6afd4706-6cd6-419b-8a56-7e8986339a5b"),
-                            DataCreate = new DateTime(2024, 3, 21, 15, 5, 56, 468, DateTimeKind.Utc).AddTicks(5462),
-                            DataUpdate = new DateTime(2024, 3, 25, 15, 5, 56, 468, DateTimeKind.Utc).AddTicks(5462),
+                            Id = new Guid("53360d33-b29b-4537-9b54-6092ed007215"),
+                            CategoryId = new Guid("34b94ae4-9801-445a-aed6-b22986566e77"),
+                            DataCreate = new DateTime(2024, 3, 21, 18, 5, 30, 862, DateTimeKind.Utc).AddTicks(8105),
+                            DataUpdate = new DateTime(2024, 3, 25, 18, 5, 30, 862, DateTimeKind.Utc).AddTicks(8105),
                             Name = "Компьютерные комплектующие"
                         },
                         new
                         {
-                            Id = new Guid("c52e5928-ac2d-477c-80fc-a9287c12e583"),
-                            CategoryId = new Guid("122c1210-02bd-4a26-a847-7d6a13f2789f"),
-                            DataCreate = new DateTime(2024, 3, 21, 15, 5, 56, 468, DateTimeKind.Utc).AddTicks(5462),
-                            DataUpdate = new DateTime(2024, 3, 25, 15, 5, 56, 468, DateTimeKind.Utc).AddTicks(5462),
+                            Id = new Guid("ca550976-6ec3-45a3-87ea-6636d2a649fa"),
+                            CategoryId = new Guid("53360d33-b29b-4537-9b54-6092ed007215"),
+                            DataCreate = new DateTime(2024, 3, 21, 18, 5, 30, 862, DateTimeKind.Utc).AddTicks(8105),
+                            DataUpdate = new DateTime(2024, 3, 25, 18, 5, 30, 862, DateTimeKind.Utc).AddTicks(8105),
                             Name = "Материнские платы"
                         },
                         new
                         {
-                            Id = new Guid("4fee6413-a4ef-4a2c-924e-423290594197"),
-                            CategoryId = new Guid("122c1210-02bd-4a26-a847-7d6a13f2789f"),
-                            DataCreate = new DateTime(2024, 3, 21, 15, 5, 56, 468, DateTimeKind.Utc).AddTicks(5462),
-                            DataUpdate = new DateTime(2024, 3, 25, 15, 5, 56, 468, DateTimeKind.Utc).AddTicks(5462),
+                            Id = new Guid("a806cb1f-3f4b-446a-8110-de75144d6569"),
+                            CategoryId = new Guid("53360d33-b29b-4537-9b54-6092ed007215"),
+                            DataCreate = new DateTime(2024, 3, 21, 18, 5, 30, 862, DateTimeKind.Utc).AddTicks(8105),
+                            DataUpdate = new DateTime(2024, 3, 25, 18, 5, 30, 862, DateTimeKind.Utc).AddTicks(8105),
                             Name = "Процессоры"
                         },
                         new
                         {
-                            Id = new Guid("9c5d20af-ceab-4d57-9643-af5e259c37d9"),
-                            CategoryId = new Guid("122c1210-02bd-4a26-a847-7d6a13f2789f"),
-                            DataCreate = new DateTime(2024, 3, 21, 15, 5, 56, 468, DateTimeKind.Utc).AddTicks(5462),
-                            DataUpdate = new DateTime(2024, 3, 25, 15, 5, 56, 468, DateTimeKind.Utc).AddTicks(5462),
+                            Id = new Guid("cb202d74-b689-49a2-8c9c-397f8f6e693b"),
+                            CategoryId = new Guid("53360d33-b29b-4537-9b54-6092ed007215"),
+                            DataCreate = new DateTime(2024, 3, 21, 18, 5, 30, 862, DateTimeKind.Utc).AddTicks(8105),
+                            DataUpdate = new DateTime(2024, 3, 25, 18, 5, 30, 862, DateTimeKind.Utc).AddTicks(8105),
                             Name = "Оперативная память"
                         },
                         new
                         {
-                            Id = new Guid("3b0eb85c-1881-43c2-a1df-eb3b7054f063"),
-                            CategoryId = new Guid("122c1210-02bd-4a26-a847-7d6a13f2789f"),
-                            DataCreate = new DateTime(2024, 3, 21, 15, 5, 56, 468, DateTimeKind.Utc).AddTicks(5462),
-                            DataUpdate = new DateTime(2024, 3, 25, 15, 5, 56, 468, DateTimeKind.Utc).AddTicks(5462),
+                            Id = new Guid("80210cc8-e686-4a82-b1d9-85dad60f0a4c"),
+                            CategoryId = new Guid("53360d33-b29b-4537-9b54-6092ed007215"),
+                            DataCreate = new DateTime(2024, 3, 21, 18, 5, 30, 862, DateTimeKind.Utc).AddTicks(8105),
+                            DataUpdate = new DateTime(2024, 3, 25, 18, 5, 30, 862, DateTimeKind.Utc).AddTicks(8105),
                             Name = "Видеокарты"
                         },
                         new
                         {
-                            Id = new Guid("b69aaf33-c276-4bcf-9e03-bf46116a03e3"),
-                            CategoryId = new Guid("122c1210-02bd-4a26-a847-7d6a13f2789f"),
-                            DataCreate = new DateTime(2024, 3, 21, 15, 5, 56, 468, DateTimeKind.Utc).AddTicks(5462),
-                            DataUpdate = new DateTime(2024, 3, 25, 15, 5, 56, 468, DateTimeKind.Utc).AddTicks(5462),
+                            Id = new Guid("560979c6-6bac-43da-b5d5-b66bcdd999cb"),
+                            CategoryId = new Guid("53360d33-b29b-4537-9b54-6092ed007215"),
+                            DataCreate = new DateTime(2024, 3, 21, 18, 5, 30, 862, DateTimeKind.Utc).AddTicks(8105),
+                            DataUpdate = new DateTime(2024, 3, 25, 18, 5, 30, 862, DateTimeKind.Utc).AddTicks(8105),
                             Name = "Звуковые карты"
                         },
                         new
                         {
-                            Id = new Guid("ec8ec436-694b-47ae-b0d9-2c826f1137d5"),
-                            CategoryId = new Guid("122c1210-02bd-4a26-a847-7d6a13f2789f"),
-                            DataCreate = new DateTime(2024, 3, 21, 15, 5, 56, 468, DateTimeKind.Utc).AddTicks(5462),
-                            DataUpdate = new DateTime(2024, 3, 25, 15, 5, 56, 468, DateTimeKind.Utc).AddTicks(5462),
+                            Id = new Guid("0415ae8f-df2d-4bd8-9d9b-06e1ab5a80f9"),
+                            CategoryId = new Guid("53360d33-b29b-4537-9b54-6092ed007215"),
+                            DataCreate = new DateTime(2024, 3, 21, 18, 5, 30, 862, DateTimeKind.Utc).AddTicks(8105),
+                            DataUpdate = new DateTime(2024, 3, 25, 18, 5, 30, 862, DateTimeKind.Utc).AddTicks(8105),
                             Name = "Жесткие диски"
                         },
                         new
                         {
-                            Id = new Guid("c4268fe7-1b53-4431-85ee-c701b89be5cb"),
-                            DataCreate = new DateTime(2024, 3, 21, 15, 5, 56, 468, DateTimeKind.Utc).AddTicks(5462),
-                            DataUpdate = new DateTime(2024, 3, 25, 15, 5, 56, 468, DateTimeKind.Utc).AddTicks(5462),
+                            Id = new Guid("ceed9c73-6fc2-44c9-8107-b49c04774c37"),
+                            DataCreate = new DateTime(2024, 3, 21, 18, 5, 30, 862, DateTimeKind.Utc).AddTicks(8105),
+                            DataUpdate = new DateTime(2024, 3, 25, 18, 5, 30, 862, DateTimeKind.Utc).AddTicks(8105),
                             Name = "Смартфоны, ТВ и Электроника"
                         },
                         new
                         {
-                            Id = new Guid("679fae86-6bcc-434a-a50b-78baa1c90ed0"),
-                            CategoryId = new Guid("c4268fe7-1b53-4431-85ee-c701b89be5cb"),
-                            DataCreate = new DateTime(2024, 3, 21, 15, 5, 56, 468, DateTimeKind.Utc).AddTicks(5462),
-                            DataUpdate = new DateTime(2024, 3, 25, 15, 5, 56, 468, DateTimeKind.Utc).AddTicks(5462),
+                            Id = new Guid("3c7020c7-837f-42ff-9b78-e98488de73ba"),
+                            CategoryId = new Guid("ceed9c73-6fc2-44c9-8107-b49c04774c37"),
+                            DataCreate = new DateTime(2024, 3, 21, 18, 5, 30, 862, DateTimeKind.Utc).AddTicks(8105),
+                            DataUpdate = new DateTime(2024, 3, 25, 18, 5, 30, 862, DateTimeKind.Utc).AddTicks(8105),
                             Name = "Мобильные телефоны"
                         },
                         new
                         {
-                            Id = new Guid("c542ba13-6610-4e03-94c5-2273c4a6ed12"),
-                            CategoryId = new Guid("c4268fe7-1b53-4431-85ee-c701b89be5cb"),
-                            DataCreate = new DateTime(2024, 3, 21, 15, 5, 56, 468, DateTimeKind.Utc).AddTicks(5462),
-                            DataUpdate = new DateTime(2024, 3, 25, 15, 5, 56, 468, DateTimeKind.Utc).AddTicks(5462),
+                            Id = new Guid("ad997198-40eb-49ec-8598-b0e9597a5896"),
+                            CategoryId = new Guid("ceed9c73-6fc2-44c9-8107-b49c04774c37"),
+                            DataCreate = new DateTime(2024, 3, 21, 18, 5, 30, 862, DateTimeKind.Utc).AddTicks(8105),
+                            DataUpdate = new DateTime(2024, 3, 25, 18, 5, 30, 862, DateTimeKind.Utc).AddTicks(8105),
                             Name = "Телевизоры"
                         },
                         new
                         {
-                            Id = new Guid("29742df9-ca1b-4151-967d-144732bd8a31"),
-                            CategoryId = new Guid("c4268fe7-1b53-4431-85ee-c701b89be5cb"),
-                            DataCreate = new DateTime(2024, 3, 21, 15, 5, 56, 468, DateTimeKind.Utc).AddTicks(5462),
-                            DataUpdate = new DateTime(2024, 3, 25, 15, 5, 56, 468, DateTimeKind.Utc).AddTicks(5462),
+                            Id = new Guid("12816644-226d-4d09-b7c9-5eb22fbcef4b"),
+                            CategoryId = new Guid("ceed9c73-6fc2-44c9-8107-b49c04774c37"),
+                            DataCreate = new DateTime(2024, 3, 21, 18, 5, 30, 862, DateTimeKind.Utc).AddTicks(8105),
+                            DataUpdate = new DateTime(2024, 3, 25, 18, 5, 30, 862, DateTimeKind.Utc).AddTicks(8105),
                             Name = "Наушники и аксессуары"
                         },
                         new
                         {
-                            Id = new Guid("2ab81582-bc0b-4c4b-bb90-3907a832cb41"),
-                            CategoryId = new Guid("c4268fe7-1b53-4431-85ee-c701b89be5cb"),
-                            DataCreate = new DateTime(2024, 3, 21, 15, 5, 56, 468, DateTimeKind.Utc).AddTicks(5462),
-                            DataUpdate = new DateTime(2024, 3, 25, 15, 5, 56, 468, DateTimeKind.Utc).AddTicks(5462),
+                            Id = new Guid("34bc641e-3e8a-44ba-9402-417e6af12d8e"),
+                            CategoryId = new Guid("ceed9c73-6fc2-44c9-8107-b49c04774c37"),
+                            DataCreate = new DateTime(2024, 3, 21, 18, 5, 30, 862, DateTimeKind.Utc).AddTicks(8105),
+                            DataUpdate = new DateTime(2024, 3, 25, 18, 5, 30, 862, DateTimeKind.Utc).AddTicks(8105),
                             Name = "Носимые гаджеты"
                         },
                         new
                         {
-                            Id = new Guid("4e85c7a5-ad1c-4717-81e3-0ba5a9b467ef"),
-                            CategoryId = new Guid("2ab81582-bc0b-4c4b-bb90-3907a832cb41"),
-                            DataCreate = new DateTime(2024, 3, 21, 15, 5, 56, 468, DateTimeKind.Utc).AddTicks(5462),
-                            DataUpdate = new DateTime(2024, 3, 25, 15, 5, 56, 468, DateTimeKind.Utc).AddTicks(5462),
+                            Id = new Guid("0ccd4c3c-f2e6-468d-beb4-10a4f7820458"),
+                            CategoryId = new Guid("34bc641e-3e8a-44ba-9402-417e6af12d8e"),
+                            DataCreate = new DateTime(2024, 3, 21, 18, 5, 30, 862, DateTimeKind.Utc).AddTicks(8105),
+                            DataUpdate = new DateTime(2024, 3, 25, 18, 5, 30, 862, DateTimeKind.Utc).AddTicks(8105),
                             Name = "Смарт-часы"
                         },
                         new
                         {
-                            Id = new Guid("c96718ba-4407-48ea-8604-641d420a3a16"),
-                            CategoryId = new Guid("2ab81582-bc0b-4c4b-bb90-3907a832cb41"),
-                            DataCreate = new DateTime(2024, 3, 21, 15, 5, 56, 468, DateTimeKind.Utc).AddTicks(5462),
-                            DataUpdate = new DateTime(2024, 3, 25, 15, 5, 56, 468, DateTimeKind.Utc).AddTicks(5462),
+                            Id = new Guid("6f184ba8-b725-4c35-bb22-e18e7489d257"),
+                            CategoryId = new Guid("34bc641e-3e8a-44ba-9402-417e6af12d8e"),
+                            DataCreate = new DateTime(2024, 3, 21, 18, 5, 30, 862, DateTimeKind.Utc).AddTicks(8105),
+                            DataUpdate = new DateTime(2024, 3, 25, 18, 5, 30, 862, DateTimeKind.Utc).AddTicks(8105),
                             Name = "3D и VR очки"
                         },
                         new
                         {
-                            Id = new Guid("269fe930-0708-4335-bf2a-4683e3982045"),
-                            CategoryId = new Guid("2ab81582-bc0b-4c4b-bb90-3907a832cb41"),
-                            DataCreate = new DateTime(2024, 3, 21, 15, 5, 56, 468, DateTimeKind.Utc).AddTicks(5462),
-                            DataUpdate = new DateTime(2024, 3, 25, 15, 5, 56, 468, DateTimeKind.Utc).AddTicks(5462),
+                            Id = new Guid("f9548cc7-ea16-492f-88cb-c11c44c95cab"),
+                            CategoryId = new Guid("34bc641e-3e8a-44ba-9402-417e6af12d8e"),
+                            DataCreate = new DateTime(2024, 3, 21, 18, 5, 30, 862, DateTimeKind.Utc).AddTicks(8105),
+                            DataUpdate = new DateTime(2024, 3, 25, 18, 5, 30, 862, DateTimeKind.Utc).AddTicks(8105),
                             Name = "Фитнес-браслеты"
                         },
                         new
                         {
-                            Id = new Guid("75c1a818-e0ba-4384-8ca8-728f2c99ecdd"),
-                            CategoryId = new Guid("2ab81582-bc0b-4c4b-bb90-3907a832cb41"),
-                            DataCreate = new DateTime(2024, 3, 21, 15, 5, 56, 468, DateTimeKind.Utc).AddTicks(5462),
-                            DataUpdate = new DateTime(2024, 3, 25, 15, 5, 56, 468, DateTimeKind.Utc).AddTicks(5462),
+                            Id = new Guid("3daff5eb-68de-4ab6-9a16-bf03c1cca491"),
+                            CategoryId = new Guid("34bc641e-3e8a-44ba-9402-417e6af12d8e"),
+                            DataCreate = new DateTime(2024, 3, 21, 18, 5, 30, 862, DateTimeKind.Utc).AddTicks(8105),
+                            DataUpdate = new DateTime(2024, 3, 25, 18, 5, 30, 862, DateTimeKind.Utc).AddTicks(8105),
                             Name = "Смарт-кольца"
                         });
                 });
@@ -320,113 +320,113 @@ namespace Shop.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("07ccc501-34b4-487b-a0d0-cc6ed7bb5e2f"),
-                            CategoryId = new Guid("3b0eb85c-1881-43c2-a1df-eb3b7054f063"),
-                            DataCreate = new DateTime(2024, 3, 30, 15, 5, 56, 468, DateTimeKind.Utc).AddTicks(5462),
-                            DataUpdate = new DateTime(2024, 4, 2, 1, 5, 56, 468, DateTimeKind.Utc).AddTicks(5462),
+                            Id = new Guid("3578fb32-5fe9-4e69-9056-f367dc2f9f33"),
+                            CategoryId = new Guid("34bc641e-3e8a-44ba-9402-417e6af12d8e"),
+                            DataCreate = new DateTime(2024, 3, 30, 18, 5, 30, 862, DateTimeKind.Utc).AddTicks(8105),
+                            DataUpdate = new DateTime(2024, 4, 2, 4, 5, 30, 862, DateTimeKind.Utc).AddTicks(8105),
                             Description = "Burns for 10 hours",
                             Name = "Lamp",
                             Price = 11.11m,
-                            UserId = new Guid("3c156047-cb90-4063-9bfb-a63d5877c306")
+                            UserId = new Guid("07389218-fb2d-4a0e-94e6-9e23b70bb14d")
                         },
                         new
                         {
-                            Id = new Guid("e5d76e6a-1e3a-4507-85db-39c0d7189fcb"),
-                            CategoryId = new Guid("b69aaf33-c276-4bcf-9e03-bf46116a03e3"),
-                            DataCreate = new DateTime(2024, 4, 2, 15, 5, 56, 468, DateTimeKind.Utc).AddTicks(5462),
-                            DataUpdate = new DateTime(2024, 3, 30, 6, 5, 56, 468, DateTimeKind.Utc).AddTicks(5462),
+                            Id = new Guid("28b9823e-810c-40fb-ab83-1f7879acd0dd"),
+                            CategoryId = new Guid("3daff5eb-68de-4ab6-9a16-bf03c1cca491"),
+                            DataCreate = new DateTime(2024, 4, 2, 18, 5, 30, 862, DateTimeKind.Utc).AddTicks(8105),
+                            DataUpdate = new DateTime(2024, 3, 30, 9, 5, 30, 862, DateTimeKind.Utc).AddTicks(8105),
                             Description = "Rubber under your foot",
                             Name = "Slippers",
                             Price = 11.11m,
-                            UserId = new Guid("3c156047-cb90-4063-9bfb-a63d5877c306")
+                            UserId = new Guid("07389218-fb2d-4a0e-94e6-9e23b70bb14d")
                         },
                         new
                         {
-                            Id = new Guid("bb0adcea-28a3-4b2f-b05b-05a53b30b29f"),
-                            CategoryId = new Guid("122c1210-02bd-4a26-a847-7d6a13f2789f"),
-                            DataCreate = new DateTime(2024, 4, 3, 15, 5, 56, 468, DateTimeKind.Utc).AddTicks(5462),
-                            DataUpdate = new DateTime(2024, 4, 3, 14, 5, 56, 468, DateTimeKind.Utc).AddTicks(5462),
+                            Id = new Guid("4d0d1d48-646a-461c-a653-26a2654e1b4d"),
+                            CategoryId = new Guid("53360d33-b29b-4537-9b54-6092ed007215"),
+                            DataCreate = new DateTime(2024, 4, 3, 18, 5, 30, 862, DateTimeKind.Utc).AddTicks(8105),
+                            DataUpdate = new DateTime(2024, 4, 3, 17, 5, 30, 862, DateTimeKind.Utc).AddTicks(8105),
                             Description = "Description1",
                             Name = "Name1",
                             Price = 1.99m,
-                            UserId = new Guid("3c156047-cb90-4063-9bfb-a63d5877c306")
+                            UserId = new Guid("07389218-fb2d-4a0e-94e6-9e23b70bb14d")
                         },
                         new
                         {
-                            Id = new Guid("7527660d-90c8-4fec-932b-35d0407fbd25"),
-                            CategoryId = new Guid("3b0eb85c-1881-43c2-a1df-eb3b7054f063"),
-                            DataCreate = new DateTime(2024, 4, 2, 15, 5, 56, 468, DateTimeKind.Utc).AddTicks(5462),
-                            DataUpdate = new DateTime(2024, 4, 2, 13, 5, 56, 468, DateTimeKind.Utc).AddTicks(5462),
+                            Id = new Guid("5c6e80f4-bc80-4a39-86f6-5c2c76e2d6ce"),
+                            CategoryId = new Guid("80210cc8-e686-4a82-b1d9-85dad60f0a4c"),
+                            DataCreate = new DateTime(2024, 4, 2, 18, 5, 30, 862, DateTimeKind.Utc).AddTicks(8105),
+                            DataUpdate = new DateTime(2024, 4, 2, 16, 5, 30, 862, DateTimeKind.Utc).AddTicks(8105),
                             Description = "Description2",
                             Name = "Name2",
                             Price = 2.99m,
-                            UserId = new Guid("3c156047-cb90-4063-9bfb-a63d5877c306")
+                            UserId = new Guid("07389218-fb2d-4a0e-94e6-9e23b70bb14d")
                         },
                         new
                         {
-                            Id = new Guid("6c0b08c9-5de6-4d75-8835-4f64a6570ff0"),
-                            CategoryId = new Guid("4e85c7a5-ad1c-4717-81e3-0ba5a9b467ef"),
-                            DataCreate = new DateTime(2024, 4, 1, 15, 5, 56, 468, DateTimeKind.Utc).AddTicks(5462),
-                            DataUpdate = new DateTime(2024, 4, 1, 12, 5, 56, 468, DateTimeKind.Utc).AddTicks(5462),
+                            Id = new Guid("3930bc03-5406-4f30-b7ee-5c7d72d3235f"),
+                            CategoryId = new Guid("dc8130cd-b257-4738-92a3-0219728489b4"),
+                            DataCreate = new DateTime(2024, 4, 1, 18, 5, 30, 862, DateTimeKind.Utc).AddTicks(8105),
+                            DataUpdate = new DateTime(2024, 4, 1, 15, 5, 30, 862, DateTimeKind.Utc).AddTicks(8105),
                             Description = "Description3",
                             Name = "Name3",
                             Price = 3.99m,
-                            UserId = new Guid("3c156047-cb90-4063-9bfb-a63d5877c306")
+                            UserId = new Guid("07389218-fb2d-4a0e-94e6-9e23b70bb14d")
                         },
                         new
                         {
-                            Id = new Guid("1fee9896-7177-4807-b4d2-c8d309b88abf"),
-                            CategoryId = new Guid("6afd4706-6cd6-419b-8a56-7e8986339a5b"),
-                            DataCreate = new DateTime(2024, 3, 31, 15, 5, 56, 468, DateTimeKind.Utc).AddTicks(5462),
-                            DataUpdate = new DateTime(2024, 3, 31, 11, 5, 56, 468, DateTimeKind.Utc).AddTicks(5462),
+                            Id = new Guid("12a3908a-87c3-4efd-b106-e461ffc559b3"),
+                            CategoryId = new Guid("3daff5eb-68de-4ab6-9a16-bf03c1cca491"),
+                            DataCreate = new DateTime(2024, 3, 31, 18, 5, 30, 862, DateTimeKind.Utc).AddTicks(8105),
+                            DataUpdate = new DateTime(2024, 3, 31, 14, 5, 30, 862, DateTimeKind.Utc).AddTicks(8105),
                             Description = "Description4",
                             Name = "Name4",
                             Price = 4.99m,
-                            UserId = new Guid("3c156047-cb90-4063-9bfb-a63d5877c306")
+                            UserId = new Guid("07389218-fb2d-4a0e-94e6-9e23b70bb14d")
                         },
                         new
                         {
-                            Id = new Guid("0af5969f-f3aa-48b6-95d9-87c98de7d4a1"),
-                            CategoryId = new Guid("9c5d20af-ceab-4d57-9643-af5e259c37d9"),
-                            DataCreate = new DateTime(2024, 3, 30, 15, 5, 56, 468, DateTimeKind.Utc).AddTicks(5462),
-                            DataUpdate = new DateTime(2024, 3, 30, 10, 5, 56, 468, DateTimeKind.Utc).AddTicks(5462),
+                            Id = new Guid("87991b3d-3a75-421e-acc7-a61c29c64b90"),
+                            CategoryId = new Guid("2d70da78-8914-429c-846d-f862449e707f"),
+                            DataCreate = new DateTime(2024, 3, 30, 18, 5, 30, 862, DateTimeKind.Utc).AddTicks(8105),
+                            DataUpdate = new DateTime(2024, 3, 30, 13, 5, 30, 862, DateTimeKind.Utc).AddTicks(8105),
                             Description = "Description5",
                             Name = "Name5",
                             Price = 5.99m,
-                            UserId = new Guid("3c156047-cb90-4063-9bfb-a63d5877c306")
+                            UserId = new Guid("07389218-fb2d-4a0e-94e6-9e23b70bb14d")
                         },
                         new
                         {
-                            Id = new Guid("fce98e16-6837-4489-8b7b-e0385a772abf"),
-                            CategoryId = new Guid("3b0eb85c-1881-43c2-a1df-eb3b7054f063"),
-                            DataCreate = new DateTime(2024, 3, 29, 15, 5, 56, 468, DateTimeKind.Utc).AddTicks(5462),
-                            DataUpdate = new DateTime(2024, 3, 29, 9, 5, 56, 468, DateTimeKind.Utc).AddTicks(5462),
+                            Id = new Guid("09dcf1d5-3278-4a8a-b6d8-1d5cb05c6825"),
+                            CategoryId = new Guid("3c7020c7-837f-42ff-9b78-e98488de73ba"),
+                            DataCreate = new DateTime(2024, 3, 29, 18, 5, 30, 862, DateTimeKind.Utc).AddTicks(8105),
+                            DataUpdate = new DateTime(2024, 3, 29, 12, 5, 30, 862, DateTimeKind.Utc).AddTicks(8105),
                             Description = "Description6",
                             Name = "Name6",
                             Price = 6.99m,
-                            UserId = new Guid("3c156047-cb90-4063-9bfb-a63d5877c306")
+                            UserId = new Guid("07389218-fb2d-4a0e-94e6-9e23b70bb14d")
                         },
                         new
                         {
-                            Id = new Guid("86090135-979d-48f4-955a-89e574e782d1"),
-                            CategoryId = new Guid("9c5d20af-ceab-4d57-9643-af5e259c37d9"),
-                            DataCreate = new DateTime(2024, 3, 28, 15, 5, 56, 468, DateTimeKind.Utc).AddTicks(5462),
-                            DataUpdate = new DateTime(2024, 3, 28, 8, 5, 56, 468, DateTimeKind.Utc).AddTicks(5462),
+                            Id = new Guid("1c4bdda9-15f7-479d-8caf-e6bdf3e0656f"),
+                            CategoryId = new Guid("80210cc8-e686-4a82-b1d9-85dad60f0a4c"),
+                            DataCreate = new DateTime(2024, 3, 28, 18, 5, 30, 862, DateTimeKind.Utc).AddTicks(8105),
+                            DataUpdate = new DateTime(2024, 3, 28, 11, 5, 30, 862, DateTimeKind.Utc).AddTicks(8105),
                             Description = "Description7",
                             Name = "Name7",
                             Price = 7.99m,
-                            UserId = new Guid("3c156047-cb90-4063-9bfb-a63d5877c306")
+                            UserId = new Guid("07389218-fb2d-4a0e-94e6-9e23b70bb14d")
                         },
                         new
                         {
-                            Id = new Guid("33d69cca-3a72-4dfa-aa2b-4ebb52daa1bc"),
-                            CategoryId = new Guid("269fe930-0708-4335-bf2a-4683e3982045"),
-                            DataCreate = new DateTime(2024, 3, 27, 15, 5, 56, 468, DateTimeKind.Utc).AddTicks(5462),
-                            DataUpdate = new DateTime(2024, 3, 29, 7, 5, 56, 468, DateTimeKind.Utc).AddTicks(5462),
+                            Id = new Guid("286528d6-9230-45de-9bdb-2222773ea79f"),
+                            CategoryId = new Guid("12816644-226d-4d09-b7c9-5eb22fbcef4b"),
+                            DataCreate = new DateTime(2024, 3, 27, 18, 5, 30, 862, DateTimeKind.Utc).AddTicks(8105),
+                            DataUpdate = new DateTime(2024, 3, 29, 10, 5, 30, 862, DateTimeKind.Utc).AddTicks(8105),
                             Description = "Description8",
                             Name = "Name8",
                             Price = 8.99m,
-                            UserId = new Guid("3c156047-cb90-4063-9bfb-a63d5877c306")
+                            UserId = new Guid("07389218-fb2d-4a0e-94e6-9e23b70bb14d")
                         });
                 });
 
@@ -469,14 +469,14 @@ namespace Shop.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("3c156047-cb90-4063-9bfb-a63d5877c306"),
-                            DataCreate = new DateTime(2024, 3, 20, 15, 5, 56, 468, DateTimeKind.Utc).AddTicks(5462),
-                            DataUpdate = new DateTime(2024, 3, 25, 15, 5, 56, 468, DateTimeKind.Utc).AddTicks(5462),
+                            Id = new Guid("07389218-fb2d-4a0e-94e6-9e23b70bb14d"),
+                            DataCreate = new DateTime(2024, 3, 20, 18, 5, 30, 862, DateTimeKind.Utc).AddTicks(8105),
+                            DataUpdate = new DateTime(2024, 3, 25, 18, 5, 30, 862, DateTimeKind.Utc).AddTicks(8105),
                             Email = "admin@admin.com",
                             FirstName = "Admin",
                             LastName = "Admin",
-                            PasswordHash = "7cZOJ3nZdi5JwNerwfAUsRE0tTkuMc7s8/MT/aX8k50=",
-                            PasswordSalt = "DH+Zw+xih0R1To6pniGu2A=="
+                            PasswordHash = "UubpeFG2udOsIY6Kj3U7FxupJ87XR7d4prQ70XdrkBE=",
+                            PasswordSalt = "NCLWfu26Zto5EOevHDZn/g=="
                         });
                 });
 

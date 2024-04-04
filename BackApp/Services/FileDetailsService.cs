@@ -39,7 +39,7 @@ public class FileDetailsService<T> : IFileDetailsService<T> where T : FileDetail
 
     private void CheckAndCreateFolders()
     {
-        var filesPath = Path.Combine(_appEnvironment.ContentRootPath, NameFolderFiles);
+        var filesPath = Path.Combine( /*"..", "Data", */ NameFolderFiles);
         CreateFolderIfNotExists(filesPath);
 
         var picturesPath = Path.Combine(filesPath, NameFolderPictures);
@@ -85,7 +85,7 @@ public class FileDetailsService<T> : IFileDetailsService<T> where T : FileDetail
     {
         var fileDetails = new T();
 
-        var fileName = string.Concat(uploadedFile.FileName.Split('.')[0], "_", DateTime.UtcNow.Ticks.ToString(), uploadedFile.FileName.Split('.')[1]);
+        var fileName = string.Concat(uploadedFile.FileName.Split('.')[0], "_", DateTime.UtcNow.Ticks.ToString(), ".",  uploadedFile.FileName.Split('.')[1]);
 
         string path = GetPathForFile(uploadedFile, fileName);
 
