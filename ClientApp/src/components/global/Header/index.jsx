@@ -3,9 +3,11 @@ import style from "./style.module.css"
 import {
     CustomBucketModal
 } from "../CustomModals/CustomBucketModal";
+import { useSelector } from "react-redux";
 
 
 export const Header = () => {
+    const {isAuth}=useSelector(state=>state.auth)
 
     const [isBucketModal,setBucketModal]=useState(false)
     let openBucketModal=()=>{
@@ -21,6 +23,7 @@ export const Header = () => {
                 <div className={style.search}>
                     <input placeholder={"Enter the name..."} type="text"/>
                     <button>Search</button>
+                    {isAuth?<span>Welcome, Admin</span>:<span>Not authorized!</span>}
                 </div>
                 <div className={style.bucketButton}>
                     <button onClick={()=> {openBucketModal(true)}} >Bucket</button>

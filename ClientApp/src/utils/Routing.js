@@ -8,6 +8,7 @@ import MainPage from "../components/pages/Main/MainPage";
 import SalePage from "../components/pages/Sales/SalePage";
 import PaymentInfoPage from "../components/pages/PaymentInfo/PaymentInfoPage";
 import TestPage from "../components/pages/Test/TestPage";
+import Login from "../components/pages/Login/Login";
 
 
 export const routing = [
@@ -45,5 +46,9 @@ export const routing = [
     {
         path: 'catalog-redux',
         element: <CatalogRedux />
+    },
+    {
+        path: 'login',
+        element: <Login />
     }
     ];
