@@ -1,4 +1,8 @@
 import React , { useEffect , useState } from 'react';
+import { useDispatch } from "react-redux";
+import { login } from "../../../redux/auth.aciton";
+import axios from "axios";
+import { $apiUsers } from "../../../https";
 
 const testArr=[
     {id:1,name:"1",sub:[
@@ -54,20 +58,19 @@ const testGetPath=(arr,id)=>{
     }
 }
 const TestPage = ()=>{
-    /*const [var1,setVar1]=useState(1)*/
-    let var1 = 1;
-    const [{path,cat},setObject]=useState({path:null,cat:null})
-
-    useEffect ( ()=>{
-        let testObj=testGetPath(testArr,var1)
-          setObject(testObj)
-    } , [var1] );
-    console.log("render test")
+    const [test,setTest]=useState('')
+    const dispatch=useDispatch();
+    const save = ()=>{
+        dispatch(login({email:test,password:"123"}))
+    }
+    const users = ()=>{
+        $apiUsers.get()
+    }
     return (
         <div>
-            {path && path.map(el=><div>{el.name}</div>)}
-           {/* <button onClick={()=>{setVar1(32)}}> find</button>*/}
-            <button onClick={()=>{var1=32}}> find new </button>
+            <input type="text" value={test} onChange={(e)=>{setTest(e.currentTarget.value)}}/>
+            <button onClick={save}> find new </button>
+            <button onClick={users}>users</button>
         </div>
     );
 };

@@ -1,4 +1,4 @@
-import React , { useEffect } from 'react';
+import React , { useEffect , useState } from 'react';
 import st from './custom.module.css';
 import { NavLink, Route, Routes, useRoutes } from "react-router-dom";
 import { routing } from "./utils/Routing";
@@ -11,15 +11,21 @@ import {
 import {getAllItemsAndCategories } from "./redux/items.action";
 import { useDispatch , useSelector } from "react-redux";
 import CatalogModal from "./components/global/CustomModals/CatalogModal";
+import { setAuth } from "./redux/auth.slice";
+import LoginModal from "./components/global/CustomModals/LoginModal";
 
 
-
+const authChecker=(dispatch,isAuth)=>{
+    let token = localStorage.getItem('token')
+    if(token && !isAuth) dispatch(setAuth(true))
+    if(!token && isAuth) dispatch(setAuth(false))
+}
 const App = () => {
     
     const dispatch = useDispatch();
     useEffect ( ()=>{
-        
         dispatch(getAllItemsAndCategories())
+        
     } , [] );
     
     let routs = useRoutes(routing);
@@ -32,7 +38,15 @@ const App = () => {
     const id = open ? 'simple-popper' : undefined;
     
     const{isLoading}=useSelector(state=>state.item)
+    const{isAuth}=useSelector(state=>state.auth)
     console.log("render app")
+    authChecker(dispatch,isAuth);
+    //login modal
+    const [loginModalOpen,setLoginModalOpen]=useState(false);
+    useEffect ( ()=>{
+        if(isAuth&& loginModalOpen) setLoginModalOpen(false)
+    } , [isAuth] );
+    //login modal
     return (
         
              <div className={ st.appContainer }>
@@ -46,6 +60,8 @@ const App = () => {
                         <NavLink to={ "/contacts" }>Contact us</NavLink>
                         <NavLink to={ "/test" }>Test Page</NavLink>
                         <NavLink to={ "/catalog-redux" }>Cat redux</NavLink>
+                        <div style={{cursor:"pointer",color:"white"}} onClick={()=>{setLoginModalOpen(true)}}>Login</div>
+                        
                     </div>
 
                 </div>
@@ -59,6 +75,8 @@ const App = () => {
                  
 
                  <Footer/>
+
+                 <LoginModal isOpen={loginModalOpen} onClose={()=>{setLoginModalOpen(false)}}/>
              </div>
 
     );

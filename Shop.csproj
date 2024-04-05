@@ -41,6 +41,7 @@
 
   <ItemGroup>
     <Folder Include="BackApp\Models\ResponseModels\" />
+    <Folder Include="ClientApp\src\services\" />
     <Folder Include="Files\" />
   </ItemGroup>
 
