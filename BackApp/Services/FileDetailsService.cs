@@ -17,12 +17,12 @@ public class FileDetailsService<T> : IFileDetailsService<T> where T : FileDetail
     private readonly string[] _pictureExtensions = new[] { ".jpg", ".jpeg", ".png", ".gif", ".bmp" };
     private readonly string[] _videoExtensions = new[] { ".mp4", ".avi", ".mov", ".wmv", ".flv" };
 
-    IWebHostEnvironment _appEnvironment;
+    private readonly IConfiguration _configuration;
     private readonly IBaseRepository<FileDetails> _fileDetaisRepository;
 
-    public FileDetailsService(IWebHostEnvironment appEnvironment, IBaseRepository<FileDetails> fileDetaisRepository)
+    public FileDetailsService(IConfiguration configuration, IBaseRepository<FileDetails> fileDetaisRepository)
     {
-        _appEnvironment = appEnvironment;
+        _configuration = configuration;
         _fileDetaisRepository = fileDetaisRepository;
 
         CheckAndCreateFolders();
@@ -39,7 +39,7 @@ public class FileDetailsService<T> : IFileDetailsService<T> where T : FileDetail
 
     private void CheckAndCreateFolders()
     {
-        var filesPath = Path.Combine( /*"..", "Data", */ NameFolderFiles);
+        var filesPath = Path.Combine( "..", "Data",  NameFolderFiles);
         CreateFolderIfNotExists(filesPath);
 
         var picturesPath = Path.Combine(filesPath, NameFolderPictures);
@@ -59,7 +59,7 @@ public class FileDetailsService<T> : IFileDetailsService<T> where T : FileDetail
         }
     }
 
-    private string GetPathForFile(IFormFile uploadedFile, string id)
+    private string GetPathForFile(IFormFile uploadedFile, string fileName)
     {
         var extension = Path.GetExtension(uploadedFile.FileName).ToLower();
 
@@ -78,14 +78,15 @@ public class FileDetailsService<T> : IFileDetailsService<T> where T : FileDetail
             throw new UnsupportedFileException("Unsupported file type.");
         }
 
-        return Path.Combine(path, $"{id}{extension}");
+        return Path.Combine(path, $"{fileName}{extension}");
     }
 
     private async Task<T> UploadFile(IFormFile uploadedFile)
     {
+
         var fileDetails = new T();
 
-        var fileName = string.Concat(uploadedFile.FileName.Split('.')[0], "_", DateTime.UtcNow.Ticks.ToString(), ".",  uploadedFile.FileName.Split('.')[1]);
+        var fileName = string.Concat(uploadedFile.FileName.Split('.')[0], "_", DateTime.UtcNow.Ticks.ToString());
 
         string path = GetPathForFile(uploadedFile, fileName);
 
@@ -96,7 +97,11 @@ public class FileDetailsService<T> : IFileDetailsService<T> where T : FileDetail
                 await uploadedFile.CopyToAsync(fileStream);
             }
 
-            fileDetails.Path = path;
+            var domen = _configuration.GetSection("Domen").Value!;
+
+            var fileDetaisPath = path.Replace("..\\Data", domen);
+
+            fileDetails.Path = fileDetaisPath;
             fileDetails.Name = uploadedFile.FileName;
             fileDetails.Extension = Path.GetExtension(uploadedFile.FileName);
 

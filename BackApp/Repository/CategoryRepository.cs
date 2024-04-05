@@ -8,6 +8,11 @@ public class CategoryRepository : BaseRepository<Category>, ICategoryRepository
 {
     public CategoryRepository(DataContext context) : base(context) {}
 
+    public override async Task<IEnumerable<Category>> GetAllAsync()
+    {  
+        return await _dataContext.Categories.Include(_ => _.Categories).Include(_ => _.File).ToListAsync();
+    }
+
     public override async Task<Category?> GetAsync(Guid id)
     {
         return await _dataContext.Categories.Include(_ => _.Categories).Include(_ => _.File).FirstOrDefaultAsync(_ => _.Id == id);
@@ -18,3 +23,4 @@ public class CategoryRepository : BaseRepository<Category>, ICategoryRepository
         await _dataContext.SaveChangesAsync();
     }
 }
+ 
