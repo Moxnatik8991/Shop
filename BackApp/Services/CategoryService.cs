@@ -9,9 +9,11 @@ namespace Shop.BackApp.Services
     public class CategoryService : ICategoryService
     {
         private readonly ICategoryRepository _categoryRepository;
-        public CategoryService(ICategoryRepository categoryRepository)
+        private readonly IFileDetailsService<CategoryFileDetails> _fileDetailsService;
+        public CategoryService(ICategoryRepository categoryRepository, IFileDetailsService<CategoryFileDetails> fileDetailsService)
         {
             _categoryRepository = categoryRepository;
+            _fileDetailsService = fileDetailsService;
         }
 
         public async Task<IEnumerable<Category>> GetAllAsync()
@@ -39,12 +41,18 @@ namespace Shop.BackApp.Services
         {
             var newCategory = new Category
             {   
-                Id = Guid.NewGuid(),
                 Name = model.Name,
                 CategoryId = model.CategoryId,
                 DataCreate = DateTime.UtcNow,
                 DataUpdate = DateTime.UtcNow,
             };
+
+            if (model.File != null)
+            {
+                var fileDetailse = await _fileDetailsService.AddAsync(model.File);
+
+                newCategory.File = fileDetailse;
+            }
 
             await _categoryRepository.AddAsync(newCategory);
         }
@@ -62,6 +70,16 @@ namespace Shop.BackApp.Services
             category.CategoryId = model.CategoryId;
             category.DataUpdate = DateTime.UtcNow;
 
+            if (model.File != null)
+            {
+                var newFile = await _fileDetailsService.AddAsync(model.File);
+
+                if (category.File != null)
+                    category.File.Update(newFile);
+                else
+                    category.File = newFile;
+            }
+
             await _categoryRepository.UpdateAsync(category);
         }
 
@@ -72,6 +90,11 @@ namespace Shop.BackApp.Services
             if (category == null)
             {
                 throw new NotFoundException(nameof(Category));
+            }
+
+            if(category.Categories != null && category.Categories.Count() > 0)
+            {
+                throw new CustomException("Remove child categories first!");
             }
 
             await _categoryRepository.DeleteAsync(id);

@@ -1,9 +1,12 @@
-﻿namespace Shop.BackApp.Domain.Entity
+﻿namespace Shop.BackApp.Domain.Entity;
+
+public class Category : BaseEntity
 {
-    public class Category : BaseEntity
-    {
-        public string Name { get; set; }
-        public Guid? CategoryId { get; set; }
-        public List<Category> Categories { get; set; }
-    }
+    public string? Name { get; set; }
+    public Guid? CategoryId { get; set; }
+    public List<Category>? Categories { get; set; }
+    public CategoryFileDetails? File { get; set; }
+
+
 }
+

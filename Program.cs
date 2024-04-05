@@ -108,7 +108,7 @@ builder.Services.AddScoped(typeof(ITokenService), typeof(TokenService));
 builder.Services.AddScoped(typeof(IProductService), typeof(ProductService));
 builder.Services.AddScoped(typeof(ICategoryService), typeof(CategoryService));
 builder.Services.AddScoped(typeof(ICommentService), typeof(CommentService));
-builder.Services.AddScoped(typeof(IFileDetailsService), typeof(FileDetailsService));
+builder.Services.AddScoped(typeof(IFileDetailsService<>), typeof(FileDetailsService<>));
 
 var app = builder.Build();
 

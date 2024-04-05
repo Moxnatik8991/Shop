@@ -2,8 +2,8 @@
 
 namespace Shop.BackApp.Services.Interfaces
 {
-    public interface IFileDetailsService
+    public interface IFileDetailsService<T>
     {
-        Task AddAsync(FileDetails model);
+         Task<T> AddAsync(IFormFile uploadedFile);
     }
 }

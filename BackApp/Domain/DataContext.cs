@@ -2,6 +2,7 @@
 using Shop.BackApp.Domain.Entity;
 using Shop.BackApp.Helpers;
 using System;
+using System.Numerics;
 
 namespace Shop.BackApp.Domain
 {
@@ -22,6 +23,8 @@ namespace Shop.BackApp.Domain
         public DbSet<Category> Categories { get; set; }
         public DbSet<Comment> Comments { get; set; }
         public DbSet<FileDetails> FileDetails { get; set; }
+        public DbSet<CategoryFileDetails> CategoryFileDetails { get; set; }
+        public DbSet<ProductFileDetailse> ProductFileDetails { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -30,12 +33,23 @@ namespace Shop.BackApp.Domain
                 .WithOne()
                 .HasPrincipalKey(e => e.Id)
                 .HasForeignKey(e => e.CategoryId)
-                .OnDelete(DeleteBehavior.ClientSetNull);
+                .OnDelete(DeleteBehavior.ClientCascade);
 
-            //modelBuilder.Entity<Product>()
-            //    .HasMany(_ => _.Comments)
-            //    .WithOne();
+            modelBuilder.Entity<Category>()
+                .HasOne(_ => _.File)
+                .WithOne()
+                .HasPrincipalKey<Category>(_ => _.Id)
+                .HasForeignKey<CategoryFileDetails>(_ => _.CategoryId)
+                .IsRequired(false)
+                .OnDelete(DeleteBehavior.Cascade);
 
+            modelBuilder.Entity<Product>()
+                .HasMany(_ => _.Files)
+                .WithOne()
+                .HasPrincipalKey(_ => _.Id)
+                .HasForeignKey(_ => _.ProductId)
+                .IsRequired(false)
+                .OnDelete(DeleteBehavior.Cascade);
 
             base.OnModelCreating(modelBuilder);
             Seed(modelBuilder);

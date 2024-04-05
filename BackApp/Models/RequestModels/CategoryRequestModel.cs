@@ -8,5 +8,8 @@ namespace Shop.BackApp.Models.RequestModels
         public string Name { get; set; }
 
         public Guid? CategoryId { get; set; } = null;
+
+
+        public IFormFile? File { get; set; }
     }
 }
