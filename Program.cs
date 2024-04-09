@@ -4,6 +4,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Serilog;
+using Shop.BackApp.BackgroundJobs;
+using Shop.BackApp.BackgroundJobs.Interfaces;
 using Shop.BackApp.Domain;
 using Shop.BackApp.Middleware;
 using Shop.BackApp.Repository;
@@ -12,6 +14,7 @@ using Shop.BackApp.Services;
 using Shop.BackApp.Services.Interfaces;
 using System.Reflection;
 using System.Text;
+using System.Xml.Linq;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -104,6 +107,7 @@ builder.Services.AddHangfire(configuration => configuration
     .UseSqlServerStorage(builder.Configuration.GetConnectionString("DefaultConnection")));
 builder.Services.AddHangfireServer();
 
+
 builder.Services.AddScoped(typeof(DbContext), typeof(DataContext));
 builder.Services.AddScoped(typeof(IBaseRepository<>), typeof(BaseRepository<>));
 builder.Services.AddScoped(typeof(IUserRepository), typeof(UserRepository));
@@ -118,6 +122,11 @@ builder.Services.AddScoped(typeof(IProductService), typeof(ProductService));
 builder.Services.AddScoped(typeof(ICategoryService), typeof(CategoryService));
 builder.Services.AddScoped(typeof(ICommentService), typeof(CommentService));
 builder.Services.AddScoped(typeof(IFileDetailsService<>), typeof(FileDetailsService<>));
+
+builder.Services.AddSingleton<StartBackgroundJobs>();
+builder.Services.AddSingleton<IProductJobs, ProductJobs>();
+
+builder.Services.AddHostedService<StartBackgroundJobs>();
 
 var logger = new LoggerConfiguration()
   .ReadFrom.Configuration(builder.Configuration)
@@ -136,7 +145,6 @@ app.UseSwaggerUI();
 if (!app.Environment.IsDevelopment())
 {
 }
-
 
 
 app.UseStaticFiles();
@@ -160,5 +168,6 @@ app.MapControllerRoute(
     pattern: "{controller}/{action=Index}/{id?}");
 
 app.MapFallbackToFile("index.html");
+
 
 app.Run();

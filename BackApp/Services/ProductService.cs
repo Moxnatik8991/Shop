@@ -7,15 +7,18 @@ using Shop.BackApp.Helpers.FilteringAndPagination;
 using Shop.BackApp.Services.Interfaces;
 using Shop.BackApp.Domain.Entity;
 using Shop.BackApp.Repository.Interfaces;
+using Shop.BackApp.BackgroundJobs.Interfaces;
 
 namespace Shop.BackApp.Services
 {
     public class ProductService : IProductService
     {
         private readonly IProductRepository _productRepository;
-        public ProductService(IProductRepository productRepository)
+        private readonly IProductJobs _productJobs;
+        public ProductService(IProductRepository productRepository, IProductJobs productJobs)
         {
             _productRepository = productRepository;
+            _productJobs = productJobs;
         }
 
         public async Task<IEnumerable<Product>> GetAllAsync()
@@ -105,7 +108,12 @@ namespace Shop.BackApp.Services
 
         public async Task<Product> GetAsync(Guid id)
         {
-            return await _productRepository.GetAsync(id);
+            var product = await _productRepository.GetAsync(id);
+
+            if (product != null)
+                await _productJobs.AddViews(product.Id);
+
+            return product;
         }
     }
 }

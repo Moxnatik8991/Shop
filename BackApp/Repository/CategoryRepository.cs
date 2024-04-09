@@ -17,10 +17,5 @@ public class CategoryRepository : BaseRepository<Category>, ICategoryRepository
     {
         return await _dataContext.Categories.Include(_ => _.Categories).Include(_ => _.File).FirstOrDefaultAsync(_ => _.Id == id);
     }
-
-    public override async Task UpdateAsync(Category entity)
-    {
-        await _dataContext.SaveChangesAsync();
-    }
 }
  

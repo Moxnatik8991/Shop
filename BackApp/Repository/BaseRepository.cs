@@ -32,13 +32,16 @@ namespace Shop.BackApp.Repository
         }
         public virtual async Task UpdateAsync(T entity)
         {
-            var entity2 = await _dataContext.Set<T>().FirstOrDefaultAsync(_ => _.Id == entity.Id);
+            await _dataContext.SaveChangesAsync();
 
-            if (entity2 != null)
-            {
-                entity = entity2;
-                await _dataContext.SaveChangesAsync();
-            }
+
+            //var entity2 = await _dataContext.Set<T>().FirstOrDefaultAsync(_ => _.Id == entity.Id);
+
+            //if (entity2 != null)
+            //{
+            //    entity = entity2;
+            //    await _dataContext.SaveChangesAsync();
+            //}
         }
 
         public virtual async Task DeleteAsync(Guid id)
