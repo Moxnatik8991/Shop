@@ -17,9 +17,9 @@ namespace Shop.BackApp.BackgroundJobs
             var _productJobs = _serviceProvider.GetService<IProductJobs>();
 
             RecurringJob.AddOrUpdate(
-                "UpdatingProducts", // Уникальное имя задачи
+                "UpdatingProducts",
                 () => _productJobs.UpdatingProducts(), 
-                Cron.Hourly(5));
+                Cron.Hourly());
 
             return Task.CompletedTask;
         }
@@ -30,6 +30,4 @@ namespace Shop.BackApp.BackgroundJobs
             return Task.CompletedTask;
         }
     }
-
-
 }

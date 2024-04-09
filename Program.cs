@@ -125,6 +125,7 @@ builder.Services.AddScoped(typeof(IFileDetailsService<>), typeof(FileDetailsServ
 
 builder.Services.AddSingleton<StartBackgroundJobs>();
 builder.Services.AddSingleton<IProductJobs, ProductJobs>();
+builder.Services.AddSingleton<IProductJobsStorage, ProductJobsStorage>();
 
 builder.Services.AddHostedService<StartBackgroundJobs>();
 

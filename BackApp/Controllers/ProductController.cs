@@ -62,7 +62,7 @@ public class ProductController
     [HttpGet("{id}")]
     public async Task<BaseResponseModel<Product>> Get(Guid id)
     {
-        var product = await _productServices.GetAsync(id);
+        var product = await _productServices.GetAsync(id, true);
 
         var response = new BaseResponseModel<Product>();
         response.SetSuccessResponse(product);

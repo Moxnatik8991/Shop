@@ -5,20 +5,20 @@ using Shop.BackApp.Services.Interfaces;
 namespace Shop.BackApp.BackgroundJobs;
 public class ProductJobs : IProductJobs
 {
-    private readonly Dictionary<Guid, ProductСhanges> _productСhanges;
-
     private readonly IServiceProvider _serviceProvider;
-    public ProductJobs(IServiceProvider serviceProvider)
+    private readonly IProductJobsStorage _productJobsStorage;
+    private readonly Dictionary<Guid, ProductСhanges> _productСhanges;
+    public ProductJobs(IServiceProvider serviceProvider, IProductJobsStorage productJobsStorage)
     {
-        if (_productСhanges == null)
-            _productСhanges = new();
-
         _serviceProvider = serviceProvider;
+        _productJobsStorage = productJobsStorage;
+
+        _productСhanges = _productJobsStorage.GetProductСhanges();
     }
 
     public async Task UpdatingProducts()
     {
-        if (_productСhanges == null && _productСhanges.Count() < 1)
+        if (_productСhanges == null || _productСhanges.Count() < 1)
             return;
 
         try
@@ -38,7 +38,10 @@ public class ProductJobs : IProductJobs
                 if (item.Value.IsRating)
                     await UpdateProductRating(product/*, _commentService*/);
 
+                await _productService.SaveChangesAsync();
 
+
+                _productJobsStorage.DeleteProductСhanges(item.Key);
             }
 
 
@@ -56,20 +59,7 @@ public class ProductJobs : IProductJobs
         product.Rating = (decimal) product.Comments.Select(_ => _.Rating).ToArray().Average();
     }
 
-    public async Task AddViews(Guid productId)
-    {
-        _productСhanges.TryGetValue(productId, out var productСhanges);
 
-        if (productСhanges == null)
-        {
-            _productСhanges.Add(productId, new ProductСhanges() { Views = 1});
-        }
-        else
-        {
-            productСhanges.Views += 1;
-            _productСhanges[productId] = productСhanges;
-        }
-    }
 }
 
 public class ProductСhanges

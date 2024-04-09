@@ -2,8 +2,6 @@
 {
     public interface IProductJobs
     {
-        Task AddViews(Guid productId);
-
         Task UpdatingProducts();
     }
 }

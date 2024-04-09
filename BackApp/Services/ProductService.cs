@@ -8,17 +8,19 @@ using Shop.BackApp.Services.Interfaces;
 using Shop.BackApp.Domain.Entity;
 using Shop.BackApp.Repository.Interfaces;
 using Shop.BackApp.BackgroundJobs.Interfaces;
+using Shop.BackApp.Models.RequestModels;
+using Shop.BackApp.Repository;
 
 namespace Shop.BackApp.Services
 {
     public class ProductService : IProductService
     {
         private readonly IProductRepository _productRepository;
-        private readonly IProductJobs _productJobs;
-        public ProductService(IProductRepository productRepository, IProductJobs productJobs)
+        private readonly IProductJobsStorage _productJobsStorage;
+        public ProductService(IProductRepository productRepository, IProductJobsStorage productJobsStorage)
         {
             _productRepository = productRepository;
-            _productJobs = productJobs;
+            _productJobsStorage = productJobsStorage;
         }
 
         public async Task<IEnumerable<Product>> GetAllAsync()
@@ -106,14 +108,24 @@ namespace Shop.BackApp.Services
         }
 
 
-        public async Task<Product> GetAsync(Guid id)
+        public async Task<Product> GetAsync(Guid id, bool isView = false)
         {
             var product = await _productRepository.GetAsync(id);
 
-            if (product != null)
-                await _productJobs.AddViews(product.Id);
+            if (isView && product != null)
+                await _productJobsStorage.AddViews(product.Id);
 
             return product;
         }
+
+        public async Task SaveChangesAsync()
+        {
+            await _productRepository.UpdateAsync(new Product());
+        }
+
+        //public async Task UpdateAsync(Guid id, ProductRequestModel model)
+        //{
+        //   await _productRepository.UpdateAsync(id, new Product());
+        //}
     }
 }
