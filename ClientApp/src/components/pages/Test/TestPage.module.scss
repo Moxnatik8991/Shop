@@ -1,0 +1,19 @@
+.fileInp{
+  .fileLabel{
+    padding: 8px;
+    border-radius: 15px;
+    border: 1px solid black;
+    color: black;
+    box-shadow: 0 0 5px  gray;
+    width: fit-content;
+    cursor: pointer;
+    input{
+      width: 0.1px;
+      height: 0.1px;
+      opacity: 0;
+      overflow: hidden;
+      position: absolute;
+
+    }
+  }
+}

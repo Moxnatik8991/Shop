@@ -1,0 +1,138 @@
+.categories{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    .name{
+        text-align: center;
+        font-size: 24px;
+        font-weight: bolder;
+    }
+    .items{
+        display: flex;
+        flex-direction: column;
+        .item{
+            padding-left: 20px;
+            padding-top: 10px;
+            button{
+                border: none;
+                background: none;
+            }
+            span:hover{
+                cursor: pointer;
+            }
+        }
+    }
+    
+}
+.formBl{
+    display: flex;
+    flex-direction: column;
+    button{
+      background: none;
+      border: 2px solid black;
+      border-radius: 10px;
+      outline: none;
+      padding: 10px;
+    }
+    .navButtons{
+        display: flex;
+        gap: 10%;
+        place-content: center;
+        padding: 10px;
+        button{
+            outline: none;
+            background: none;
+            border-radius: 10px;
+            
+        }
+        .createB {
+            border: 3px solid lawngreen;
+            &:hover{
+                box-shadow: 0 0 20px lawngreen;
+            }
+        }
+        .updateB {
+            border: 3px solid orange;
+            &:hover{
+                box-shadow: 0 0 20px orange;
+            }
+        }
+        .deleteB {
+            border: 3px solid red;
+            &:hover{
+                box-shadow: 0 0 20px red;
+            }
+        }
+    }
+    form{
+        display: flex;
+        gap: 20px;
+        flex-direction: column;
+        flex: 1;
+        div{
+            display: grid;
+            grid-template-columns: 150px 1fr 1fr;
+            position: relative;
+            span{
+                color: black;
+                font-size: 20px;
+            }
+            .errorMes{
+
+                color: red;
+                left: 70%;
+            }
+            input{
+                max-width: 90%;
+                background: none;
+                border-style: none none solid none;
+                border-color: black;
+                border-width: 1px;
+                outline: none;
+                
+            }
+            input:-webkit-autofill,
+            input:-webkit-autofill:focus {
+                transition: background-color 0s 600000s, color 0s 600000s !important;
+            }
+            .errInp{
+                max-width: 90%;
+                background: none  !important;
+                border-style: none none solid none;
+                border-color: red;
+                border-width: 1px;
+                outline: none;
+            }
+        }
+        .fileInp{
+            .fileLabel{
+                padding: 8px;
+                border-radius: 15px;
+                border: 1px solid black;
+                color: black;
+                box-shadow: 0 0 5px  gray;
+                width: fit-content;
+                height: max-content;
+                cursor: pointer;
+                input{
+                    width: 0.1px;
+                    height: 0.1px;
+                    opacity: 0;
+                    overflow: hidden;
+                    position: absolute;
+
+                }
+            }
+            img{
+                border-radius: 15px;
+                max-width: 60%;
+                max-height: 150px;
+                place-self: center;
+            }
+        }
+        button{
+            width: 20%;
+        }
+    }
+
+}

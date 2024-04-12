@@ -1,10 +1,10 @@
 import axios from "axios";
 
 
-const BASE_URL = "http://localhost:2222/api/Auth" 
+const BASE_URL = "http://localhost:2222/api/Auth"
 const $api = axios.create({
-    
-    baseURL:BASE_URL
+
+        baseURL:BASE_URL
     }
 )
 
@@ -35,6 +35,25 @@ export const ApiCategory = {
         let result = (await $apiCategory.get(`Get/${id}`)).data.result
         return result
     },
-    
-    
+    addNew: async (data)=>{
+        let result = (await $apiCategory.post(`Add`,data)).data.isSuccess
+        return result
+    },
+    change: async (id,data)=>{
+        try {
+            let result = await $apiCategory.put(`Put/${id}`,data)
+            return result.data
+        }catch (error){
+            return    error.response.data
+        }
+    },
+    delete: async (id)=>{
+        try {
+            let result = await $apiCategory.delete(`Delete/${id}`)
+            return result.data
+        }catch (error){
+         return    error.response.data
+        }
+    },
+
 }

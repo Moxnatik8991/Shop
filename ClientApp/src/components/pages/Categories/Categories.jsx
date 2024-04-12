@@ -27,7 +27,7 @@ const Categories = ()=>{
                 
                 <div className="subCatBlock">
                     { currentCategory?.categories && currentCategory.categories.map ( el=>
-                        <Category name={el.name} id={el.id}/>)
+                        <Category name={el.name} id={el.id} file={el.file}/>)
                         }
                 </div>
                 
