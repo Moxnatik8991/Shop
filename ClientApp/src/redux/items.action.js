@@ -2,10 +2,10 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
 const getI=()=>{
-    return  axios.get("http://localhost:2222/api/Product/GetAll")
+    return axios.get("http://5iaf6t.realhost-free.net/api/Product/GetAll")
 }
 const getC=()=>{
-    return  axios.get("http://localhost:2222/api/Category/GetAll")
+    return axios.get("http://5iaf6t.realhost-free.net/api/Category/GetAll")
 }
 
 export const getAllItemsAndCategories = createAsyncThunk(

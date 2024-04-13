@@ -43,6 +43,8 @@ builder.Services.AddSwaggerGen(options =>
         // }
     });
 
+
+
     options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
     {
         In = ParameterLocation.Header,
@@ -72,6 +74,27 @@ builder.Services.AddSwaggerGen(options =>
     options.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, xmlFilename));
 });
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("LocalHeaders", builder =>
+    {
+        builder
+            .AllowAnyHeader()
+            .AllowCredentials()
+            .WithMethods("GET", "POST", "PUT", "DELETE")
+            .WithOrigins( "http://localhost:4444", "http://localhost:2222", "http://5iaf6t.realhost-free.net");
+    });
+
+    options.AddPolicy("ProdHeaders", builder =>
+    {
+        builder
+            .AllowAnyHeader()
+            .AllowCredentials()
+            .WithMethods("GET", "POST", "PUT", "DELETE")
+            .WithOrigins("http://localhost:4444/", "http://localhost:2222/",  "http://5iaf6t.realhost-free.net/");
+    });
+});
+
 builder.Services.AddAuthentication().AddJwtBearer(options =>
 {
     options.TokenValidationParameters = new TokenValidationParameters
@@ -84,16 +107,7 @@ builder.Services.AddAuthentication().AddJwtBearer(options =>
     };
 });
 
-//builder.Services.AddCors(options =>
-//{
-//    options.AddPolicy("AllowAll",
-//        builder =>
-//        {
-//            builder.AllowAnyOrigin()
-//                   .AllowAnyMethod()
-//                   .AllowAnyHeader();
-//        });
-//});
+
 
 builder.Services.AddDbContext<DataContext>(_ => 
 {
@@ -139,24 +153,34 @@ builder.Logging.AddSerilog(logger);
 
 var app = builder.Build();
 
+
+//app.UseCors(builder =>
+//    builder
+//    .AllowAnyHeader()
+//    .AllowCredentials()
+//    .WithMethods("GET", "POST", "PUT", "DELETE")
+//    .WithOrigins("http://localhost:4444/", "http://localhost:4444", "http://localhost:2222/", "http://localhost:2222", "http://5iaf6t.realhost-free.net/"));
+
 app.UseSwagger();
 app.UseSwaggerUI();
+
+
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
+    app.UseCors("ProdHeaders");
 }
+else
+{
 
+    app.UseCors("LocalHeaders");
+}
 
 app.UseStaticFiles();
 app.UseRouting();
 
-app.UseCors(builder =>
-        builder
-        .WithOrigins("http://localhost:4444", "http://localhost:2222")
-        //.AllowAnyOrigin()
-        .AllowAnyMethod()
-        .AllowAnyHeader());
+
 
 app.UseMiddleware<ExceptionHandlingMiddleware>();
 

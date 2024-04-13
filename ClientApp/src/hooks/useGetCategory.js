@@ -5,12 +5,12 @@ import axios from "axios";
 
 
 const getItemById= async (itemId)=>{
-    let result = ( await axios.get ( `http://localhost:2222/api/Product/Get/${ itemId }` )).data.result
+    let result = (await axios.get( `http://5iaf6t.realhost-free.net/api/Product/Get/${ itemId }` )).data.result
     return result
 }
 const getItemsByCategory= async (catId)=>{
     let testUrl= encodeURIComponent(`[{"id": "categoryId", "value": "${catId}"}]`);
-    let result = ( await axios.get(`http://localhost:2222/api/Product/GetWithFilteringAndPagination?ColumnFilters=${ testUrl }`)).data.result
+    let result = (await axios.get(`http://5iaf6t.realhost-free.net/api/Product/GetWithFilteringAndPagination?ColumnFilters=${ testUrl }`)).data.result
     return result
 }
 const testGetPathAdnCat=(arr,id)=>{

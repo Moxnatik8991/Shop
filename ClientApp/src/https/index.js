@@ -1,7 +1,7 @@
 import axios from "axios";
 
 
-const BASE_URL = "http://localhost:2222/api/Auth"
+const BASE_URL = "https://5iaf6t.realhost-free.net/api/Auth"
 const $api = axios.create({
 
         baseURL:BASE_URL
@@ -10,7 +10,7 @@ const $api = axios.create({
 
 export default $api;
 
-const baseUrl = "http://localhost:2222/api/User/Get"
+const baseUrl = "https://5iaf6t.realhost-free.net/api/User/Get"
 export const $apiUsers= axios.create({
     baseURL: baseUrl
 })
@@ -20,7 +20,7 @@ $apiUsers.interceptors.request.use((config)=>{
 })
 
 
-const BASE_URL_CATEGORY = "http://localhost:2222/api/Category/";
+const BASE_URL_CATEGORY = "https://5iaf6t.realhost-free.net/api/Category/";
 export const $apiCategory = axios.create(
     {
         baseURL: BASE_URL_CATEGORY
