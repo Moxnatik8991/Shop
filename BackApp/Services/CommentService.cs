@@ -1,6 +1,7 @@
-﻿using Shop.BackApp.Domain.Entity;
+﻿using Shop.BackApp.BackgroundJobs.Interfaces;
+using Shop.BackApp.Domain.Entity;
+using Shop.BackApp.Middleware.Exceptions;
 using Shop.BackApp.Models.RequestModels;
-using Shop.BackApp.Repository;
 using Shop.BackApp.Repository.Interfaces;
 using Shop.BackApp.Services.Interfaces;
 
@@ -9,9 +10,14 @@ namespace Shop.BackApp.Services
     public class CommentService : ICommentService
     {
         private readonly ICommentRepository _commentRepository;
-        public CommentService(ICommentRepository commentRepository)
+        private readonly IProductRepository _productRepository;
+
+        private readonly IProductJobsStorage _productJobsStorage;
+        public CommentService(ICommentRepository commentRepository, IProductJobsStorage productJobsStorage, IProductRepository productRepository)
         {
             _commentRepository = commentRepository;
+            _productJobsStorage = productJobsStorage;
+            _productRepository = productRepository;
         }
         public async Task<IEnumerable<Comment>> GetAllAsync()
         {
@@ -25,6 +31,13 @@ namespace Shop.BackApp.Services
 
         public async Task AddAsync(CommentRequestModel model)
         {
+            var product = await _productRepository.GetAsync(model.ProductId);
+
+            if (product == null)
+            {
+                throw new NotFoundException(nameof(Product));
+            }
+
             var newComment = new Comment
             {
                 Id = Guid.NewGuid(),
@@ -37,6 +50,7 @@ namespace Shop.BackApp.Services
             };
 
             await _commentRepository.AddAsync(newComment);
+            await _productJobsStorage.IsUpdRating(model.ProductId);
         }
 
         public async Task DeleteAsync(Guid id)
