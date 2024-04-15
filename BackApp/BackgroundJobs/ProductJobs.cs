@@ -1,5 +1,6 @@
 ﻿using Shop.BackApp.BackgroundJobs.Interfaces;
 using Shop.BackApp.Domain.Entity;
+using Shop.BackApp.Repository.Interfaces;
 using Shop.BackApp.Services.Interfaces;
 
 namespace Shop.BackApp.BackgroundJobs;
@@ -23,22 +24,26 @@ public class ProductJobs : IProductJobs
 
         try
         {
-            var _productService = _serviceProvider.GetService<IProductService>();
-            //var _commentService = _serviceProvider.GetService<ICommentService>();
+            var _productRepository = _serviceProvider.GetService<IProductRepository>();
+            var _commentRepository = _serviceProvider.GetService<ICommentRepository>();
 
             foreach (var item in _productСhanges)
             {
-                var product = await _productService.GetAsync(item.Key);
+                var product = await _productRepository.GetAsync(item.Key);
 
                 if (product == null) continue;
 
-                if (item.Value.Views != uint.MinValue)
-                    await UpdateProductViews(product, item.Value.Views);
+                if (item.Value.CountViews != uint.MinValue)
+                    await UpdateProductViews(product, item.Value.CountViews);
 
-                if (item.Value.IsRating)
-                    await UpdateProductRating(product/*, _commentService*/);
+                if (item.Value.IsUpdateRating)
+                {
+                    var comments = await _commentRepository.GetCommentsByProductIdAsync(product.Id);
 
-                await _productService.SaveChangesAsync();
+                    await UpdateProductRating(product, comments);
+                }
+
+                await _productRepository.UpdateAsync(product);
 
 
                 _productJobsStorage.DeleteProductСhanges(item.Key);
@@ -51,21 +56,29 @@ public class ProductJobs : IProductJobs
 
     private async Task UpdateProductViews (Product product, uint views)
     {
-        product.Views += views;
+        product.CountViews += views;
     }
 
-    private async Task UpdateProductRating(Product product/*, ICommentService _commentService*/)
+    private async Task UpdateProductRating(Product product, IEnumerable<Comment>? comments)
     {
-        product.Rating = (decimal) product.Comments.Select(_ => _.Rating).ToArray().Average();
+        if (comments != null)
+        {
+
+            product.Rating = (decimal)comments.Select(_ => _.Rating).ToArray().Average();
+            product.CountComments = (uint)comments.Count();
+        }
+        else
+        {
+            product.Rating = 0;
+            product.CountComments = 0;
+        }
     }
-
-
 }
 
 public class ProductСhanges
 {
-    public uint Views { get; set; } = uint.MinValue;
+    public uint CountViews { get; set; } = uint.MinValue;
 
-    public bool IsRating {  get; set; } = false;
+    public bool IsUpdateRating {  get; set; } = false;
 }
 

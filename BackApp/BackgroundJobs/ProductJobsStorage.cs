@@ -16,11 +16,11 @@ public class ProductJobsStorage : IProductJobsStorage
 
         if (productСhanges == null)
         {
-            _productСhanges.Add(productId, new ProductСhanges() { Views = 1 });
+            _productСhanges.Add(productId, new ProductСhanges() { CountViews = 1 });
         }
         else
         {
-            productСhanges.Views += 1;
+            productСhanges.CountViews += 1;
             _productСhanges[productId] = productСhanges;
         }
     }
@@ -31,11 +31,11 @@ public class ProductJobsStorage : IProductJobsStorage
 
         if (productСhanges == null)
         {
-            _productСhanges.Add(productId, new ProductСhanges() { IsRating = true });
+            _productСhanges.Add(productId, new ProductСhanges() { IsUpdateRating = true });
         }
         else
         {
-            productСhanges.IsRating = true;
+            productСhanges.IsUpdateRating = true;
             _productСhanges[productId] = productСhanges;
         }
     }

@@ -4,7 +4,8 @@ public class Product : BaseEntity
     public string? Name { get; set; }
     public string? Description { get; set; }
     public decimal Price { get; set; }
-    public uint Views { get; set; } = uint.MinValue;
+    public uint CountViews { get; set; } = uint.MinValue;
+    public uint CountComments { get; set; } = uint.MinValue;
     public decimal Rating { get; set; } = 0;
     public Guid CategoryId { get; set; }
     public Guid UserId { get; set; }

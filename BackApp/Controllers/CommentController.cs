@@ -37,6 +37,29 @@ namespace Shop.BackApp.Controllers
         }
 
         [HttpGet("{id}")]
+        public async Task<BaseResponseModel<IEnumerable<Comment>>> GetCommentsByProductId(Guid id)
+        {
+            var categories = await _commentServices.GetCommentsByProductIdAsync(id);
+
+            var response = new BaseResponseModel<IEnumerable<Comment>>();
+
+            response.SetSuccessResponse(categories);
+
+            return response;
+        }
+
+        [HttpPut("{id}")]
+        public async Task<BaseResponseModel<string>> Put(Guid id, [FromForm] CommentRequestModel model)
+        {
+            await _commentServices.UpdateAsync(id, model);
+
+            var response = new BaseResponseModel<string>();
+            response.SetSuccessResponse();
+
+            return response;
+        }
+
+        [HttpGet("{id}")]
         public async Task<BaseResponseModel<Comment>> Get(Guid id)
         {
             var comment = await _commentServices.GetAsync(id);

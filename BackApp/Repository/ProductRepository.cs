@@ -11,7 +11,7 @@ namespace Shop.BackApp.Repository
 
         public override async Task<Product?> GetAsync(Guid id)
         {
-            return await _dataContext.Products.Include(_ => _.Comments.OrderBy(_ => _.DataCreate)).FirstOrDefaultAsync(_ => _.Id == id);
+            return await _dataContext.Products.FirstOrDefaultAsync(_ => _.Id == id);
         }
     }
 }

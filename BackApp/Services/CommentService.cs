@@ -2,6 +2,7 @@
 using Shop.BackApp.Domain.Entity;
 using Shop.BackApp.Middleware.Exceptions;
 using Shop.BackApp.Models.RequestModels;
+using Shop.BackApp.Repository;
 using Shop.BackApp.Repository.Interfaces;
 using Shop.BackApp.Services.Interfaces;
 
@@ -21,7 +22,12 @@ namespace Shop.BackApp.Services
         }
         public async Task<IEnumerable<Comment>> GetAllAsync()
         {
-           return await  _commentRepository.GetAllAsync();
+           return await _commentRepository.GetAllAsync();
+        }
+
+        public async Task<IEnumerable<Comment>> GetCommentsByProductIdAsync(Guid productId)
+        {
+            return await _commentRepository.GetCommentsByProductIdAsync(productId);
         }
 
         public async Task<Comment?> GetAsync(Guid id)
@@ -53,10 +59,34 @@ namespace Shop.BackApp.Services
             await _productJobsStorage.IsUpdRating(model.ProductId);
         }
 
-        public async Task DeleteAsync(Guid id)
+        public async Task UpdateAsync(Guid id, CommentRequestModel model)
         {
-             await _commentRepository.DeleteAsync(id);
+            var comment = await _commentRepository.GetAsync(id);
+
+            if (comment == null)
+            {
+                throw new NotFoundException(nameof(Comment));
+            }
+
+            comment.FirstName = model.FirstName;
+            comment.Rating = model.Rating;
+            comment.DataUpdate = DateTime.UtcNow;
+
+            await _commentRepository.UpdateAsync(comment);
+            await _productJobsStorage.IsUpdRating(comment.ProductId);
         }
 
+        public async Task DeleteAsync(Guid id)
+        {
+            var comment = await _commentRepository.GetAsync(id);
+
+            if (comment == null)
+            {
+                throw new NotFoundException(nameof(Comment));
+            }
+
+            await _commentRepository.DeleteAsync(id);
+            await _productJobsStorage.IsUpdRating(comment.ProductId);
+        }
     }
 }
