@@ -186,7 +186,7 @@ app.UseMiddleware<ExceptionHandlingMiddleware>();
 
 app.UseAuthorization();
 
-app.UseHangfireDashboard();
+app.UseHangfireDashboard( options: new DashboardOptions { Authorization = new[] { new HangfireAuthorizationFilter() } } );
 
 app.MapControllerRoute(
     name: "default",
