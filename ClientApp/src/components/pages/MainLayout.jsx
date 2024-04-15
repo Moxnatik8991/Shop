@@ -18,7 +18,6 @@ const MainLayout = ()=>{
     const dispatch = useDispatch();
     useEffect ( ()=>{
         dispatch(getAllItemsAndCategories())
-
     } , [] );
 
     /*let routs = useRoutes(routing);*/

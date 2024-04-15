@@ -1,19 +1,53 @@
-.fileInp{
-  .fileLabel{
-    padding: 8px;
-    border-radius: 15px;
-    border: 1px solid black;
-    color: black;
-    box-shadow: 0 0 5px  gray;
-    width: fit-content;
-    cursor: pointer;
-    input{
-      width: 0.1px;
-      height: 0.1px;
-      opacity: 0;
-      overflow: hidden;
+.allert{
+  background-color: black;
+  opacity: 0.8;
+  color: white;
+  min-width: 200px;
+  text-align: center;
+  border-radius: 10px;
+  .head{
+    position: relative;
+    font-size: 20px;
+    border-bottom: 2px solid red;
+    padding: 5px;
+    div{
       position: absolute;
-
+      top: 5px;
+      right: 5px; 
+    }
+  }
+  .message{
+    padding: 10px;
+  }
+}
+.container{
+  width: 100%;
+  position: relative;
+  .select{
+    background-color: white;
+    padding: 5px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+  }
+  .optionsContainer{
+    position: absolute;
+    width: 100%;
+    background-color: white;
+    padding: 5px;
+    border-radius: 8px;
+    opacity: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    .option{
+      padding: 5px;
+      &:hover{
+        box-shadow: 0 0 5px black;
+        border-radius: 5px;
+        cursor: pointer;
+      }
     }
   }
 }

@@ -4,8 +4,10 @@ import { useForm } from "react-hook-form";
 import noImage from '../../../icons/no-photos.png'
 import { ApiCategory } from "../../../https";
 import { Collapse } from "@mui/material";
+import { useSnackbar } from "notistack";
 
 const Forms = ({curCat,curAction,setRequest})=>{
+    const { enqueueSnackbar, closeSnackbar } = useSnackbar();
     const {
         register,
         handleSubmit,
@@ -19,32 +21,32 @@ const Forms = ({curCat,curAction,setRequest})=>{
         ApiCategory.addNew(formData).then(res=>{if(res){alert("Add success!");setRequest(prevState=>!prevState)}})
     }
     const submitUpdate = data=>{
-        debugger
+       
         const formData = new FormData();
         formData.append('Name',data.name)
         formData.append('CategoryId',data.categoryId)
         formData.append('File',data.file[0])
         ApiCategory.change(data.Id,formData).then(res=>{
-            debugger
+           
             if(res.isSuccess){
                 alert("Update success");
                 setRequest(prevState=>!prevState )
             }
             if(!res.isSuccess){
-                alert(res.ErrorMessage);
+                enqueueSnackbar({variant:'AdmCatError', anchorOrigin:{horizontal:"right",vertical:"bottom"}, action:{closeSnackbar}, message:res.ErrorMessage })
             }
         })
     }
     const submitDelete = data=>{
-     debugger   
+     
         ApiCategory.delete(data.Id).then(res=>{
-            debugger
+            
             if(res.isSuccess){
                 alert("delete success");
                 setRequest(prevState=>!prevState )
             }
             if(!res.isSuccess){
-                alert(res.ErrorMessage);
+               enqueueSnackbar({variant:'AdmCatError', anchorOrigin:{horizontal:"right",vertical:"bottom"}, action:{closeSnackbar}, message:res.ErrorMessage })
             }
         })
     }

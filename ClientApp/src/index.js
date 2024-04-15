@@ -9,6 +9,8 @@ import store from './redux/store'
 import {
     Provider
 } from "react-redux";
+import { SnackbarProvider } from "notistack";
+import {AdmCatError} from "./components/global/SnackBarComponents/SnackBarComponents";
 
 const baseUrl = document.getElementsByTagName('base')[0].getAttribute('href');
 const rootElement = document.getElementById('root');
@@ -17,7 +19,17 @@ const root = createRoot(rootElement);
 root.render(
   <BrowserRouter basename={baseUrl}>
     <Provider store={store}>
+        <SnackbarProvider 
+            maxSnack={4} 
+            autoHideDuration={3000}
+            Components={
+            {
+                AdmCatError
+            }
+        }
+        >
         <App />
+        </SnackbarProvider>
     </Provider>
   </BrowserRouter>);
 
