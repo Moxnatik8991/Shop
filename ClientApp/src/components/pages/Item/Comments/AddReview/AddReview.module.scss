@@ -1,0 +1,59 @@
+.addReview{
+  background-color: white;
+  box-shadow: 0 0 5px lightgray;
+  border-radius: 10px;
+  padding: 10px;
+  width: 100%;
+  place-self: center;
+  min-height: 150px;
+  form{
+    display: grid;
+    grid-gap: 10px;
+    input{
+      background: none;
+      border: none;
+      outline: none;
+      border-bottom: 1px solid black;
+      width: 25%;
+      &.error{
+        border-bottom: 1px solid red;
+      }
+    }
+    textarea{
+      resize: none;
+      background: none;
+      outline: none;
+      padding: 10px;
+      border-radius: 10px;
+      min-height: 200px;
+      margin-right: 20px;
+      border: 1px solid black;
+      &.error{
+        border: 2px solid red;
+      }
+    }
+    input:-webkit-autofill,
+    input:-webkit-autofill:focus {
+      transition: background-color 0s 600000s, color 0s 600000s !important;
+    }
+    div{
+      display: grid;
+      grid-template-columns: 100px 1fr;
+      div{
+        display: block;
+        span{
+          padding-left: 10px;
+          color: red;
+        }
+      }
+    }
+    button{
+      width: 15%;
+      justify-self: center;
+      border-radius: 5px;
+      min-height: 30px;
+      outline: none;
+      background: none;
+    }
+  }
+}

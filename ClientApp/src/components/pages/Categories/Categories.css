@@ -13,16 +13,6 @@
     font-weight: bold;
     
 }
-.advertisment{
-    display: flex;
-    margin: 10px 0;
-    height: 400px;
-}
-.advertisment img{
-    width: 60%;
-    margin: 0 auto;
-    padding: 10px;
-}
 .subCatBlock {
     display: grid;
     grid-template-columns: repeat(8, 1fr);

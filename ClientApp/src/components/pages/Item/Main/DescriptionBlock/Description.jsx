@@ -1,11 +1,11 @@
 import React , { useRef } from 'react';
+import st from './Description.module.scss'
 
 
 const Description = ({item})=>{
     let payment = useRef()
     let testFunk=(el,e)=>{
         e.textContent === "Show"?e.textContent = "Hide": e.textContent = "Show"
-        debugger
         if(el.current.style.height==="3rem")
         {
             el.current.style.height="fit-content";
@@ -16,16 +16,13 @@ const Description = ({item})=>{
             el.current.style.height="3rem";
             el.current.style.whiteSpace="nowrap"
         }
-
-        debugger
-
     }
     return (
         <div>
             <div>
                 <h3>{  item?.name }</h3>
             </div>
-            <div className="first-block">
+            <div className={ st.block }>
                 <div><span>Seller</span> : Yaroslav</div>
                 <div>
 
@@ -37,13 +34,13 @@ const Description = ({item})=>{
                 </div>
 
             </div>
-            <div className="first-block">
+            <div className={ st.block }>
                 <div style={ { border : "none" } }>
                     Different sub parameters!
                 </div>
 
             </div>
-            <div className="first-block">
+            <div className={ st.block }>
                 <div>
                     <span>Delivery to Yor city</span>
                 </div>
@@ -64,8 +61,8 @@ const Description = ({item})=>{
                 </div>
 
             </div>
-            <div className="first-block">
-                <div ref={ payment } className="test-hide" style={ { height : "3rem" } }>
+            <div className={ st.block }>
+                <div ref={ payment } className={ st.showHide } style={ { height : "3rem" } }>
                     <button onClick={ (e)=>{
                         testFunk ( payment , e.currentTarget )
                     } }>Show

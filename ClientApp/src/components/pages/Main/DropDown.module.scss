@@ -1,0 +1,34 @@
+.container{
+    width: 100%;
+    position: relative;
+    .select{
+        background-color: white;
+        padding: 5px;
+        border-radius: 8px;
+        display: flex;
+        justify-content: space-between;
+        cursor: pointer;
+    }
+    .optionsContainer{
+        position: absolute;
+        width: 100%;
+        background-color: white;
+        padding: 5px;
+        border-radius: 8px;
+        opacity: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        .option{
+            padding: 5px;
+            background: none;
+            outline: none;
+            border: none;
+            &:hover{
+                box-shadow: 0 0 5px black;
+                border-radius: 5px;
+                cursor: pointer;
+            }
+        }
+    }
+}

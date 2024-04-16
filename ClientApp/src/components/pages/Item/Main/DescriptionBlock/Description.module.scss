@@ -1,0 +1,22 @@
+.block{
+
+  border: 2px solid black;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+  div{
+    padding: 5px;
+    border-bottom: 2px solid black;
+
+  }
+  span{
+    font-weight: bold;
+  }
+}
+.showHide{
+  width: 100%;
+  overflow: hidden;
+  
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+}

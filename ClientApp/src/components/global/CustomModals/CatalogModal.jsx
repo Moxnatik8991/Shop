@@ -32,7 +32,7 @@ const CatalogModal = ({id,open,anchorEl,handleClick})=>{
 
     return (
         <>
-            <Popper id={id} open={open} anchorEl={anchorEl}>
+            <Popper style={{zIndex:"2"}} id={id} open={open} anchorEl={anchorEl}>
                 <div className={st.testModal}>
                     <div className={st.firstPlace}>
                         {categories && categories.map ( el=>{ 

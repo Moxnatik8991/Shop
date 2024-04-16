@@ -1,0 +1,45 @@
+.categoryContainer{
+  max-width: 1500px;
+  margin: 0 auto;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  .contentContainer{
+    display: grid;
+    grid-template-columns: 8fr minmax(100px, 500px);
+    padding: 10px;
+
+    flex: 1;
+  }
+}
+
+
+.navigation{
+  position: sticky;
+  z-index: 1;
+  top: 0;
+  display: flex;
+  gap: 5px;
+  background-color: whitesmoke;
+  min-height: 40px;
+  border-bottom: 1px solid gray;
+  a{
+    text-decoration: none;
+    color: black;
+    align-content: center;
+    padding: 5px;
+    background-color: whitesmoke;
+    border-bottom: 2px solid whitesmoke;
+    &:hover{
+      border-bottom: 2px solid #00a046;
+    ;
+    }
+  }
+  .active{
+    color: #00a046;
+  ;
+    border-bottom: 2px solid #00a046;
+  ;
+  }
+}

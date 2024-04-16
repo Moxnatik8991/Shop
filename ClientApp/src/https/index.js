@@ -22,6 +22,54 @@ $apiUsers.interceptors.request.use((config)=>{
 */
 
 
+
+
+
+const BASE_URL_COMMENTS = "https://5iaf6t.realhost-free.net/api/Comment/";
+export const $apiComments = axios.create(
+    {
+        baseURL: BASE_URL_COMMENTS
+    }
+)
+export const ApiComments = {
+    getAll: async ()=>{
+        let response = await $apiComments.get('GetAll')
+        return response.data.result
+    },
+    getByProductId: async (id)=>{
+        let response = await $apiComments.get(`GetCommentsByProductId/${id}`)
+        return response.data.result
+    },
+    getById: async (id)=>{
+        let response = await $apiComments.get(`Get/${id}`)
+        return response.data.result
+    },
+    addNew: async (data)=>{
+        try {
+            let response = await $apiComments.post(`Add`,data)
+            return response.data
+        }
+        catch (error){
+            return { error: error.message }
+        }
+        
+    }, 
+    change: async (id,data)=>{
+        try {
+            let result = await $apiComments.put(`Put/${id}`,data)
+            return result.data
+        }
+        catch (error){
+            return    error.response.data
+        }
+    },
+    delete: async (id)=>{
+        let response = await $apiComments.get(`Get/${id}`)
+        return response.data.result
+    },
+}
+
+
 const BASE_URL_ITEMS = "https://5iaf6t.realhost-free.net/api/Product/";
 export const $apiItems = axios.create(
     {
@@ -40,12 +88,10 @@ export const ApiItems = {
     getWithFilter: async (object)=>{
         let test1 = JSON.stringify( object)
         let test = encodeURIComponent( `[${test1}]`)
-        console.log('%5B%7B%22id%22%3A%22price%22%2C%22desc%22%3Atrue%7D%5D')
-        console.log(test)
         try {
             let result = await $apiItems.get(`GetWithFilteringAndPagination?OrderBy=${test}`)
             debugger
-            return result.data
+            return result.data.result
         } 
         catch (error){
         debugger    
