@@ -30,7 +30,7 @@ namespace Shop.BackApp.Services
             return products;
         }
 
-        public async Task<IEnumerable<Product>> GetWithFilteringAndPagination(SearchParams searchParam)
+        public async Task<IEnumerable<Product>> GetWithFilteringAndPagination(SearchParams searchParam, HttpResponse httpResponse)
         {
             List<ColumnFilter> columnFilters = new List<ColumnFilter>();
             if (!string.IsNullOrEmpty(searchParam.ColumnFilters))
@@ -101,7 +101,7 @@ namespace Shop.BackApp.Services
 
             if (pagedList != null)
             {
-                //Response.AddPaginationHeader(pagedList.MetaData);
+                httpResponse.AddPaginationHeader(pagedList.MetaData);
             }
 
             return pagedList;

@@ -9,7 +9,7 @@ namespace Shop.BackApp.Helpers.FilteringAndPagination
             var options = new JsonSerializerOptions { PropertyNamingPolicy = JsonNamingPolicy.CamelCase };
 
             response.Headers.Add("Pagination", JsonSerializer.Serialize(metadata, options));
-            response.Headers.Add("Access-Control-Expose-Headers", "Pagination");
+            //response.Headers.Add("Access-Control-Expose-Headers", "Pagination");
         }
     }
 }

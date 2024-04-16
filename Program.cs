@@ -93,6 +93,15 @@ builder.Services.AddCors(options =>
             .WithMethods("GET", "POST", "PUT", "DELETE")
             .WithOrigins("http://localhost:4444/", "http://localhost:2222/",  "http://5iaf6t.realhost-free.net/");
     });
+
+    options.AddPolicy("test", builder =>
+    {
+        builder
+            .AllowAnyHeader()
+            .AllowCredentials()
+            .WithMethods("GET", "POST", "PUT", "DELETE")
+            .WithOrigins("http://localhost:4444", "http://localhost:2222", "http://5iaf6t.realhost-free.net");
+    });
 });
 
 builder.Services.AddAuthentication().AddJwtBearer(options =>
@@ -153,29 +162,20 @@ builder.Logging.AddSerilog(logger);
 
 var app = builder.Build();
 
-
-//app.UseCors(builder =>
-//    builder
-//    .AllowAnyHeader()
-//    .AllowCredentials()
-//    .WithMethods("GET", "POST", "PUT", "DELETE")
-//    .WithOrigins("http://localhost:4444/", "http://localhost:4444", "http://localhost:2222/", "http://localhost:2222", "http://5iaf6t.realhost-free.net/"));
-
 app.UseSwagger();
 app.UseSwaggerUI();
 
 
-
-// Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
     app.UseCors("ProdHeaders");
 }
 else
 {
-
     app.UseCors("LocalHeaders");
 }
+
+//app.UseCors("test");
 
 app.UseStaticFiles();
 app.UseRouting();

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Azure;
+using Microsoft.AspNetCore.Mvc;
 using Shop.BackApp.Domain.Entity;
 using Shop.BackApp.Helpers.FilteringAndPagination;
 using Shop.BackApp.Models;
@@ -8,7 +9,7 @@ namespace Shop.BackApp.Controllers;
 
 [ApiController]
 [Route("api/[controller]/[action]")]
-public class ProductController
+public class ProductController : ControllerBase
 {
     private readonly IProductService _productServices;
     public ProductController(IProductService productServices)
@@ -43,7 +44,9 @@ public class ProductController
     [HttpGet]
     public async Task<BaseResponseModel<IEnumerable<Product>>> GetWithFilteringAndPagination([FromQuery] SearchParams searchParam)
     {
-        var products = await _productServices.GetWithFilteringAndPagination(searchParam);
+        var products = await _productServices.GetWithFilteringAndPagination(searchParam, Response);
+
+        //Response.Headers["fdsdf"] = "fefw";
 
         var response = new BaseResponseModel<IEnumerable<Product>>();
 
