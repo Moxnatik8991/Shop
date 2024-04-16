@@ -46,15 +46,13 @@ namespace Shop.BackApp.Repository
 
         public virtual async Task DeleteAsync(Guid id)
         {
-            //var entity = await _dataContext.Set<T>().FirstOrDefaultAsync(_ => _.Id == id);
+            var entity = await _dataContext.Set<T>().FirstOrDefaultAsync(_ => _.Id == id);
 
-            //if (entity != null)
-            //{
-            //    _dataContext.Set<T>().Remove(entity);
-            //    await _dataContext.SaveChangesAsync();
-            //}
-
-            await _dataContext.SaveChangesAsync();
+            if (entity != null)
+            {
+                _dataContext.Set<T>().Remove(entity);
+                await _dataContext.SaveChangesAsync();
+            }
         }
 
         public virtual IQueryable<T> CustomQuery(Expression<Func<T, bool>> filters)
