@@ -1,5 +1,6 @@
 ﻿using Shop.BackApp.BackgroundJobs.Interfaces;
 using Shop.BackApp.Domain.Entity;
+using Shop.BackApp.Helpers.FilteringAndPagination;
 using Shop.BackApp.Middleware.Exceptions;
 using Shop.BackApp.Models.RequestModels;
 using Shop.BackApp.Repository;
@@ -25,9 +26,24 @@ namespace Shop.BackApp.Services
            return await _commentRepository.GetAllAsync();
         }
 
-        public async Task<IEnumerable<Comment>> GetCommentsByProductIdAsync(Guid productId)
+        public async Task<IEnumerable<Comment>> GetCommentsByProductIdAsync(Guid productId, PaginationParams paginationParams, HttpResponse httpResponse)
         {
-            return await _commentRepository.GetCommentsByProductIdAsync(productId);
+            var query = _commentRepository.CustomQuery(null);
+
+            query.Where(x => x.ProductId == productId);
+
+            var count = query.Count();
+
+            var filteredData = query.CustomPagination(paginationParams.PageNumber, paginationParams.PageSize).ToList();
+
+            var pagedList = new PagedList<Comment>(filteredData, count, paginationParams.PageNumber, paginationParams.PageSize);
+
+            if (pagedList != null)
+            {
+                httpResponse.AddPaginationHeader(pagedList.MetaData);
+            }
+
+            return filteredData;
         }
 
         public async Task<Comment?> GetAsync(Guid id)
