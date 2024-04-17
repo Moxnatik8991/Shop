@@ -1,24 +1,26 @@
 import React , { useEffect , useState } from 'react';
 import { useOutletContext } from "react-router-dom";
-import axios from "axios";
 import st from "./Comments.module.scss";
-import { Rating } from "@mui/material";
+import { Pagination , Rating } from "@mui/material";
 import AddReview from "./AddReview/AddReview";
 import Review from "./Review/Review";
+import { ApiComments } from "../../../../https";
+import { usePagination } from "../../../../hooks/usePagination";
 
 const Comments = ()=>{
     const [comments,setComments]=useState()
     const [isFormOpen,setIsFormOpen]=useState(false)
-    debugger
+    const {page,setPagination,paginationEl}=usePagination();
     const {currentItem,getNewComments}=useOutletContext();
     useEffect ( ()=>{
-        axios.get(`https://5iaf6t.realhost-free.net/api/Comment/GetCommentsByProductId/${currentItem.id}`)
-            .then(response=>{
-                setComments(response.data.result.reverse())
+        ApiComments.getByProductId(currentItem.id,page)
+            .then(res=>{
+                setComments(res.data.result)
+                setPagination(JSON.parse(res.headers.pagination))
+                
             })
-    } , [currentItem] );
-
-
+    } , [currentItem,page] );
+    
     return(
         <>
             <div className={ st.commentsContent }>
@@ -49,6 +51,7 @@ const Comments = ()=>{
                                     text={ el.text }/> )
                             :<div>На данный товар отзывов нет, ваш отзыв будет первым.</div>
                     }
+                    { paginationEl }
                 </div>
 
             </div>

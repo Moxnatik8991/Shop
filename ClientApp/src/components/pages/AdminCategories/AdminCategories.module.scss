@@ -1,3 +1,13 @@
+
+.content{
+    height: 100%;
+    overflow: hidden;
+    border-radius: 30px;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+
+}
 .categories{
     display: flex;
     flex-direction: column;

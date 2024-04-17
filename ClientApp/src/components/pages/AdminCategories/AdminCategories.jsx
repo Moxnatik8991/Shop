@@ -56,7 +56,7 @@ const AdmCategories = ()=>{
 
     }
     return (
-        <>
+        <div className={st.content}>
             <div className={ st.categories }>
                 <div className={st.name}>All available Categories</div>
                 <div className={st.items}>
@@ -82,7 +82,7 @@ const AdmCategories = ()=>{
                 </div> }
                 <FormsPage setRequest={ setRequest } curAction={ curAction } curCat={ curCat }/>
             </div>
-        </>
+        </div>
     );
 };
 

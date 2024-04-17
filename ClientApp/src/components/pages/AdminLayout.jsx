@@ -5,6 +5,8 @@ import DialpadOutlinedIcon from '@mui/icons-material/DialpadOutlined';
 import GroupOutlinedIcon from '@mui/icons-material/GroupOutlined';
 import GradingOutlinedIcon from '@mui/icons-material/GradingOutlined';
 import AdminCategories from "./AdminCategories/AdminCategories";
+import InsertCommentIcon from '@mui/icons-material/InsertComment';
+import AdminComments from "./AdminComments/AdminComments";
 const AdminLayout = ()=>{
     return (
         <>
@@ -30,16 +32,21 @@ const AdminLayout = ()=>{
                             <GradingOutlinedIcon fontSize='medium'/>
                             Orders
                         </div>
+                        <div>
+                            <InsertCommentIcon fontSize='medium'/>
+                            Comments
+                        </div>
 
                     </div>
                 </div>
                 <div className={ st.contentBlock }>
-                    <div className={st.name}>
-                        Welcome to your own admin panel! Here you could do anything!)
+                    <div className={ st.name }>
+                    Welcome to your own admin panel! Here you could do anything!)
                     </div>
-                    <div className={st.content}>
-                        <AdminCategories/>
-                    </div>
+                    
+                        {/*<AdminCategories/>*/}
+                        <AdminComments />
+                    
                 </div>
             </div>
         </>

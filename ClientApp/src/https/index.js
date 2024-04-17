@@ -36,9 +36,9 @@ export const ApiComments = {
         let response = await $apiComments.get('GetAll')
         return response.data.result
     },
-    getByProductId: async (id)=>{
-        let response = await $apiComments.get(`GetCommentsByProductId/${id}`)
-        return response.data.result
+    getByProductId: async (id,pageNumber=1,pageSize=6)=>{
+        let response = await $apiComments.get(`GetCommentsByProductId/${id}?PageNumber=${pageNumber}&PageSize=${pageSize}`)
+        return response
     },
     getById: async (id)=>{
         let response = await $apiComments.get(`Get/${id}`)
@@ -85,13 +85,12 @@ export const ApiItems = {
         let result = (await $apiItems.get(`Get/${id}`)).data.result
         return result
     },
-    getWithFilter: async (object)=>{
+    getWithFilter: async (object,pageNumber=1,pageSize=6)=>{
         let test1 = JSON.stringify( object)
         let test = encodeURIComponent( `[${test1}]`)
         try {
-            let result = await $apiItems.get(`GetWithFilteringAndPagination?OrderBy=${test}`)
-            debugger
-            return result.data.result
+            let result = await $apiItems.get(`GetWithFilteringAndPagination?OrderBy=${test}&PageNumber=${pageNumber}&PageSize=${pageSize}`)
+            return result
         } 
         catch (error){
         debugger    
