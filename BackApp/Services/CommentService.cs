@@ -30,11 +30,11 @@ namespace Shop.BackApp.Services
         {
             var query = _commentRepository.CustomQuery(null);
 
-            query.Where(x => x.ProductId == productId);
+            query = query.Where(x => x.ProductId == productId);
 
             var count = query.Count();
 
-            var filteredData = query.CustomPagination(paginationParams.PageNumber, paginationParams.PageSize).ToList();
+            var filteredData = query.CustomPagination(paginationParams.PageNumber, paginationParams.PageSize).OrderBy(_ => _.DataCreate).ToList();
 
             var pagedList = new PagedList<Comment>(filteredData, count, paginationParams.PageNumber, paginationParams.PageSize);
 
