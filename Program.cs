@@ -82,7 +82,7 @@ builder.Services.AddCors(options =>
             .AllowAnyHeader()
             .AllowCredentials()
             .WithMethods("GET", "POST", "PUT", "DELETE")
-            .WithOrigins( "http://localhost:4444", "http://localhost:2222", "http://5iaf6t.realhost-free.net");
+            .WithOrigins( "http://localhost:4444", "http://localhost:2222", "https://5iaf6t.realhost-free.net");
     });
 
     options.AddPolicy("ProdHeaders", builder =>
@@ -91,7 +91,7 @@ builder.Services.AddCors(options =>
             .AllowAnyHeader()
             .AllowCredentials()
             .WithMethods("GET", "POST", "PUT", "DELETE")
-            .WithOrigins("http://localhost:4444/", "http://localhost:2222/",  "http://5iaf6t.realhost-free.net/");
+            .WithOrigins("http://localhost:4444/", "http://localhost:2222/",  "https://5iaf6t.realhost-free.net/");
     });
 
     options.AddPolicy("test", builder =>
@@ -100,7 +100,7 @@ builder.Services.AddCors(options =>
             .AllowAnyHeader()
             .AllowCredentials()
             .WithMethods("GET", "POST", "PUT", "DELETE")
-            .WithOrigins("http://localhost:4444", "http://localhost:2222", "http://5iaf6t.realhost-free.net");
+            .WithOrigins("http://localhost:4444", "http://localhost:2222", "https://5iaf6t.realhost-free.net");
     });
 });
 

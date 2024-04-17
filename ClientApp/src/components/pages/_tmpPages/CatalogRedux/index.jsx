@@ -28,7 +28,7 @@ export const CatalogRedux = () => {
 
 
     function helper(){
-        axios.get("http://5iaf6t.realhost-free.net/api/Product/GetAll")
+        axios.get("https://5iaf6t.realhost-free.net/api/Product/GetAll")
             .then(response => dispatch(setCatalogData(response.data.result)))
             .catch(error => console.log(error));
     }
