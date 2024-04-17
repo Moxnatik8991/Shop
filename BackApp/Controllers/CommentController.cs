@@ -4,12 +4,13 @@ using Shop.BackApp.Models;
 using Shop.BackApp.Services;
 using Shop.BackApp.Services.Interfaces;
 using Shop.BackApp.Domain.Entity;
+using Shop.BackApp.Helpers.FilteringAndPagination;
 
 namespace Shop.BackApp.Controllers
 {
     [ApiController]
     [Route("api/[controller]/[action]")]
-    public class CommentController
+    public class CommentController : ControllerBase
     {
         private readonly ICommentService _commentServices;
         public CommentController(ICommentService commentServices)
@@ -37,9 +38,9 @@ namespace Shop.BackApp.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<BaseResponseModel<IEnumerable<Comment>>> GetCommentsByProductId(Guid id)
+        public async Task<BaseResponseModel<IEnumerable<Comment>>> GetCommentsByProductId(Guid id, [FromQuery] PaginationParams paginationParams)
         {
-            var categories = await _commentServices.GetCommentsByProductIdAsync(id);
+            var categories = await _commentServices.GetCommentsByProductIdAsync(id, paginationParams, Response);
 
             var response = new BaseResponseModel<IEnumerable<Comment>>();
 
