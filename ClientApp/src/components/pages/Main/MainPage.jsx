@@ -34,10 +34,11 @@ const MainPage = ()=>{
             <div style={{width:"200px"}}>
                 <DropDown selected={selected} setSelected={setSelected}/>
             </div>
-            {paginationEl}
+            
             <div style={ { display : "grid" , gridTemplateColumns : "repeat(3, 1fr)" } }>
                 { items && items.map ( el=><Item key={ el.id } name={ el.name } id={ el.id } price={ el.price }/> ) }
             </div>
+            {paginationEl}
         </div>
 
     );

@@ -9,7 +9,7 @@ import React , { useState } from "react";
     const handleChange=(e,value)=>{
         setPage(value)
     }
-    let paginationEl = <Pagination  onChange={handleChange}  count={pagination?pagination.totalPages:10} />
+    let paginationEl = <Pagination variant="outlined" shape="rounded"  onChange={handleChange}  count={pagination?pagination.totalPages:10} />
     
     return {page,setPagination,paginationEl}
     

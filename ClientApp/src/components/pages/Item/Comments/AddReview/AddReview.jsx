@@ -6,7 +6,7 @@ import { ApiComments } from "../../../../../https";
 import { useSnackbar } from "notistack";
 
 const date = new Date().toJSON();
-const AddReview = ({itemId,updComments})=>{
+const AddReview = ({itemId,setTrigger})=>{
     const [value, setValue] = React.useState(2);
     const { enqueueSnackbar, closeSnackbar } = useSnackbar();
     
@@ -35,7 +35,7 @@ const AddReview = ({itemId,updComments})=>{
                     enqueueSnackbar({variant:'AdmCatError', anchorOrigin:{horizontal:"right",vertical:"bottom"}, action:{closeSnackbar}, message:response.error})
                 }
                 if(response.isSuccess){
-                    updComments(prev=>[newComment,...prev])
+                    setTrigger(prev=>!prev)
                     alert("add success")
                 }
             })

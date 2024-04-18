@@ -9,6 +9,7 @@ import { usePagination } from "../../../../hooks/usePagination";
 
 const Comments = ()=>{
     const [comments,setComments]=useState()
+    const [trigger,setTrigger]=useState(true)
     const [isFormOpen,setIsFormOpen]=useState(false)
     const {page,setPagination,paginationEl}=usePagination();
     const {currentItem,getNewComments}=useOutletContext();
@@ -19,8 +20,8 @@ const Comments = ()=>{
                 setPagination(JSON.parse(res.headers.pagination))
                 
             })
-    } , [currentItem,page] );
-    
+    } , [currentItem,page,trigger] );
+    debugger
     return(
         <>
             <div className={ st.commentsContent }>
@@ -29,7 +30,7 @@ const Comments = ()=>{
                 </div>
                 <div className={ st.ratingBar }>
                     <Rating name="half-rating-read" value={ currentItem.rating } precision={ 0.1 } readOnly/>
-                    { currentItem?.countComments } reviews
+                    { comments?.length } reviews
                 </div>
                 <div className={st.addReview}>
                     <span>
@@ -39,7 +40,7 @@ const Comments = ()=>{
                         Оставить отзыв
                     </button>
                 </div>
-                { isFormOpen && <AddReview updComments={ setComments } getNewComments={ getNewComments } itemId={ currentItem?.id }/> }
+                { isFormOpen && <AddReview setTrigger={setTrigger} getNewComments={ getNewComments } itemId={ currentItem?.id }/> }
                 <div className={st.reviews}>
                     {
                         comments?.length>0
