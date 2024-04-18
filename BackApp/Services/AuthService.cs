@@ -18,7 +18,7 @@ namespace Shop.BackApp.Services
             _tokenService = tokenService;
         }
 
-        public async Task<TokenModel> Login(LoginRequestModel model)
+        public async Task<TokenModel> LoginAsync(LoginRequestModel model)
         {
             var user = await _userRepository.GetUserByEmail(model.Email);
 
@@ -30,7 +30,21 @@ namespace Shop.BackApp.Services
             if (!string.Equals(passwordHash, user.PasswordHash))
                 throw new CustomException("Incorrect password");
 
-            var token = await _tokenService.CreateToken(user);
+            var token = await _tokenService.CreateTokenAsync(user);
+
+            return token;
+        }
+
+        public async Task<TokenModel> RestoreAccessTokenAsync(RestoreAccessTokenRequestModel model)
+        {
+            var userId = await _tokenService.CheckValidRefreshToken(model);
+
+            var user = await _userRepository.GetAsync(userId);
+
+            if (user == null)
+                throw new NotFoundException(nameof(user));
+
+            var token = await _tokenService.CreateTokenAsync(user);
 
             return token;
         }

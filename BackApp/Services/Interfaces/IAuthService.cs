@@ -5,6 +5,7 @@ namespace Shop.BackApp.Services.Interfaces
 {
     public interface IAuthService
     {
-        Task<TokenModel> Login(LoginRequestModel model);
+        Task<TokenModel> LoginAsync(LoginRequestModel model);
+        Task<TokenModel> RestoreAccessTokenAsync(RestoreAccessTokenRequestModel model);
     }
 }
